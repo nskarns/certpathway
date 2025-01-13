@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Profile</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    {% include 'header.html' %}
+
+
+<div class="profile-slug">
+    <div class="profile-slug-left">
+        <img src="{{current_user.imagelink}}" alt="" style="border-radius: 50%; height:64px; width:64px"> 
+        <span style="font-size: 30px;"> {{current_user.firstname}} {{current_user.lastname}} </span>
+    </div>
+    <div class="profile-slug-right">
+        <span style="font-size: 16px; padding-top: 10px"> {{current_user.email}} | <a href="/logout"> Log out </a> </span>
+    </div>
+</div>
+    
+
+<div class="page-body">
+
+
+
+
+
+
+
+    <h1 class="page-title">Your Certificates</h1>
+
+    {% for certificate in certificates %}
+
+        {% include 'certificate.html' %}
+
+    {% endfor %}
+</div>
+
+
+    
+
+
+
+</body>
+</html>
+
+

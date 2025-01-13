@@ -1,0 +1,33 @@
+#!/bin/bash
+# CertPathwayRun
+# Stop on errors
+# See https://vaneyckt.io/posts/safer_bash_scripts_with_set_euxo_pipefail/
+set -Eeuo pipefail
+# Check if database exist, if not creat it 
+echo "+ test -e var/CertPathwayDB.sqlite3"
+if test ! -e "var/CertPathwayDB.sqlite3";
+    then
+        ./bin/CertPathDB create
+fi
+# FLASK VARIABLES
+echo "+ export FLASK_ENV=development"
+export FLASK_ENV=development
+echo "+ FLASK_ENV=development"
+FLASK_ENV=development
+echo "+ export FLASK_APP=CertPathway"
+export FLASK_APP=CertPathway
+echo "+ FLASK_APP=CertPathway"
+FLASK_APP=CertPathway
+echo "+ export CLIENT_ID=$(cat client_id)"
+export CLIENT_ID=$(cat client_id)
+echo "+ CLIENT_ID=$(cat client_id)"
+CLIENT_ID=$(cat client_id)
+echo "+ export CLIENT_SECRET=$(cat client_secret)"
+export CLIENT_SECRET=$(cat client_secret)
+echo "+ CLIENT_SECRET=$(cat client_secret)"
+CLIENT_SECRET=$(cat client_secret)
+# RUN JSX
+npx webpack --watch &
+# RUN FLASK
+echo "+ flask run --host 0.0.0.0 --port 8000"
+flask run --host 0.0.0.0 --port 8000

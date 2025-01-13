@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Explore</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    {% include 'header.html' %}
+
+    <div class="page-body">
+        <h1 class="page-title">Results</h1>
+        <p>Here are your suggested certificates:</p> 
+        {% for certificate in certificates %}
+            {% include 'certificate.html' %}
+        {% endfor %}
+    </div>  
+</body>
+</html>

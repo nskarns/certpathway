@@ -1,0 +1,7 @@
+env/
+env/*
+client_secret
+**/CertPathwayDB.sqlite3
+**/__pycache__/
+CertPathway.egg-info/
+node_modules/

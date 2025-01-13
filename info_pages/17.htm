@@ -1,0 +1,1340 @@
+
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8"/>
+    <title>Certification | Adobe Digital Learning Services</title>
+    
+    <meta name="description" content="Get hired, demonstrate clear business impact, and advance your skills. Adobe offers a wide range of online certification programs designed to take your career to the next level."/>
+    <meta name="template" content="adls-content-page-template"/>
+
+    <meta property="og:title" content="Certification"/>
+    <meta property="og:url" content="https://learning.adobe.com/"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:site_name" content="Adobe Digital Learning Services | Training and Certification by Adobe"/>
+    <meta property="og:image" content="https://www.adobe.com/thumb.800.480.png"/>
+    <meta property="og:description" content="Get hired, demonstrate clear business impact, and advance your skills. Adobe offers a wide range of online certification programs designed to take your career to the next level."/>
+
+    <link rel="icon" href="https://www.adobe.com/favicon.ico" type="image/x-icon"/>
+    <link rel="shortcut icon" href="https://www.adobe.com/favicon.ico" type="image/x-icon"/>
+
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta http-equiv="Content-Language" lang="en-us"/>
+    
+
+    
+    
+<link rel="stylesheet" href="/etc.clientlibs/athena/clientlibs/main.min.ff10ef3960a1be449f9ae08fa344b6e7.css" type="text/css">
+
+
+
+
+
+<script>
+	var currentPath = window.location.pathname;
+	if (currentPath === '/products-resources/contact-us.html') {
+		var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+		if (isSafari) {
+			window.location.href = "https://adobe.service-now.com/adls";
+		}
+	}
+</script>
+<script>
+	var adlsSiteBreadcrumbs = JSON.parse("[{\x22title\x22:\x22Home page\x22,\x22url\x22:\x22\/content\/adls\/en.html\x22},{\x22title\x22:\x22Certification\x22,\x22url\x22:\x22\/certification.html\x22}]").filter(function(links){
+		if(links.url ==='/content/adls/en.html' ){
+			links.url = '/';
+			return links;
+		} else {
+			return links;
+		}
+	});
+</script>
+
+
+<script>
+window.fedsConfig = {
+  locale: "en",
+  disableSticky: false,
+  subnav: {
+    "theme": {
+      "base": "dark",
+      "gradient": {
+        "toColor": "#000000",
+        "fromColor": "#000000",
+        "opacity": 0.8
+      }
+    }
+  },
+  footer: {
+    breadcrumbs: {
+      showLogo: true,
+      links: window.adlsSiteBreadcrumbs
+    },
+    regionModal: function(event) {
+		 var element = document.getElementById('location_modal');
+         element.classList.add('is-Open');
+    },
+    closeRegionModal: function(e) {
+		e.preventDefault();
+        var element = document.getElementById('location_modal');
+        element.classList.remove('is-Open');
+    }
+  },
+  privacy:{
+	 	otDomainId: '7a5eb705\u002D95ed\u002D4cc4\u002Da11d\u002D0cc5760e93db' || '7a5eb705-95ed-4cc4-a11d-0cc5760e93db-test',
+        footerLinkSelector: '[data\u002Dfeds\u002Daction:\x22open\u002Dadchoices\u002Dmodal\x22]'
+
+	}
+};
+
+function dispatchWindowEvent(eventName) {
+  var event;
+  if(typeof(Event) === 'function') {
+    event = new Event(eventName);
+  } else {
+    event = document.createEvent('Event');
+    event.initEvent(eventName, true, true);
+  }
+  window.dispatchEvent(event);
+}
+
+var adobeid = {
+    client_id:'adlsweb',
+    scope: 'AdobeID,openid',
+    environment: 'prod',
+    locale: 'en_US',
+    onReady: function() {
+      dispatchWindowEvent('adobeIMS:ready');
+
+      if(!adobeIMS.isSignedInUser()){
+        window.localStorage.removeItem('aalpUser');
+        window.localStorage.removeItem('odlpUser');
+        window.localStorage.removeItem('adobeIdUser');
+      }
+
+    },
+    onProfile: function() {
+      dispatchWindowEvent('adobeIMS:profileLoaded');
+    },
+    onAccessToken: async function() {
+      dispatchWindowEvent('adobeIMS:tokenReceived');
+	  const profile = await adobeIMS.getProfile();
+      if(window.localStorage.getItem('aalpUser') === null || (window.sessionStorage.getItem("aalp_valid_for_user") !== profile.userId)) {
+
+        $.ajax({
+          url: '/content/adls/en/api.aalp.json',
+          type: 'get',
+          headers: {
+            'Access-Token': adobeIMS.getAccessToken().token
+          },
+          success: function(data) {
+              aalpUser = data.type;
+              if ((aalpUser === "") || (aalpUser !== "aalp")) {
+                window.localStorage.removeItem('aalpUser');
+                window.sessionStorage.removeItem("aalp_valid_for_user");
+              } else {
+                window.localStorage.setItem('aalpUser', aalpUser);
+                window.sessionStorage.setItem("aalp_valid_for_user", profile.userId);
+              }
+
+              if(aalpUser === 'aalp'){
+                $('.aalp-tooltip').hide();
+              }
+          }, error: function() {
+              window.localStorage.removeItem('aalpUser');
+              window.sessionStorage.removeItem("aalp_valid_for_user");
+          },
+          complete: function() {
+              $('.loader-custom').hide();
+          }
+      });
+
+      }
+      if(window.localStorage.getItem('odlpUser') === null || (window.sessionStorage.getItem("odlp_valid_for_user") !== profile.userId)) {
+
+        $.ajax({
+          url: '/content/adls/en/api.aalp.json',
+          type: 'get',
+          headers: {
+            'Access-Token': adobeIMS.getAccessToken().token
+          },
+          success: function(data) {
+              odlpUser = data.type;
+              if ((odlpUser === "") || (odlpUser !== "odlp")) {
+                window.localStorage.removeItem('odlpUser');
+                window.sessionStorage.removeItem("odlp_valid_for_user");
+              } else {
+                window.localStorage.setItem('odlpUser', odlpUser);
+                window.sessionStorage.setItem("odlp_valid_for_user", profile.userId);
+              }
+
+              if(odlpUser === 'odlp'){
+                $('.aalp-tooltip').hide();
+              }
+          }, error: function() {
+              window.localStorage.removeItem('odlpUser');
+              window.sessionStorage.removeItem("odlp_valid_for_user");
+          },
+          complete: function() {
+              $('.loader-custom').hide();
+          }
+      });
+
+      }
+
+      if(window.localStorage.getItem('adobeIdUser') === null || (window.sessionStorage.getItem("adobeId_valid_for_user") !== profile.userId)) {
+
+        $.ajax({
+          url: '/content/adls/en/api.aalp.json',
+          type: 'get',
+          headers: {
+            'Access-Token': adobeIMS.getAccessToken().token
+          },
+          success: function(data) {
+              adobeIdUser = data.type;
+              if ((adobeIdUser === "") || (adobeIdUser !== "employee")) {
+                window.localStorage.removeItem('adobeIdUser');
+                window.sessionStorage.removeItem("adobeId_valid_for_user");
+              } else {
+                window.localStorage.setItem('adobeIdUser', adobeIdUser);
+                window.sessionStorage.setItem("adobeId_valid_for_user", profile.userId);
+              }
+
+              if(adobeIdUser === 'employee'){
+                $('.aalp-tooltip').hide();
+              }
+          }, error: function() {
+              window.localStorage.removeItem('adobeIdUser');
+              window.sessionStorage.removeItem("adobeId_valid_for_user");
+          },
+          complete: function() {
+              $('.loader-custom').hide();
+          }
+      });
+
+      }
+    },
+    onAccessTokenHasExpired: function() {
+      dispatchWindowEvent('adobeIMS:accessTokenExpired');
+    }
+  };
+
+
+</script>
+
+	<script></script>
+	<script src="https://auth.services.adobe.com/imslib/imslib.min.js"></script>
+	<script src="https://www.adobe.com/etc.clientlibs/globalnav/clientlibs/base/feds.js"></script>
+
+<link rel="stylesheet" href="https://use.typekit.net/shu5jul.css"/>
+
+    
+    
+    
+
+    
+
+    
+    
+    
+
+    
+</head>
+    <body class="page basicpage spectrum spectrum--light spectrum--medium">
+        
+        
+            
+
+
+
+            
+<div class="root responsivegrid">
+
+<div class="aem-Grid aem-Grid--12 aem-Grid--default--12 ">
+    
+    <div class="global-header aem-GridColumn aem-GridColumn--default--12"><div>
+
+    
+	
+    
+
+	<header id="feds-header"></header>
+	
+	<div id="feds-subnav">
+		<div id="AdobeSecondaryNav" class="Subnav-wrapper">
+		<nav class="Subnav">
+		  <button class="Subnav-trigger" aria-expanded="false" aria-haspopup="true" aria-label="ADOBE DIGITAL LEARNING SERVICES"></button>
+		  <a class="Subnav-logo" href="/">
+			<span class="Subnav-logo-text" style="text-transform: none;font-size: 14px;">Home</span>
+		  </a>
+		  <div class="Subnav-menu-wrapper">
+			<ul class="Subnav-menu" data-gnav-scrollable="mobile-layout">
+			  
+				<li class="Subnav-menu-item has-submenu"><a href="/catalog-new.html" title="Catalog" class="Subnav-menu-label" data-type="item" aria-haspopup="true" aria-expanded="false" role="button"> Catalog </a>
+				  
+					<div class="Subnav-submenus" data-type="popup" data-gnav-scrollable="desktop">
+					  <div class="Subnav-submenu-wrapper">
+						<ul class="Subnav-submenu" data-type="column">
+						  
+							<li class="Subnav-submenu-item"><a href="/catalog.html" title="Course Catalog" class="Subnav-submenu-link" data-type="columnitem"> <span class="Subnav-submenu-title">Course Catalog</span>
+							</a></li>
+						  
+							<li class="Subnav-submenu-item"><a href="/class.html" title="Class Schedule" class="Subnav-submenu-link" data-type="columnitem"> <span class="Subnav-submenu-title">Class Schedule</span>
+							</a></li>
+						  
+						</ul>
+					  </div>
+					</div>
+				  
+				</li>
+			  
+				<li class="Subnav-menu-item "><a href="/learning-path.html" title="Learning Paths" class="Subnav-menu-label" data-type="item" aria-haspopup="true" aria-expanded="false" role="button"> Learning Paths </a>
+				  
+				</li>
+			  
+				<li class="Subnav-menu-item "><a href="/certification.html" title="Certification" class="Subnav-menu-label" data-type="item" aria-haspopup="true" aria-expanded="false" role="button"> Certification </a>
+				  
+				</li>
+			  
+				<li class="Subnav-menu-item has-submenu"><a href="/my-learning.html" title="My Learning" class="Subnav-menu-label" data-type="item" aria-haspopup="true" aria-expanded="false" role="button"> My Learning </a>
+				  
+					<div class="Subnav-submenus" data-type="popup" data-gnav-scrollable="desktop">
+					  <div class="Subnav-submenu-wrapper">
+						<ul class="Subnav-submenu" data-type="column">
+						  
+							<li class="Subnav-submenu-item"><a target="_blank" href="/api.go.json?redirect=/app/dashboard" title="My Learning Dashboard" class="Subnav-submenu-link" data-type="columnitem"> <span class="Subnav-submenu-title">My Learning Dashboard</span>
+							</a></li>
+						  
+							<li class="Subnav-submenu-item"><a target="_blank" href="/api.go.json?redirect=/common/profile/basicinfo" title="Profile" class="Subnav-submenu-link" data-type="columnitem"> <span class="Subnav-submenu-title">Profile</span>
+							</a></li>
+						  
+							<li class="Subnav-submenu-item"><a target="_blank" href="/api.go.json?redirect=/common/profile/learningtranscripts" title="Completed Learning" class="Subnav-submenu-link" data-type="columnitem"> <span class="Subnav-submenu-title">Completed Learning</span>
+							</a></li>
+						  
+							<li class="Subnav-submenu-item"><a target="_blank" href="/api.go.json?redirect=/common/profile/orderhistory" title="Order History" class="Subnav-submenu-link" data-type="columnitem"> <span class="Subnav-submenu-title">Order History</span>
+							</a></li>
+						  
+							<li class="Subnav-submenu-item"><a target="_blank" href="/api.go.json?redirect=/common/profile/learningtranscripts" title="Class Completion Certificate" class="Subnav-submenu-link" data-type="columnitem"> <span class="Subnav-submenu-title">Class Completion Certificate</span>
+							</a></li>
+						  
+							<li class="Subnav-submenu-item"><a href="/my-learning/my-invoices.html" title="My Invoices" class="Subnav-submenu-link" data-type="columnitem"> <span class="Subnav-submenu-title">My Invoices</span>
+							</a></li>
+						  
+						</ul>
+					  </div>
+					</div>
+				  
+				</li>
+			  
+				<li class="Subnav-menu-item "><a href="/learning-subscription.html" title="Learning Subscriptions" class="Subnav-menu-label" data-type="item" aria-haspopup="true" aria-expanded="false" role="button"> Learning Subscriptions </a>
+				  
+				</li>
+			  
+				<li class="Subnav-menu-item has-submenu"><a href="/products-resources.html" title="Resources" class="Subnav-menu-label" data-type="item" aria-haspopup="true" aria-expanded="false" role="button"> Resources </a>
+				  
+					<div class="Subnav-submenus" data-type="popup" data-gnav-scrollable="desktop">
+					  <div class="Subnav-submenu-wrapper">
+						<ul class="Subnav-submenu" data-type="column">
+						  
+							<li class="Subnav-submenu-item"><a href="/products-resources/learning-consulting.html" title="Learning Consulting" class="Subnav-submenu-link" data-type="columnitem"> <span class="Subnav-submenu-title">Learning Consulting</span>
+							</a></li>
+						  
+							<li class="Subnav-submenu-item"><a href="/products-resources/rate-card.html" title="Catalog Rates and Prices" class="Subnav-submenu-link" data-type="columnitem"> <span class="Subnav-submenu-title">Catalog Rates and Prices</span>
+							</a></li>
+						  
+							<li class="Subnav-submenu-item"><a href="/products-resources/faq.html" title="FAQ" class="Subnav-submenu-link" data-type="columnitem"> <span class="Subnav-submenu-title">FAQ</span>
+							</a></li>
+						  
+							<li class="Subnav-submenu-item"><a href="/products-resources/terms-and-conditions.html" title="Terms and Conditions" class="Subnav-submenu-link" data-type="columnitem"> <span class="Subnav-submenu-title">Terms and Conditions</span>
+							</a></li>
+						  
+						</ul>
+					  </div>
+					</div>
+				  
+				</li>
+			  
+			</ul>
+			
+			<div class="Subnav-menu-buttons">
+			  <a href="/products-resources/contact-us.html" title="Contact Us" class="Subnav-menu-button"> Contact Us </a>
+			</div>
+			
+		  </div>
+		</nav>
+		</div>
+	</div>
+</div></div>
+<div class="responsivegrid aem-GridColumn aem-GridColumn--default--12">
+
+<div class="aem-Grid aem-Grid--12 aem-Grid--default--12 ">
+    
+    <div class="section-container aem-GridColumn aem-GridColumn--default--12">
+
+<div class="cmp-section-container">
+    <div class="bg" style="background-color:rgb(247,251,255);padding:100px 0 0 0">
+        <div class="container" style="color:rgb(51,51,51)">
+            
+
+<div class="aem-Grid aem-Grid--12 aem-Grid--default--12 aem-Grid--tablet--12 aem-Grid--phone--12 ">
+    
+    <div class="section-container aem-GridColumn--offset--tablet--0 aem-GridColumn--default--none aem-GridColumn--phone--none aem-GridColumn--tablet--4 aem-GridColumn--tablet--none aem-GridColumn--phone--8 aem-GridColumn aem-GridColumn--offset--phone--2 aem-GridColumn--offset--default--0 aem-GridColumn--default--4">
+
+<div class="cmp-section-container">
+    <div class="bg" style="background-color:;padding:0 0 0 0">
+        <div class="container" style="color:">
+            
+
+<div class="aem-Grid aem-Grid--12 aem-Grid--default--12 aem-Grid--tablet--12 ">
+    
+    <div class="image align-left aem-GridColumn--tablet--12 aem-GridColumn--offset--tablet--0 aem-GridColumn--default--none aem-GridColumn--tablet--none aem-GridColumn--default--9 aem-GridColumn aem-GridColumn--offset--default--3">
+  <div data-cmp-is="image" data-cmp-src="/certification/_jcr_content/root/responsivegrid/section_container_14_489030893/section-grid/section_container/section-grid/image.coreimg{.width}.png/1675381412037/cred-icon-for-banner.png" class="cmp-image" itemscope itemtype="http://schema.org/ImageObject">
+ 
+     
+         
+         <img src="/certification/_jcr_content/root/responsivegrid/section_container_14_489030893/section-grid/section_container/section-grid/image.coreimg.png/1675381412037/cred-icon-for-banner.png" class="cmp-image__image " itemprop="contentUrl" data-cmp-hook-image="image" alt style="padding-block: 0px; padding-inline: 0px;"/>
+         
+     
+ 
+ 
+ 
+</div>
+
+    
+</div>
+
+    
+</div>
+        </div>
+    </div>
+</div>
+
+</div>
+<div class="section-container aem-GridColumn--offset--tablet--0 aem-GridColumn--default--none aem-GridColumn--phone--none aem-GridColumn--tablet--none aem-GridColumn--phone--10 aem-GridColumn aem-GridColumn--default--7 aem-GridColumn--offset--phone--1 aem-GridColumn--tablet--7 aem-GridColumn--offset--default--0">
+
+<div class="cmp-section-container">
+    <div class="bg" style="background-color:;padding:72px 0 0 52px">
+        <div class="container" style="color:">
+            
+
+<div class="aem-Grid aem-Grid--12 aem-Grid--default--12 aem-Grid--tablet--12 ">
+    
+    <div class="rte aem-GridColumn--tablet--12 aem-GridColumn--offset--tablet--0 aem-GridColumn--default--none aem-GridColumn--tablet--none aem-GridColumn aem-GridColumn--default--12 aem-GridColumn--offset--default--0">
+<div class="cmp-text"><h1>Get certified and create business impact.<br />
+</h1>
+<h3>With four levels to choose from, there's an Experience Cloud certification for you! </h3>
+</div>
+</div>
+<div class="section-container aem-GridColumn aem-GridColumn--default--12">
+
+<div class="cmp-section-container">
+    <div class="bg" style="background-color:;padding:8px 0 0 0">
+        <div class="container" style="color:">
+            
+
+<div class="aem-Grid aem-Grid--12 aem-Grid--default--12 ">
+    
+    
+    
+</div>
+        </div>
+    </div>
+</div>
+
+</div>
+
+    
+</div>
+        </div>
+    </div>
+</div>
+
+</div>
+
+    
+</div>
+        </div>
+    </div>
+</div>
+
+</div>
+<div class="section-container aem-GridColumn aem-GridColumn--default--12">
+
+<div class="cmp-section-container">
+    <div class="bg" style="background-color:;padding:12px 20px 4px 20px">
+        <div class="container" style="color:">
+            
+
+<div class="aem-Grid aem-Grid--12 aem-Grid--default--12 ">
+    
+    <div class="section-container aem-GridColumn--default--none aem-GridColumn aem-GridColumn--default--3 aem-GridColumn--offset--default--0">
+
+<div class="cmp-section-container">
+    <div class="bg" style="background-color:;padding:92px 24px 0 24px">
+        <div class="container" style="color:">
+            
+
+<div class="aem-Grid aem-Grid--12 aem-Grid--default--12 ">
+    
+    <div class="image align-left aem-GridColumn aem-GridColumn--default--12">
+  <div data-cmp-is="image" data-cmp-src="/certification/_jcr_content/root/responsivegrid/section_container_43/section-grid/section_container_co/section-grid/image.coreimg{.width}.png/1676045816306/adobestock-547938370.png" data-title="Adobe Qualified Credential Exams" class="cmp-image" itemscope itemtype="http://schema.org/ImageObject">
+ <a class="cmp-image__link" href="https://learning.adobe.com/certification/credentials" data-cmp-hook-image="link">
+     
+         
+         <img src="/certification/_jcr_content/root/responsivegrid/section_container_43/section-grid/section_container_co/section-grid/image.coreimg.png/1676045816306/adobestock-547938370.png" class="cmp-image__image " itemprop="contentUrl" data-cmp-hook-image="image" alt="Adobe Qualified Credential Exams" style="padding-block: 0px; padding-inline: 0px;"/>
+         
+     
+ </a>
+ 
+ 
+</div>
+
+    
+</div>
+<div class="section-container aem-GridColumn aem-GridColumn--default--12">
+
+<div class="cmp-section-container">
+    <div class="bg" style="background-color:;padding:   ">
+        <div style="color:">
+            
+
+<div class="aem-Grid aem-Grid--12 aem-Grid--default--12 ">
+    
+    <div class="rte aem-GridColumn aem-GridColumn--default--12">
+<div class="cmp-text"><h4 style="text-align: center;">ADOBE</h4>
+<h2 style="text-align: center;"><a href="https://learning.adobe.com/certification/credentials" class="text-default">Qualified</a></h2>
+</div>
+</div>
+<div class="section-container aem-GridColumn aem-GridColumn--default--12">
+
+<div class="cmp-section-container">
+    <div class="bg" style="background-color:;padding:0 0 0 0">
+        <div class="container" style="color:">
+            
+
+<div class="aem-Grid aem-Grid--12 aem-Grid--default--12 ">
+    
+    <div class="image align-left aem-GridColumn--default--none aem-GridColumn aem-GridColumn--default--11 aem-GridColumn--offset--default--1">
+  <div data-cmp-is="image" data-cmp-src="/certification/_jcr_content/root/responsivegrid/section_container_43/section-grid/section_container_co/section-grid/section_container_391582505/section-grid/section_container/section-grid/image.coreimg{.width}.png/1675754628637/adobestock-260622605.png" class="cmp-image" itemscope itemtype="http://schema.org/ImageObject">
+ 
+     
+         
+         <img src="/certification/_jcr_content/root/responsivegrid/section_container_43/section-grid/section_container_co/section-grid/section_container_391582505/section-grid/section_container/section-grid/image.coreimg.png/1675754628637/adobestock-260622605.png" class="cmp-image__image " itemprop="contentUrl" data-cmp-hook-image="image" alt style="padding-block: 0px; padding-inline: 0px;"/>
+         
+     
+ 
+ 
+ 
+</div>
+
+    
+</div>
+
+    
+</div>
+        </div>
+    </div>
+</div>
+
+</div>
+
+    
+</div>
+        </div>
+    </div>
+</div>
+
+</div>
+
+    
+</div>
+        </div>
+    </div>
+</div>
+
+</div>
+<div class="section-container aem-GridColumn--default--none aem-GridColumn aem-GridColumn--default--3 aem-GridColumn--offset--default--0">
+
+<div class="cmp-section-container">
+    <div class="bg" style="background-color:;padding:64px 24px 0 24px">
+        <div class="container" style="color:">
+            
+
+<div class="aem-Grid aem-Grid--12 aem-Grid--default--12 ">
+    
+    <div class="image align-left aem-GridColumn aem-GridColumn--default--12">
+  <div data-cmp-is="image" data-cmp-src="/certification/_jcr_content/root/responsivegrid/section_container_43/section-grid/section_container_co_1343361647/section-grid/image.coreimg{.width}.png/1682386549914/adobestock-544677928.png" data-title="Adobe Certified Professional Exams" class="cmp-image" itemscope itemtype="http://schema.org/ImageObject">
+ <a class="cmp-image__link" href="https://experienceleague.adobe.com/docs/certification/program/overview.html?lang=en" data-cmp-hook-image="link">
+     
+         
+         <img src="/certification/_jcr_content/root/responsivegrid/section_container_43/section-grid/section_container_co_1343361647/section-grid/image.coreimg.png/1682386549914/adobestock-544677928.png" class="cmp-image__image " itemprop="contentUrl" data-cmp-hook-image="image" alt="Adobe Certified Professional Exams" style="padding-block: 0px; padding-inline: 0px;"/>
+         
+     
+ </a>
+ 
+ 
+</div>
+
+    
+</div>
+<div class="section-container aem-GridColumn aem-GridColumn--default--12">
+
+<div class="cmp-section-container">
+    <div class="bg" style="background-color:;padding:   ">
+        <div style="color:">
+            
+
+<div class="aem-Grid aem-Grid--12 aem-Grid--default--12 ">
+    
+    <div class="rte aem-GridColumn aem-GridColumn--default--12">
+<div class="cmp-text"><h4 style="text-align: center;">ADOBE CERTIFIED</h4>
+<h2 style="text-align: center;"><a href="https://experienceleague.adobe.com/docs/certification/program/overview.html?lang=en" class="text-default">Professional</a></h2>
+</div>
+</div>
+<div class="section-container aem-GridColumn aem-GridColumn--default--12">
+
+<div class="cmp-section-container">
+    <div class="bg" style="background-color:;padding:0 0 0 0">
+        <div class="container" style="color:">
+            
+
+<div class="aem-Grid aem-Grid--12 aem-Grid--default--12 ">
+    
+    <div class="image align-left aem-GridColumn--default--none aem-GridColumn aem-GridColumn--default--11 aem-GridColumn--offset--default--1">
+  <div data-cmp-is="image" data-cmp-src="/certification/_jcr_content/root/responsivegrid/section_container_43/section-grid/section_container_co_1343361647/section-grid/section_container_1190375502/section-grid/section_container/section-grid/image.coreimg{.width}.png/1675754935722/adobestock-260622605.png" class="cmp-image" itemscope itemtype="http://schema.org/ImageObject">
+ 
+     
+         
+         <img src="/certification/_jcr_content/root/responsivegrid/section_container_43/section-grid/section_container_co_1343361647/section-grid/section_container_1190375502/section-grid/section_container/section-grid/image.coreimg.png/1675754935722/adobestock-260622605.png" class="cmp-image__image " itemprop="contentUrl" data-cmp-hook-image="image" alt style="padding-block: 0px; padding-inline: 0px;"/>
+         
+     
+ 
+ 
+ 
+</div>
+
+    
+</div>
+
+    
+</div>
+        </div>
+    </div>
+</div>
+
+</div>
+
+    
+</div>
+        </div>
+    </div>
+</div>
+
+</div>
+
+    
+</div>
+        </div>
+    </div>
+</div>
+
+</div>
+<div class="section-container aem-GridColumn--default--none aem-GridColumn aem-GridColumn--default--3 aem-GridColumn--offset--default--0">
+
+<div class="cmp-section-container">
+    <div class="bg" style="background-color:;padding:36px 24px 0 24px">
+        <div class="container" style="color:">
+            
+
+<div class="aem-Grid aem-Grid--12 aem-Grid--default--12 ">
+    
+    <div class="image align-left aem-GridColumn aem-GridColumn--default--12">
+  <div data-cmp-is="image" data-cmp-src="/certification/_jcr_content/root/responsivegrid/section_container_43/section-grid/section_container_co_1295507279/section-grid/image.coreimg{.width}.png/1682386604232/adobestock-547937900.png" data-title="Adobe Certified Expert Exams" class="cmp-image" itemscope itemtype="http://schema.org/ImageObject">
+ <a class="cmp-image__link" href="https://experienceleague.adobe.com/docs/certification/program/overview.html?lang=en" data-cmp-hook-image="link">
+     
+         
+         <img src="/certification/_jcr_content/root/responsivegrid/section_container_43/section-grid/section_container_co_1295507279/section-grid/image.coreimg.png/1682386604232/adobestock-547937900.png" class="cmp-image__image " itemprop="contentUrl" data-cmp-hook-image="image" alt="Adobe Certified Expert Exams" style="padding-block: 0px; padding-inline: 0px;"/>
+         
+     
+ </a>
+ 
+ 
+</div>
+
+    
+</div>
+<div class="section-container aem-GridColumn aem-GridColumn--default--12">
+
+<div class="cmp-section-container">
+    <div class="bg" style="background-color:;padding:   ">
+        <div style="color:">
+            
+
+<div class="aem-Grid aem-Grid--12 aem-Grid--default--12 ">
+    
+    <div class="rte aem-GridColumn aem-GridColumn--default--12">
+<div class="cmp-text"><h4 style="text-align: center;">ADOBE CERTIFIED</h4>
+<h2 style="text-align: center;"><a href="https://experienceleague.adobe.com/docs/certification/program/overview.html?lang=en" class="text-default">Expert</a></h2>
+</div>
+</div>
+<div class="section-container aem-GridColumn aem-GridColumn--default--12">
+
+<div class="cmp-section-container">
+    <div class="bg" style="background-color:;padding:0 0 0 0">
+        <div class="container" style="color:">
+            
+
+<div class="aem-Grid aem-Grid--12 aem-Grid--default--12 ">
+    
+    <div class="image align-left aem-GridColumn--default--none aem-GridColumn aem-GridColumn--default--11 aem-GridColumn--offset--default--1">
+  <div data-cmp-is="image" data-cmp-src="/certification/_jcr_content/root/responsivegrid/section_container_43/section-grid/section_container_co_1295507279/section-grid/section_container/section-grid/section_container/section-grid/image.coreimg{.width}.png/1675754949701/adobestock-26062260.png" class="cmp-image" itemscope itemtype="http://schema.org/ImageObject">
+ 
+     
+         
+         <img src="/certification/_jcr_content/root/responsivegrid/section_container_43/section-grid/section_container_co_1295507279/section-grid/section_container/section-grid/section_container/section-grid/image.coreimg.png/1675754949701/adobestock-26062260.png" class="cmp-image__image " itemprop="contentUrl" data-cmp-hook-image="image" alt style="padding-block: 0px; padding-inline: 0px;"/>
+         
+     
+ 
+ 
+ 
+</div>
+
+    
+</div>
+
+    
+</div>
+        </div>
+    </div>
+</div>
+
+</div>
+
+    
+</div>
+        </div>
+    </div>
+</div>
+
+</div>
+
+    
+</div>
+        </div>
+    </div>
+</div>
+
+</div>
+<div class="section-container aem-GridColumn--default--none aem-GridColumn aem-GridColumn--default--3 aem-GridColumn--offset--default--0">
+
+<div class="cmp-section-container">
+    <div class="bg" style="background-color:;padding:8px 24px 0 24px">
+        <div class="container" style="color:">
+            
+
+<div class="aem-Grid aem-Grid--12 aem-Grid--default--12 ">
+    
+    <div class="image align-left aem-GridColumn aem-GridColumn--default--12">
+  <div data-cmp-is="image" data-cmp-src="/certification/_jcr_content/root/responsivegrid/section_container_43/section-grid/section_container_co_2059567355/section-grid/image.coreimg{.width}.png/1682386677749/adobestock-437013859.png" data-title="Adobe Certified Master Exams" class="cmp-image" itemscope itemtype="http://schema.org/ImageObject">
+ <a class="cmp-image__link" href="https://experienceleague.adobe.com/docs/certification/program/overview.html?lang=en" data-cmp-hook-image="link">
+     
+         
+         <img src="/certification/_jcr_content/root/responsivegrid/section_container_43/section-grid/section_container_co_2059567355/section-grid/image.coreimg.png/1682386677749/adobestock-437013859.png" class="cmp-image__image " itemprop="contentUrl" data-cmp-hook-image="image" alt="Adobe Certified Master Exams" style="padding-block: 0px; padding-inline: 0px;"/>
+         
+     
+ </a>
+ 
+ 
+</div>
+
+    
+</div>
+<div class="section-container aem-GridColumn aem-GridColumn--default--12">
+
+<div class="cmp-section-container">
+    <div class="bg" style="background-color:;padding:   ">
+        <div style="color:">
+            
+
+<div class="aem-Grid aem-Grid--12 aem-Grid--default--12 ">
+    
+    <div class="rte aem-GridColumn aem-GridColumn--default--12">
+<div class="cmp-text"><h4 style="text-align: center;">ADOBE CERTIFIED</h4>
+<h2 style="text-align: center;"><a href="https://experienceleague.adobe.com/docs/certification/program/overview.html?lang=en" class="text-default">Master</a></h2>
+</div>
+</div>
+<div class="section-container aem-GridColumn aem-GridColumn--default--12">
+
+<div class="cmp-section-container">
+    <div class="bg" style="background-color:;padding:   ">
+        <div style="color:">
+            
+
+<div class="aem-Grid aem-Grid--12 aem-Grid--default--12 ">
+    
+    <div class="image align-left aem-GridColumn--default--none aem-GridColumn aem-GridColumn--default--11 aem-GridColumn--offset--default--1">
+  <div data-cmp-is="image" data-cmp-src="/certification/_jcr_content/root/responsivegrid/section_container_43/section-grid/section_container_co_2059567355/section-grid/section_container/section-grid/section_container/section-grid/image.coreimg{.width}.png/1675754972455/adobestock-2606226.png" class="cmp-image" itemscope itemtype="http://schema.org/ImageObject">
+ 
+     
+         
+         <img src="/certification/_jcr_content/root/responsivegrid/section_container_43/section-grid/section_container_co_2059567355/section-grid/section_container/section-grid/section_container/section-grid/image.coreimg.png/1675754972455/adobestock-2606226.png" class="cmp-image__image " itemprop="contentUrl" data-cmp-hook-image="image" alt style="padding-block: 0px; padding-inline: 0px;"/>
+         
+     
+ 
+ 
+ 
+</div>
+
+    
+</div>
+
+    
+</div>
+        </div>
+    </div>
+</div>
+
+</div>
+
+    
+</div>
+        </div>
+    </div>
+</div>
+
+</div>
+
+    
+</div>
+        </div>
+    </div>
+</div>
+
+</div>
+<div class="section-container aem-GridColumn aem-GridColumn--default--12">
+
+<div class="cmp-section-container">
+    <div class="bg" style="background-color:;padding:   ">
+        <div style="color:">
+            
+
+<div class="aem-Grid aem-Grid--12 aem-Grid--default--12 ">
+    
+    <div class="image align-left aem-GridColumn--default--none aem-GridColumn aem-GridColumn--default--5 aem-GridColumn--offset--default--0">
+  <div data-cmp-is="image" data-cmp-src="/certification/_jcr_content/root/responsivegrid/section_container_43/section-grid/section_container_1497530925/section-grid/image.coreimg{.width}.png/1675757764330/screenshot-2023-02-06-235925.png" class="cmp-image" itemscope itemtype="http://schema.org/ImageObject">
+ 
+     
+         
+         <img src="/certification/_jcr_content/root/responsivegrid/section_container_43/section-grid/section_container_1497530925/section-grid/image.coreimg.png/1675757764330/screenshot-2023-02-06-235925.png" class="cmp-image__image " itemprop="contentUrl" data-cmp-hook-image="image" alt style="padding-block: 0px; padding-inline: 0px;"/>
+         
+     
+ 
+ 
+ 
+</div>
+
+    
+</div>
+<div class="rte aem-GridColumn--default--none aem-GridColumn aem-GridColumn--offset--default--0 aem-GridColumn--default--2">
+<div class="cmp-text"><h5 style="text-align: center;">Recommended Experience</h5>
+</div>
+</div>
+<div class="image align-left aem-GridColumn--default--none aem-GridColumn aem-GridColumn--default--5 aem-GridColumn--offset--default--0">
+  <div data-cmp-is="image" data-cmp-src="/certification/_jcr_content/root/responsivegrid/section_container_43/section-grid/section_container_1497530925/section-grid/image_405029413.coreimg{.width}.png/1675757705968/screenshot-2023-02-06-23592.png" class="cmp-image" itemscope itemtype="http://schema.org/ImageObject">
+ 
+     
+         
+         <img src="/certification/_jcr_content/root/responsivegrid/section_container_43/section-grid/section_container_1497530925/section-grid/image_405029413.coreimg.png/1675757705968/screenshot-2023-02-06-23592.png" class="cmp-image__image " itemprop="contentUrl" data-cmp-hook-image="image" alt style="padding-block: 0px; padding-inline: 0px;"/>
+         
+     
+ 
+ 
+ 
+</div>
+
+    
+</div>
+
+    
+</div>
+        </div>
+    </div>
+</div>
+
+</div>
+<div class="section-container aem-GridColumn aem-GridColumn--default--12">
+
+<div class="cmp-section-container">
+    <div class="bg" style="background-color:;padding:0 20px 0 20px">
+        <div class="container" style="color:">
+            
+
+<div class="aem-Grid aem-Grid--12 aem-Grid--default--12 ">
+    
+    <div class="section-container aem-GridColumn--default--none aem-GridColumn aem-GridColumn--default--3 aem-GridColumn--offset--default--0">
+
+<div class="cmp-section-container">
+    <div class="bg" style="background-color:;padding:0 24px 0 24px">
+        <div class="container" style="color:">
+            
+
+<div class="aem-Grid aem-Grid--12 aem-Grid--default--12 ">
+    
+    <div class="separator cmp-adls-separator aem-GridColumn aem-GridColumn--default--12">
+<div class="cmp-separator">
+    <hr class="cmp-separator__horizontal-rule"/>
+</div></div>
+<div class="rte aem-GridColumn--default--none aem-GridColumn aem-GridColumn--default--12 aem-GridColumn--offset--default--0">
+<div class="cmp-text"><p style="text-align: left;"><b>        JOB ROLES</b></p>
+<ul>
+<li style="text-align: left;"><b><a href="https://learning.adobe.com/certification/credentials" class="text-default">Business User</a></b></li>
+<li style="text-align: left;"><b><a href="https://learning.adobe.com/certification/credentials" class="text-default">Marketer</a></b></li>
+</ul>
+</div>
+</div>
+<div class="rte aem-GridColumn aem-GridColumn--default--12">
+<div class="cmp-text"><p style="text-align: left;"><b>        JOB FUNCTIONS</b></p>
+<ul>
+<li style="text-align: left;">Performs business functions using Implemented Adobe solutions<br />
+</li>
+<li style="text-align: left;">Creates and manages web pages to support business objectives</li>
+<li style="text-align: left;">Creates reports and visualizations to analyze digital data and audience behaviors</li>
+<li style="text-align: left;">Builds and deploys customer journeys</li>
+<li style="text-align: left;">Tests and optimizes digital experiences</li>
+</ul>
+</div>
+</div>
+
+    
+</div>
+        </div>
+    </div>
+</div>
+
+</div>
+<div class="section-container aem-GridColumn--default--none aem-GridColumn aem-GridColumn--default--3 aem-GridColumn--offset--default--0">
+
+<div class="cmp-section-container">
+    <div class="bg" style="background-color:;padding:0 24px 0 24px">
+        <div class="container" style="color:">
+            
+
+<div class="aem-Grid aem-Grid--12 aem-Grid--default--12 ">
+    
+    <div class="separator cmp-adls-separator aem-GridColumn aem-GridColumn--default--12">
+<div class="cmp-separator">
+    <hr class="cmp-separator__horizontal-rule"/>
+</div></div>
+<div class="rte aem-GridColumn aem-GridColumn--default--12">
+<div class="cmp-text"><p style="text-align: left;"><b>        JOB ROLES</b></p>
+<ul>
+<li style="text-align: left;"><b><a href="https://experienceleague.adobe.com/docs/certification/program/overview.html?lang=en" class="text-default">Business Practitioner</a></b></li>
+<li style="text-align: left;"><b><a href="https://experienceleague.adobe.com/docs/certification/program/overview.html?lang=en" class="text-default">Developer</a></b></li>
+</ul>
+</div>
+</div>
+<div class="rte aem-GridColumn aem-GridColumn--default--12">
+<div class="cmp-text"><p style="text-align: left;"><b>        JOB FUNCTIONS</b></p>
+<ul>
+<li style="text-align: left;">Performs discovery tasks</li>
+<li style="text-align: left;">Writes business requirements</li>
+<li style="text-align: left;">Performs some configuration</li>
+<li style="text-align: left;">Vets the design to ensure it meets requirements</li>
+<li style="text-align: left;">Develops use cases and test plans</li>
+<li style="text-align: left;">Drives product adoption</li>
+</ul>
+</div>
+</div>
+
+    
+</div>
+        </div>
+    </div>
+</div>
+
+</div>
+<div class="section-container aem-GridColumn--default--none aem-GridColumn aem-GridColumn--default--3 aem-GridColumn--offset--default--0">
+
+<div class="cmp-section-container">
+    <div class="bg" style="background-color:;padding:0 24px 0 24px">
+        <div class="container" style="color:">
+            
+
+<div class="aem-Grid aem-Grid--12 aem-Grid--default--12 ">
+    
+    <div class="separator cmp-adls-separator aem-GridColumn aem-GridColumn--default--12">
+<div class="cmp-separator">
+    <hr class="cmp-separator__horizontal-rule"/>
+</div></div>
+<div class="rte aem-GridColumn aem-GridColumn--default--12">
+<div class="cmp-text"><p style="text-align: left;"><b>        JOB ROLES</b></p>
+<ul>
+<li style="text-align: left;"><b><a href="https://experienceleague.adobe.com/docs/certification/program/overview.html?lang=en" class="text-default">Business Practitioner</a></b></li>
+<li style="text-align: left;"><b><a href="https://experienceleague.adobe.com/docs/certification/program/overview.html?lang=en" class="text-default">Developer</a></b></li>
+</ul>
+</div>
+</div>
+<div class="rte aem-GridColumn aem-GridColumn--default--12">
+<div class="cmp-text"><p style="text-align: left;"><b>        JOB FUNCTIONS</b></p>
+<ul>
+<li style="text-align: left;">Configures and manage the development environment</li>
+<li style="text-align: left;">Builds solutions using out-of-the-box components</li>
+<li style="text-align: left;">Customizes and extends out-of-the-box solutions</li>
+<li style="text-align: left;">Manages and integrates data and assets</li>
+<li style="text-align: left;">Tests, validates, and troubleshoots applications</li>
+<li style="text-align: left;">Deploys and maintains applications</li>
+</ul>
+</div>
+</div>
+
+    
+</div>
+        </div>
+    </div>
+</div>
+
+</div>
+<div class="section-container aem-GridColumn--default--none aem-GridColumn aem-GridColumn--default--3 aem-GridColumn--offset--default--0">
+
+<div class="cmp-section-container">
+    <div class="bg" style="background-color:;padding:0 24px 0 24px">
+        <div class="container" style="color:">
+            
+
+<div class="aem-Grid aem-Grid--12 aem-Grid--default--12 ">
+    
+    <div class="separator cmp-adls-separator aem-GridColumn aem-GridColumn--default--12">
+<div class="cmp-separator">
+    <hr class="cmp-separator__horizontal-rule"/>
+</div></div>
+<div class="rte aem-GridColumn aem-GridColumn--default--12">
+<div class="cmp-text"><p style="text-align: left;"><b>        JOB ROLES</b></p>
+<ul>
+<li style="text-align: left;"><b><a href="https://experienceleague.adobe.com/docs/certification/program/overview.html?lang=en" class="text-default">Architect</a></b></li>
+</ul>
+</div>
+</div>
+<div class="rte aem-GridColumn aem-GridColumn--default--12">
+<div class="cmp-text"><p style="text-align: left;"><b>        JOB FUNCTIONS</b><br />
+</p>
+<ul>
+<li style="text-align: left;">Translates business requirements into a technical design</li>
+<li style="text-align: left;">Provides guidance to the rest of the team to deliver the solution</li>
+<li style="text-align: left;">Performs customization and configuration of out-of-the-box solutions</li>
+<li style="text-align: left;">Leads development efforts</li>
+<li style="text-align: left;">Acts as customer interface</li>
+<li style="text-align: left;">Supervises offshore developer work</li>
+<li style="text-align: left;">Parses out development tasks</li>
+<li style="text-align: left;">Assembles the outputs of the dev task</li>
+</ul>
+</div>
+</div>
+
+    
+</div>
+        </div>
+    </div>
+</div>
+
+</div>
+
+    
+</div>
+        </div>
+    </div>
+</div>
+
+</div>
+<div class="section-container aem-GridColumn aem-GridColumn--default--12">
+
+<div class="cmp-section-container">
+    <div class="bg" style="background-color:;padding:   ">
+        <div style="color:">
+            
+
+<div class="aem-Grid aem-Grid--12 aem-Grid--default--12 ">
+    
+    <div class="section-container aem-GridColumn--default--none aem-GridColumn aem-GridColumn--default--3 aem-GridColumn--offset--default--0">
+
+<div class="cmp-section-container">
+    <div class="bg" style="background-color:;padding:12px 0 0 0">
+        <div class="container" style="color:">
+            
+
+<div class="aem-Grid aem-Grid--12 aem-Grid--default--12 ">
+    
+    <div class="separator cmp-adls-separator aem-GridColumn--default--none aem-GridColumn aem-GridColumn--default--10 aem-GridColumn--offset--default--1">
+<div class="cmp-separator">
+    <hr class="cmp-separator__horizontal-rule"/>
+</div></div>
+<div class="section-container aem-GridColumn aem-GridColumn--default--12">
+
+<div class="cmp-section-container">
+    <div class="bg" style="background-color:;padding:20px 0 0 0">
+        <div class="container" style="color:">
+            
+
+<div class="aem-Grid aem-Grid--12 aem-Grid--default--12 ">
+    
+    <div class="cta-button aem-GridColumn--default--none aem-GridColumn aem-GridColumn--default--12 aem-GridColumn--offset--default--0"><div class="cmp-button" style="width:100%;text-align:center">
+  <a role="button" href="https://learning.adobe.com/certification/credentials" target="_self" class="spectrum-Button spectrum-Button--cta ">
+    <span class="spectrum-Button-label">View Adobe Qualified Credentials</span>
+  </a>
+</div></div>
+
+    
+</div>
+        </div>
+    </div>
+</div>
+
+</div>
+
+    
+</div>
+        </div>
+    </div>
+</div>
+
+</div>
+<div class="section-container aem-GridColumn--default--none aem-GridColumn aem-GridColumn--default--3 aem-GridColumn--offset--default--0">
+
+<div class="cmp-section-container">
+    <div class="bg" style="background-color:;padding:12px 0 0 0">
+        <div class="container" style="color:">
+            
+
+<div class="aem-Grid aem-Grid--12 aem-Grid--default--12 ">
+    
+    <div class="separator cmp-adls-separator aem-GridColumn--default--none aem-GridColumn aem-GridColumn--default--10 aem-GridColumn--offset--default--1">
+<div class="cmp-separator">
+    <hr class="cmp-separator__horizontal-rule"/>
+</div></div>
+<div class="section-container aem-GridColumn aem-GridColumn--default--12">
+
+<div class="cmp-section-container">
+    <div class="bg" style="background-color:;padding:20px 0 0 0">
+        <div class="container" style="color:">
+            
+
+<div class="aem-Grid aem-Grid--12 aem-Grid--default--12 ">
+    
+    <div class="cta-button aem-GridColumn aem-GridColumn--default--12"><div class="cmp-button" style="width:100%;text-align:center">
+  <a role="button" href="https://experienceleague.adobe.com/docs/certification/program/overview.html?lang=en" target="_self" class="spectrum-Button spectrum-Button--cta ">
+    <span class="spectrum-Button-label">View Adobe Certified Professional Certifications</span>
+  </a>
+</div></div>
+
+    
+</div>
+        </div>
+    </div>
+</div>
+
+</div>
+
+    
+</div>
+        </div>
+    </div>
+</div>
+
+</div>
+<div class="section-container aem-GridColumn--default--none aem-GridColumn aem-GridColumn--default--3 aem-GridColumn--offset--default--0">
+
+<div class="cmp-section-container">
+    <div class="bg" style="background-color:;padding:12px 0 0 0">
+        <div class="container" style="color:">
+            
+
+<div class="aem-Grid aem-Grid--12 aem-Grid--default--12 ">
+    
+    <div class="separator cmp-adls-separator aem-GridColumn--default--none aem-GridColumn aem-GridColumn--default--10 aem-GridColumn--offset--default--1">
+<div class="cmp-separator">
+    <hr class="cmp-separator__horizontal-rule"/>
+</div></div>
+<div class="section-container aem-GridColumn aem-GridColumn--default--12">
+
+<div class="cmp-section-container">
+    <div class="bg" style="background-color:;padding:20px 0 0 0">
+        <div class="container" style="color:">
+            
+
+<div class="aem-Grid aem-Grid--12 aem-Grid--default--12 ">
+    
+    <div class="cta-button aem-GridColumn aem-GridColumn--default--12"><div class="cmp-button" style="width:100%;text-align:center">
+  <a role="button" href="https://experienceleague.adobe.com/docs/certification/program/overview.html?lang=en" target="_self" class="spectrum-Button spectrum-Button--cta ">
+    <span class="spectrum-Button-label">View Adobe Certified Expert Certifications</span>
+  </a>
+</div></div>
+
+    
+</div>
+        </div>
+    </div>
+</div>
+
+</div>
+
+    
+</div>
+        </div>
+    </div>
+</div>
+
+</div>
+<div class="section-container aem-GridColumn--default--none aem-GridColumn aem-GridColumn--default--3 aem-GridColumn--offset--default--0">
+
+<div class="cmp-section-container">
+    <div class="bg" style="background-color:;padding:12px 0 0 0">
+        <div class="container" style="color:">
+            
+
+<div class="aem-Grid aem-Grid--12 aem-Grid--default--12 ">
+    
+    <div class="separator cmp-adls-separator aem-GridColumn--default--none aem-GridColumn aem-GridColumn--default--10 aem-GridColumn--offset--default--1">
+<div class="cmp-separator">
+    <hr class="cmp-separator__horizontal-rule"/>
+</div></div>
+<div class="section-container aem-GridColumn aem-GridColumn--default--12">
+
+<div class="cmp-section-container">
+    <div class="bg" style="background-color:;padding:20px 0 0 0">
+        <div class="container" style="color:">
+            
+
+<div class="aem-Grid aem-Grid--12 aem-Grid--default--12 ">
+    
+    <div class="cta-button aem-GridColumn aem-GridColumn--default--12"><div class="cmp-button" style="width:100%;text-align:center">
+  <a role="button" href="https://experienceleague.adobe.com/docs/certification/program/overview.html?lang=en" target="_self" class="spectrum-Button spectrum-Button--cta ">
+    <span class="spectrum-Button-label">View Adobe Certified Master Certifications</span>
+  </a>
+</div></div>
+
+    
+</div>
+        </div>
+    </div>
+</div>
+
+</div>
+
+    
+</div>
+        </div>
+    </div>
+</div>
+
+</div>
+
+    
+</div>
+        </div>
+    </div>
+</div>
+
+</div>
+
+    
+</div>
+        </div>
+    </div>
+</div>
+
+</div>
+
+    
+</div></div>
+<div class="global-footer aem-GridColumn aem-GridColumn--default--12"><div id="feds-footer"></div>
+<div id="location_modal">
+    <div class="overlay"></div>
+    <div class="location_modal_section">
+        <a href="#" class="CloseButton" onclick="window.fedsConfig.footer.closeRegionModal(event)"><svg class="spectrum-Icon spectrum-Icon--sizeM" focusable="false" aria-hidden="true" aria-label="CloseCircle">
+                <use xlink:href="#spectrum-icon-24-CloseCircle"></use>
+            </svg></a>
+        <h1 class="spectrum-Heading1">Choose your region</h1>
+        <p class="spectrum-Body2">Selecting a region changes the language and/or content on Adobe.com.</p>
+        <ul>
+        <li><a href="#">English</a></li>
+        </ul>
+    </div>
+</div></div>
+
+    
+</div></div>
+
+
+<div class="spectrum-Modal">
+    <div class="overlay">
+        <div class="spectrum-CircleLoader spectrum-CircleLoader--indeterminate spectrum-CircleLoader--overBackground spectrum-CircleLoader--large">
+            <div class="spectrum-CircleLoader-track"></div>
+            <div class="spectrum-CircleLoader-fills">
+                <div class="spectrum-CircleLoader-fillMask1">
+                    <div class="spectrum-CircleLoader-fillSubMask1">
+                        <div class="spectrum-CircleLoader-fill"></div>
+                    </div>
+                </div>
+                <div class="spectrum-CircleLoader-fillMask2">
+                    <div class="spectrum-CircleLoader-fillSubMask2">
+                        <div class="spectrum-CircleLoader-fill"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal_section">
+        <a href="javascript:void(0);" class="CloseButton">
+            <svg class="spectrum-Icon spectrum-Icon--sizeM" focusable="false" aria-hidden="true" aria-label="Close">
+                <use xlink:href="#spectrum-icon-24-Close"></use>
+            </svg>
+        </a>
+        <h1 class="spectrum-Heading5--display spectrum-Heading1--strong modal-header"></h1>
+        <div class="modal_content">
+        </div>
+    </div>
+</div>
+            
+    
+    
+<script>
+
+  // Adobe Launch Config
+  window.marketingtech = {
+    adobe: {
+      launch: {
+        property: 'global',
+        environment: 'prod'
+      },
+      analytics: {
+        additionalAccounts:'atstrainingwebprod'
+      },
+      target: false,
+      audienceManager: false
+    }
+  };
+</script>
+<script src="https://www.adobe.com/marketingtech/main.min.js"></script>
+
+  
+    
+<script type="text/javascript" src="/etc.clientlibs/athena/clientlibs/main.min.8d77f935dcabd6248e64a848949282d7.js"></script>
+
+
+
+
+<script>
+	AdobeSpectrum
+			.loadIcons('/etc.clientlibs/athena/clientlibs/dependencies/spectrum/resources/icons/spectrum-icons.svg');
+	AdobeSpectrum
+			.loadIcons('/etc.clientlibs/athena/clientlibs/dependencies/spectrum/resources/icons/spectrum-css-icons-medium.svg');
+</script>
+    
+
+    
+
+
+            
+
+        
+    </body>
+</html>

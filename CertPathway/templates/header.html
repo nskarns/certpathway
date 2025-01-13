@@ -1,0 +1,10 @@
+<div class="header">
+    <a href="/" style="font-size: 30px"><strong>
+            <img src="/static/images/logo-long.png" style="height:50px; width:200px; " alt="">
+        </strong></a>
+{% if current_user.is_anonymous %}
+    <span style="float:right; font-size: 20px; padding-top:20px"> <a href="/authorize/google" class="login-with-google-btn" > Sign in with Google </a>    
+{% else %}
+    <span style="float:right; font-size: 20px; padding-top:20px"> <a href="/explore/" class="general-btn">Explore Your Matches</a> <a href="/interest-form/" class="general-btn">Interest Form</a><a href="/profile/" style="color: #3F51B5; text-decoration:none"> {{current_user.firstname}} <img src="{{current_user.imagelink}}" alt="" style="border-radius: 50%; height:32px; width:32px; vertical-align:middle"> </a> </span>
+{% endif %}
+</div>

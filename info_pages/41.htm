@@ -1,0 +1,2472 @@
+
+<!DOCTYPE html>
+<html class="" lang="en" dir="ltr">
+<head>
+
+<script>
+    window.Intellum = window.Intellum || {};
+    window.Intellum.datepickerI18n = {
+        previousMonth: "Previous Month",
+        nextMonth: "Next Month",
+        weekdays: ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+        weekdaysShort: ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"],
+        months: ["January","February","March","April","May","June","July","August","September","October","November","December"]
+    };
+    window.Intellum.i18nStrings = {
+      add_text_here: "Add text here",
+      in_days: "in {{COUNT}} days",
+      in_hours: "in {{COUNT}} hours",
+      in_minutes: "in {{COUNT}} minutes",
+      in_one_hour: "in 1 hour",
+      in_one_minute: "in 1 minute",
+      item_dropped: "\"{{ITEM NAME}}\" dropped at position {{POSITION}} of {{TOTAL ITEMS}}.",
+      item_grabbed: "\"{{ITEM NAME}}\" grabbed. Current position: {{POSITION}} of {{TOTAL ITEMS}}. Use up and down keys to move the item, space bar to drop it, Escape to cancel.",
+      item_move_canceled: "Move of \"{{ITEM NAME}}\" canceled.",
+      item_moved_to_position: "\"{{ITEM NAME}}\" moved to position {{POSITION}} of {{TOTAL ITEMS}}.",
+      item_moved_to_position_in_list: "\"{{ITEM NAME}}\" moved to position {{POSITION}} of {{TOTAL ITEMS}} in \"{{LIST NAME}}.\"",
+      live_now: "LIVE NOW",
+      loading: "Loading...",
+      processing_ellipsis: "Processing...",
+      remove: "Remove",
+      removing_ellipsis: "Removing...",
+      saving_ellipsis: "Saving...",
+      search_results: "Search Results",
+      showing_item_position_of_total: "Showing item {{POSITION}} of {{TOTAL ITEMS}}",
+      start_creating_content: "Start creating content",
+      there_was_a_problem_getting_your_updates: "There was a problem in getting your updates.",
+      tomorrow: "tomorrow",
+      topicsSuggestionEmpty: "Sorry. We've run out of suggested topics.",
+      topicsSelectionEmpty: "No topics have been assigned to this activity.",
+      topicsFollowedSelectionEmpty: "No topics have been followed yet.",
+      upload_canceled: "The upload was canceled.",
+      uploadfile_no_file_selected: "No file selected",
+      uploadfile_uploading_msg: "Uploading {{FILENAME}}",
+      uploadfile_error_format_msg: "{{FILENAME}} is not the correct file type. Please try again.",
+      uploadfile_error_size_coursefile_msg: "{{FILENAME}} is too large. Size limit: 10MB for images, 3GB for videos and audio.",
+      uploadfile_error_size_msg: "{{FILENAME}} is too big. Please try again.",
+      uploadfile_error_msg: "There was a problem uploading {{FILENAME}}. Please try again.",
+      uploading_ellipsis: "Uploading...",
+      use_menu_edit_html: "Use menu to edit HTML",
+      when_datepicket_widget_appears: "When the datepicker widget appears, use arrow keys to navigate dates and select a date.",
+    };
+
+    window.Intellum.mediumEditorI18n = {
+      bold: "Bold",
+      italic: "Italic",
+      link: "Link",
+      title: "Title",
+      subtitle: "Subtitle",
+      unorderedList: "Unordered List",
+      orderedList: "Ordered List",
+      quote: "Quote",
+      linkPlaceholderText: "Paste or type a link...",
+      save: "Save",
+      close: "Close",
+    };
+
+    window.Intellum.properties = {
+      courseContentFileSizeConstraintsInMB: {
+        image: 10485760,
+        video: 3221225472,
+        audio: 3221225472
+      }
+    }
+    window.Intellum.translation_paths = {
+        'he': '/locales/he.1d2dd3986c0829a3e5104ca850339873.json',
+        'el': '/locales/el.c051b8b06572258a04aa14b55070e5d2.json',
+        'en-CA': '/locales/en-CA.d6e9456675dd52d79bd307f6900475e1.json',
+        'hi': '/locales/hi.619fbe0d4460232a576b205b3f30a5fd.json',
+        'sr-Latn': '/locales/sr-Latn.8e32240ed1278dd5c6b0542a6dd6c8a8.json',
+        'ta': '/locales/ta.9d767e2911e4b60ab6ceaab102a30270.json',
+        'de': '/locales/de.a33f8dea95004e715a6fcb540440f932.json',
+        'en-IN': '/locales/en-IN.1f5fb87e473eeb6a1f44f99094f29775.json',
+        'nl': '/locales/nl.636773e7e3ac1f2e555f786bde37c603.json',
+        'hr': '/locales/hr.c6c11293745a21a76005138740880108.json',
+        'th': '/locales/th.80744864f85719ea558034484aee7c83.json',
+        'fr': '/locales/fr.556ceb86e67ac231009e5d21e10d8268.json',
+        'sl': '/locales/sl.aaa2b5c3c692b52cf40125957567d838.json',
+        'uk': '/locales/uk.e915a8ff07b7a2bb460973d702933ff2.json',
+        'te': '/locales/te.9e97e2bfe04a98a20eb94c7805a838a5.json',
+        'bn': '/locales/bn.316fcee158f3e72b3de7d5f58f79d989.json',
+        'ru': '/locales/ru.f8a83f50dba7f12917fc99e4e59b1b49.json',
+        'cs': '/locales/cs.eaaa7e9c860e9d98d92f27d18217f924.json',
+        'zh-TW': '/locales/zh-TW.1165cd4233f410cd0e856a13821f4e40.json',
+        'sk': '/locales/sk.b6a85ded3cc7a737dbe1fd84e95d30b0.json',
+        'my': '/locales/my.2af4cc078c353ac264a277fa488a05f9.json',
+        'et': '/locales/et.8a45c21d8a4b1feeda7aa36f303cf51f.json',
+        'pt-BR': '/locales/pt-BR.14129b92ea29899b7ac86aab00a9c81a.json',
+        'mr': '/locales/mr.900a66d563d9a88bed967b23e0f9d989.json',
+        'sv': '/locales/sv.2e214496ea6941955e11d10aa57007f9.json',
+        'en-SG': '/locales/en-SG.339c549df31bfe48b8952c6365f92eb3.json',
+        'ja': '/locales/ja.2eb4cbc70dcc728916db8d1506fae24d.json',
+        'pt-PT': '/locales/pt-PT.ddcd215eb2603cc9388d7a601db63724.json',
+        'en': '/locales/en.2a56fb823308d638def53a3fc0f2bd3b.json',
+        'tr': '/locales/tr.31a8dd66ebd70e67753c6359586774dd.json',
+        'ms': '/locales/ms.645183e0f067035e701b963ffde3642f.json',
+        'ro': '/locales/ro.1a1998697d00628effa1ef595610ae67.json',
+        'lv': '/locales/lv.5d4e3388b93a88cb62a15082241710b7.json',
+        'en-AU': '/locales/en-AU.422e0664c00f3389d38d27268d35ef6d.json',
+        'en-GB': '/locales/en-GB.56309c266da13bb9f01c1f255b50c3ba.json',
+        'hu': '/locales/hu.3a88ea188b6ec32c2baec822a44a9dca.json',
+        'id': '/locales/id.77f76d236d96b26caea9e66e34037a10.json',
+        'lt': '/locales/lt.d656d7c34e9640336b8fde566e14688a.json',
+        'fr-CA': '/locales/fr-CA.926fc6e271f7144c1acacb5648b0d81b.json',
+        'da': '/locales/da.ac7ca9fb9262298ae4f62d4d436bc0cb.json',
+        'es': '/locales/es.7ebe81d511c20f0804759dd2b37ffeab.json',
+        'es-419': '/locales/es-419.a083744bdaf64e8693cb1a70b497d7a0.json',
+        'bg': '/locales/bg.099c7f822c2cba690f3030a7a9f7daf7.json',
+        'ko': '/locales/ko.761029c94a6e7aa3ad06af1e291c88f7.json',
+        'nb': '/locales/nb.7f3ffd4683140e2de1a759b21389306d.json',
+        'fi': '/locales/fi.2282d015be189e03dd237835070b0d2a.json',
+        'si': '/locales/si.6b2825571b737b4c018d91cadf529afd.json',
+        'ar': '/locales/ar.0a8d98e5d5110de034525ebb3dcae37a.json',
+        'pl': '/locales/pl.becc8043aaa36ba7c07f8de7fd4059e3.json',
+        'zh-CN': '/locales/zh-CN.bc3f8fc52628b1d4b9bcfdb310460f42.json',
+        'vi': '/locales/vi.ac402d1be3e914bba6a1e6e0a32b284a.json',
+        'it': '/locales/it.9e28189ede711fdf0c1647f20af7fb9c.json',
+    }
+</script>
+
+
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="icon" type="image/png" href="https://storage.googleapis.com/exceedlms-external-uploads-production/uploads/organizations/favicons/9/small/googleg_standard_color_32dp.png?GoogleAccessId=GOOG1EIO7LXRUFV35UXSWKJ3AWMYHZUVNMYIAMGSBIFYEF2AMYYAY4Y4Y5PKA&amp;Signature=vJ%2BQh%2F187TNcTWx6qbxcYtdmc0I%3D&amp;Expires=1699829899" sizes="16x16">
+  <link rel="icon" type="image/png" href="https://storage.googleapis.com/exceedlms-external-uploads-production/uploads/organizations/favicons/9/medium/googleg_standard_color_32dp.png?GoogleAccessId=GOOG1EIO7LXRUFV35UXSWKJ3AWMYHZUVNMYIAMGSBIFYEF2AMYYAY4Y4Y5PKA&amp;Signature=3eK4%2BvHTLVf1e%2F3ZrzT7FbhCwMk%3D&amp;Expires=1699829899" sizes="32x32">
+  <link rel="icon" type="image/png" href="https://storage.googleapis.com/exceedlms-external-uploads-production/uploads/organizations/favicons/9/large/googleg_standard_color_32dp.png?GoogleAccessId=GOOG1EIO7LXRUFV35UXSWKJ3AWMYHZUVNMYIAMGSBIFYEF2AMYYAY4Y4Y5PKA&amp;Signature=tRpeoxF%2BDBdaMSryVFNRt8BFMAY%3D&amp;Expires=1699829899" sizes="96x96">
+
+  <meta charset="utf-8" />
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","errorBeacon":"bam.nr-data.net","licenseKey":"NRJS-9c23a2463c84648e710","applicationID":"1572057044","transactionName":"dl0LRUAKVA0HRhZEEkBWAF9GSkwTB1FmVgVBWxNYRhwXEgpbTg==","queueTime":2,"applicationTime":490,"agent":""}</script>
+<script type="text/javascript">(window.NREUM||(NREUM={})).init={privacy:{cookies_enabled:true},ajax:{deny_list:["bam.nr-data.net"]},distributed_tracing:{enabled:true}};(window.NREUM||(NREUM={})).loader_config={agentID:"1588857357",accountID:"2869749",trustKey:"2869749",xpid:"Vg4BWFFXARABUVZQBwQAVlAF",licenseKey:"NRJS-9c23a2463c84648e710",applicationID:"1572057044"};;/*! For license information please see nr-loader-spa-1.246.1.min.js.LICENSE.txt */
+(()=>{"use strict";var e,t,r={234:(e,t,r)=>{r.d(t,{P_:()=>g,Mt:()=>v,C5:()=>s,DL:()=>A,OP:()=>D,lF:()=>N,Yu:()=>x,Dg:()=>m,CX:()=>c,GE:()=>w,sU:()=>j});var n=r(8632),i=r(9567);const o={beacon:n.ce.beacon,errorBeacon:n.ce.errorBeacon,licenseKey:void 0,applicationID:void 0,sa:void 0,queueTime:void 0,applicationTime:void 0,ttGuid:void 0,user:void 0,account:void 0,product:void 0,extra:void 0,jsAttributes:{},userAttributes:void 0,atts:void 0,transactionName:void 0,tNamePlain:void 0},a={};function s(e){if(!e)throw new Error("All info objects require an agent identifier!");if(!a[e])throw new Error("Info for ".concat(e," was never set"));return a[e]}function c(e,t){if(!e)throw new Error("All info objects require an agent identifier!");a[e]=(0,i.D)(t,o),(0,n.Qy)(e,a[e],"info")}const u=e=>{if(!e||"string"!=typeof e)return!1;try{document.createDocumentFragment().querySelector(e)}catch{return!1}return!0};var d=r(7056),l=r(50);const f=()=>{const e={mask_selector:"*",block_selector:"[data-nr-block]",mask_input_options:{color:!1,date:!1,"datetime-local":!1,email:!1,month:!1,number:!1,range:!1,search:!1,tel:!1,text:!1,time:!1,url:!1,week:!1,textarea:!1,select:!1,password:!0}};return{feature_flags:[],proxy:{assets:void 0,beacon:void 0},privacy:{cookies_enabled:!0},ajax:{deny_list:void 0,block_internal:!0,enabled:!0,harvestTimeSeconds:10,autoStart:!0},distributed_tracing:{enabled:void 0,exclude_newrelic_header:void 0,cors_use_newrelic_header:void 0,cors_use_tracecontext_headers:void 0,allowed_origins:void 0},session:{domain:void 0,expiresMs:d.oD,inactiveMs:d.Hb},ssl:void 0,obfuscate:void 0,jserrors:{enabled:!0,harvestTimeSeconds:10,autoStart:!0},metrics:{enabled:!0,autoStart:!0},page_action:{enabled:!0,harvestTimeSeconds:30,autoStart:!0},page_view_event:{enabled:!0,autoStart:!0},page_view_timing:{enabled:!0,harvestTimeSeconds:30,long_task:!1,autoStart:!0},session_trace:{enabled:!0,harvestTimeSeconds:10,autoStart:!0},harvest:{tooManyRequestsDelay:60},session_replay:{autoStart:!0,enabled:!1,harvestTimeSeconds:60,sampling_rate:50,error_sampling_rate:50,collect_fonts:!1,inline_images:!1,inline_stylesheet:!0,mask_all_inputs:!0,get mask_text_selector(){return e.mask_selector},set mask_text_selector(t){u(t)?e.mask_selector=t+",[data-nr-mask]":null===t?e.mask_selector=t:(0,l.Z)("An invalid session_replay.mask_selector was provided and will not be used",t)},get block_class(){return"nr-block"},get ignore_class(){return"nr-ignore"},get mask_text_class(){return"nr-mask"},get block_selector(){return e.block_selector},set block_selector(t){u(t)?e.block_selector+=",".concat(t):""!==t&&(0,l.Z)("An invalid session_replay.block_selector was provided and will not be used",t)},get mask_input_options(){return e.mask_input_options},set mask_input_options(t){t&&"object"==typeof t?e.mask_input_options={...t,password:!0}:(0,l.Z)("An invalid session_replay.mask_input_option was provided and will not be used",t)}},spa:{enabled:!0,harvestTimeSeconds:10,autoStart:!0}}},h={},p="All configuration objects require an agent identifier!";function g(e){if(!e)throw new Error(p);if(!h[e])throw new Error("Configuration for ".concat(e," was never set"));return h[e]}function m(e,t){if(!e)throw new Error(p);h[e]=(0,i.D)(t,f()),(0,n.Qy)(e,h[e],"config")}function v(e,t){if(!e)throw new Error(p);var r=g(e);if(r){for(var n=t.split("."),i=0;i<n.length-1;i++)if("object"!=typeof(r=r[n[i]]))return;r=r[n[n.length-1]]}return r}const b={accountID:void 0,trustKey:void 0,agentID:void 0,licenseKey:void 0,applicationID:void 0,xpid:void 0},y={};function A(e){if(!e)throw new Error("All loader-config objects require an agent identifier!");if(!y[e])throw new Error("LoaderConfig for ".concat(e," was never set"));return y[e]}function w(e,t){if(!e)throw new Error("All loader-config objects require an agent identifier!");y[e]=(0,i.D)(t,b),(0,n.Qy)(e,y[e],"loader_config")}const x=(0,n.mF)().o;var E=r(385),_=r(6818);const T={buildEnv:_.Re,customTransaction:void 0,disabled:!1,distMethod:_.gF,isolatedBacklog:!1,loaderType:void 0,maxBytes:3e4,offset:Math.floor(E._A?.performance?.timeOrigin||E._A?.performance?.timing?.navigationStart||Date.now()),onerror:void 0,origin:""+E._A.location,ptid:void 0,releaseIds:{},session:void 0,xhrWrappable:"function"==typeof E._A.XMLHttpRequest?.prototype?.addEventListener,version:_.q4,denyList:void 0},S={};function D(e){if(!e)throw new Error("All runtime objects require an agent identifier!");if(!S[e])throw new Error("Runtime for ".concat(e," was never set"));return S[e]}function j(e,t){if(!e)throw new Error("All runtime objects require an agent identifier!");S[e]=(0,i.D)(t,T),(0,n.Qy)(e,S[e],"runtime")}function N(e){return function(e){try{const t=s(e);return!!t.licenseKey&&!!t.errorBeacon&&!!t.applicationID}catch(e){return!1}}(e)}},9567:(e,t,r)=>{r.d(t,{D:()=>i});var n=r(50);function i(e,t){try{if(!e||"object"!=typeof e)return(0,n.Z)("Setting a Configurable requires an object as input");if(!t||"object"!=typeof t)return(0,n.Z)("Setting a Configurable requires a model to set its initial properties");const r=Object.create(Object.getPrototypeOf(t),Object.getOwnPropertyDescriptors(t)),o=0===Object.keys(r).length?e:r;for(let a in o)if(void 0!==e[a])try{Array.isArray(e[a])&&Array.isArray(t[a])?r[a]=Array.from(new Set([...e[a],...t[a]])):"object"==typeof e[a]&&"object"==typeof t[a]?r[a]=i(e[a],t[a]):r[a]=e[a]}catch(e){(0,n.Z)("An error occurred while setting a property of a Configurable",e)}return r}catch(e){(0,n.Z)("An error occured while setting a Configurable",e)}}},6818:(e,t,r)=>{r.d(t,{Re:()=>i,gF:()=>o,lF:()=>a,q4:()=>n});const n="1.246.1",i="PROD",o="CDN",a="2.0.0-alpha.11"},385:(e,t,r)=>{r.d(t,{FN:()=>s,IF:()=>d,Nk:()=>f,Tt:()=>c,_A:()=>o,cv:()=>h,iS:()=>a,il:()=>n,ux:()=>u,v6:()=>i,w1:()=>l});const n="undefined"!=typeof window&&!!window.document,i="undefined"!=typeof WorkerGlobalScope&&("undefined"!=typeof self&&self instanceof WorkerGlobalScope&&self.navigator instanceof WorkerNavigator||"undefined"!=typeof globalThis&&globalThis instanceof WorkerGlobalScope&&globalThis.navigator instanceof WorkerNavigator),o=n?window:"undefined"!=typeof WorkerGlobalScope&&("undefined"!=typeof self&&self instanceof WorkerGlobalScope&&self||"undefined"!=typeof globalThis&&globalThis instanceof WorkerGlobalScope&&globalThis),a=Boolean("hidden"===o?.document?.visibilityState),s=""+o?.location,c=/iPad|iPhone|iPod/.test(o.navigator?.userAgent),u=c&&"undefined"==typeof SharedWorker,d=(()=>{const e=o.navigator?.userAgent?.match(/Firefox[/\s](\d+\.\d+)/);return Array.isArray(e)&&e.length>=2?+e[1]:0})(),l=Boolean(n&&window.document.documentMode),f=!!o.navigator?.sendBeacon,h=Math.floor(o?.performance?.timeOrigin||o?.performance?.timing?.navigationStart||Date.now())},1117:(e,t,r)=>{r.d(t,{w:()=>o});var n=r(50);const i={agentIdentifier:"",ee:void 0};class o{constructor(e){try{if("object"!=typeof e)return(0,n.Z)("shared context requires an object as input");this.sharedContext={},Object.assign(this.sharedContext,i),Object.entries(e).forEach((e=>{let[t,r]=e;Object.keys(i).includes(t)&&(this.sharedContext[t]=r)}))}catch(e){(0,n.Z)("An error occured while setting SharedContext",e)}}}},8e3:(e,t,r)=>{r.d(t,{L:()=>d,R:()=>c});var n=r(8325),i=r(1284),o=r(4322),a=r(3325);const s={};function c(e,t){const r={staged:!1,priority:a.p[t]||0};u(e),s[e].get(t)||s[e].set(t,r)}function u(e){e&&(s[e]||(s[e]=new Map))}function d(){let e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:"",t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:"feature";if(u(e),!e||!s[e].get(t))return a(t);s[e].get(t).staged=!0;const r=[...s[e]];function a(t){const r=e?n.ee.get(e):n.ee,a=o.X.handlers;if(r.backlog&&a){var s=r.backlog[t],c=a[t];if(c){for(var u=0;s&&u<s.length;++u)l(s[u],c);(0,i.D)(c,(function(e,t){(0,i.D)(t,(function(t,r){r[0].on(e,r[1])}))}))}delete a[t],r.backlog[t]=null,r.emit("drain-"+t,[])}}r.every((e=>{let[t,r]=e;return r.staged}))&&(r.sort(((e,t)=>e[1].priority-t[1].priority)),r.forEach((t=>{let[r]=t;s[e].delete(r),a(r)})))}function l(e,t){var r=e[1];(0,i.D)(t[r],(function(t,r){var n=e[0];if(r[0]===n){var i=r[1],o=e[3],a=e[2];i.apply(o,a)}}))}},8325:(e,t,r)=>{r.d(t,{A:()=>c,ee:()=>u});var n=r(8632),i=r(2210),o=r(234);class a{constructor(e){this.contextId=e}}var s=r(3117);const c="nr@context:".concat(s.a),u=function e(t,r){var n={},s={},d={},f=!1;try{f=16===r.length&&(0,o.OP)(r).isolatedBacklog}catch(e){}var h={on:g,addEventListener:g,removeEventListener:function(e,t){var r=n[e];if(!r)return;for(var i=0;i<r.length;i++)r[i]===t&&r.splice(i,1)},emit:function(e,r,n,i,o){!1!==o&&(o=!0);if(u.aborted&&!i)return;t&&o&&t.emit(e,r,n);for(var a=p(n),c=m(e),d=c.length,l=0;l<d;l++)c[l].apply(a,r);var f=b()[s[e]];f&&f.push([h,e,r,a]);return a},get:v,listeners:m,context:p,buffer:function(e,t){const r=b();if(t=t||"feature",h.aborted)return;Object.entries(e||{}).forEach((e=>{let[n,i]=e;s[i]=t,t in r||(r[t]=[])}))},abort:l,aborted:!1,isBuffering:function(e){return!!b()[s[e]]},debugId:r,backlog:f?{}:t&&"object"==typeof t.backlog?t.backlog:{}};return h;function p(e){return e&&e instanceof a?e:e?(0,i.X)(e,c,(()=>new a(c))):new a(c)}function g(e,t){n[e]=m(e).concat(t)}function m(e){return n[e]||[]}function v(t){return d[t]=d[t]||e(h,t)}function b(){return h.backlog}}(void 0,"globalEE"),d=(0,n.fP)();function l(){u.aborted=!0,u.backlog={}}d.ee||(d.ee=u)},5546:(e,t,r)=>{r.d(t,{E:()=>n,p:()=>i});var n=r(8325).ee.get("handle");function i(e,t,r,i,o){o?(o.buffer([e],i),o.emit(e,t,r)):(n.buffer([e],i),n.emit(e,t,r))}},4322:(e,t,r)=>{r.d(t,{X:()=>o});var n=r(5546);o.on=a;var i=o.handlers={};function o(e,t,r,o){a(o||n.E,i,e,t,r)}function a(e,t,r,i,o){o||(o="feature"),e||(e=n.E);var a=t[o]=t[o]||{};(a[r]=a[r]||[]).push([e,i])}},3239:(e,t,r)=>{r.d(t,{bP:()=>s,iz:()=>c,m$:()=>a});var n=r(385);let i=!1,o=!1;try{const e={get passive(){return i=!0,!1},get signal(){return o=!0,!1}};n._A.addEventListener("test",null,e),n._A.removeEventListener("test",null,e)}catch(e){}function a(e,t){return i||o?{capture:!!e,passive:i,signal:t}:!!e}function s(e,t){let r=arguments.length>2&&void 0!==arguments[2]&&arguments[2],n=arguments.length>3?arguments[3]:void 0;window.addEventListener(e,t,a(r,n))}function c(e,t){let r=arguments.length>2&&void 0!==arguments[2]&&arguments[2],n=arguments.length>3?arguments[3]:void 0;document.addEventListener(e,t,a(r,n))}},3117:(e,t,r)=>{r.d(t,{a:()=>n});const n=(0,r(4402).Rl)()},4402:(e,t,r)=>{r.d(t,{Ht:()=>u,M:()=>c,Rl:()=>a,ky:()=>s});var n=r(385);const i="xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx";function o(e,t){return e?15&e[t]:16*Math.random()|0}function a(){const e=n._A?.crypto||n._A?.msCrypto;let t,r=0;return e&&e.getRandomValues&&(t=e.getRandomValues(new Uint8Array(31))),i.split("").map((e=>"x"===e?o(t,++r).toString(16):"y"===e?(3&o()|8).toString(16):e)).join("")}function s(e){const t=n._A?.crypto||n._A?.msCrypto;let r,i=0;t&&t.getRandomValues&&(r=t.getRandomValues(new Uint8Array(31)));const a=[];for(var s=0;s<e;s++)a.push(o(r,++i).toString(16));return a.join("")}function c(){return s(16)}function u(){return s(32)}},7056:(e,t,r)=>{r.d(t,{Bq:()=>n,Hb:()=>o,oD:()=>i});const n="NRBA",i=144e5,o=18e5},7894:(e,t,r)=>{function n(){return Math.round(performance.now())}r.d(t,{z:()=>n})},7243:(e,t,r)=>{r.d(t,{e:()=>i});var n=r(385);function i(e){if(0===(e||"").indexOf("data:"))return{protocol:"data"};try{const t=new URL(e,location.href),r={port:t.port,hostname:t.hostname,pathname:t.pathname,search:t.search,protocol:t.protocol.slice(0,t.protocol.indexOf(":")),sameOrigin:t.protocol===n._A?.location?.protocol&&t.host===n._A?.location?.host};return r.port&&""!==r.port||("http:"===t.protocol&&(r.port="80"),"https:"===t.protocol&&(r.port="443")),r.pathname&&""!==r.pathname?r.pathname.startsWith("/")||(r.pathname="/".concat(r.pathname)):r.pathname="/",r}catch(e){return{}}}},50:(e,t,r)=>{function n(e,t){"function"==typeof console.warn&&(console.warn("New Relic: ".concat(e)),t&&console.warn(t))}r.d(t,{Z:()=>n})},2587:(e,t,r)=>{r.d(t,{N:()=>c,T:()=>u});var n=r(8325),i=r(5546),o=r(3325);const a={stn:[o.D.sessionTrace],err:[o.D.jserrors,o.D.metrics],ins:[o.D.pageAction],spa:[o.D.spa],sr:[o.D.sessionReplay,o.D.sessionTrace]},s=new Set;function c(e,t){const r=n.ee.get(t);e&&"object"==typeof e&&(s.has(t)||Object.entries(e).forEach((e=>{let[t,n]=e;a[t]?a[t].forEach((e=>{n?(0,i.p)("feat-"+t,[],void 0,e,r):(0,i.p)("block-"+t,[],void 0,e,r),(0,i.p)("rumresp-"+t,[Boolean(n)],void 0,e,r)})):n&&(0,i.p)("feat-"+t,[],void 0,void 0,r),u[t]=Boolean(n)})),Object.keys(a).forEach((e=>{void 0===u[e]&&(a[e]?.forEach((t=>(0,i.p)("rumresp-"+e,[!1],void 0,t,r))),u[e]=!1)})),s.add(t))}const u={}},2210:(e,t,r)=>{r.d(t,{X:()=>i});var n=Object.prototype.hasOwnProperty;function i(e,t,r){if(n.call(e,t))return e[t];var i=r();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,t,{value:i,writable:!0,enumerable:!1}),i}catch(e){}return e[t]=i,i}},1284:(e,t,r)=>{r.d(t,{D:()=>n});const n=(e,t)=>Object.entries(e||{}).map((e=>{let[r,n]=e;return t(r,n)}))},4351:(e,t,r)=>{r.d(t,{P:()=>o});var n=r(8325);const i=()=>{const e=new WeakSet;return(t,r)=>{if("object"==typeof r&&null!==r){if(e.has(r))return;e.add(r)}return r}};function o(e){try{return JSON.stringify(e,i())}catch(e){try{n.ee.emit("internal-error",[e])}catch(e){}}}},3960:(e,t,r)=>{r.d(t,{K:()=>a,b:()=>o});var n=r(3239);function i(){return"undefined"==typeof document||"complete"===document.readyState}function o(e,t){if(i())return e();(0,n.bP)("load",e,t)}function a(e){if(i())return e();(0,n.iz)("DOMContentLoaded",e)}},8632:(e,t,r)=>{r.d(t,{EZ:()=>u,Qy:()=>c,ce:()=>o,fP:()=>a,gG:()=>d,mF:()=>s});var n=r(7894),i=r(385);const o={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net"};function a(){return i._A.NREUM||(i._A.NREUM={}),void 0===i._A.newrelic&&(i._A.newrelic=i._A.NREUM),i._A.NREUM}function s(){let e=a();return e.o||(e.o={ST:i._A.setTimeout,SI:i._A.setImmediate,CT:i._A.clearTimeout,XHR:i._A.XMLHttpRequest,REQ:i._A.Request,EV:i._A.Event,PR:i._A.Promise,MO:i._A.MutationObserver,FETCH:i._A.fetch}),e}function c(e,t,r){let i=a();const o=i.initializedAgents||{},s=o[e]||{};return Object.keys(s).length||(s.initializedAt={ms:(0,n.z)(),date:new Date}),i.initializedAgents={...o,[e]:{...s,[r]:t}},i}function u(e,t){a()[e]=t}function d(){return function(){let e=a();const t=e.info||{};e.info={beacon:o.beacon,errorBeacon:o.errorBeacon,...t}}(),function(){let e=a();const t=e.init||{};e.init={...t}}(),s(),function(){let e=a();const t=e.loader_config||{};e.loader_config={...t}}(),a()}},7956:(e,t,r)=>{r.d(t,{N:()=>i});var n=r(3239);function i(e){let t=arguments.length>1&&void 0!==arguments[1]&&arguments[1],r=arguments.length>2?arguments[2]:void 0,i=arguments.length>3?arguments[3]:void 0;(0,n.iz)("visibilitychange",(function(){if(t)return void("hidden"===document.visibilityState&&e());e(document.visibilityState)}),r,i)}},1214:(e,t,r)=>{r.d(t,{em:()=>b,u5:()=>D,QU:()=>C,_L:()=>I,Gm:()=>H,Lg:()=>L,BV:()=>G,Kf:()=>K});var n=r(8325),i=r(3117);const o="nr@original:".concat(i.a);var a=Object.prototype.hasOwnProperty,s=!1;function c(e,t){return e||(e=n.ee),r.inPlace=function(e,t,n,i,o){n||(n="");const a="-"===n.charAt(0);for(let s=0;s<t.length;s++){const c=t[s],u=e[c];d(u)||(e[c]=r(u,a?c+n:n,i,c,o))}},r.flag=o,r;function r(t,r,n,s,c){return d(t)?t:(r||(r=""),nrWrapper[o]=t,function(e,t,r){if(Object.defineProperty&&Object.keys)try{return Object.keys(e).forEach((function(r){Object.defineProperty(t,r,{get:function(){return e[r]},set:function(t){return e[r]=t,t}})})),t}catch(e){u([e],r)}for(var n in e)a.call(e,n)&&(t[n]=e[n])}(t,nrWrapper,e),nrWrapper);function nrWrapper(){var o,a,d,l;try{a=this,o=[...arguments],d="function"==typeof n?n(o,a):n||{}}catch(t){u([t,"",[o,a,s],d],e)}i(r+"start",[o,a,s],d,c);try{return l=t.apply(a,o)}catch(e){throw i(r+"err",[o,a,e],d,c),e}finally{i(r+"end",[o,a,l],d,c)}}}function i(r,n,i,o){if(!s||t){var a=s;s=!0;try{e.emit(r,n,i,t,o)}catch(t){u([t,r,n,i],e)}s=a}}}function u(e,t){t||(t=n.ee);try{t.emit("internal-error",e)}catch(e){}}function d(e){return!(e&&"function"==typeof e&&e.apply&&!e[o])}var l=r(2210),f=r(385);const h={},p=f._A.XMLHttpRequest,g="addEventListener",m="removeEventListener",v="nr@wrapped:".concat(n.A);function b(e){var t=function(e){return(e||n.ee).get("events")}(e);if(h[t.debugId]++)return t;h[t.debugId]=1;var r=c(t,!0);function i(e){r.inPlace(e,[g,m],"-",o)}function o(e,t){return e[1]}return"getPrototypeOf"in Object&&(f.il&&y(document,i),y(f._A,i),y(p.prototype,i)),t.on(g+"-start",(function(e,t){var n=e[1];if(null!==n&&("function"==typeof n||"object"==typeof n)){var i=(0,l.X)(n,v,(function(){var e={object:function(){if("function"!=typeof n.handleEvent)return;return n.handleEvent.apply(n,arguments)},function:n}[typeof n];return e?r(e,"fn-",null,e.name||"anonymous"):n}));this.wrapped=e[1]=i}})),t.on(m+"-start",(function(e){e[1]=this.wrapped||e[1]})),t}function y(e,t){let r=e;for(;"object"==typeof r&&!Object.prototype.hasOwnProperty.call(r,g);)r=Object.getPrototypeOf(r);for(var n=arguments.length,i=new Array(n>2?n-2:0),o=2;o<n;o++)i[o-2]=arguments[o];r&&t(r,...i)}var A="fetch-",w=A+"body-",x=["arrayBuffer","blob","json","text","formData"],E=f._A.Request,_=f._A.Response,T="prototype";const S={};function D(e){const t=function(e){return(e||n.ee).get("fetch")}(e);if(!(E&&_&&f._A.fetch))return t;if(S[t.debugId]++)return t;function r(e,r,i){var o=e[r];"function"==typeof o&&(e[r]=function(){var e,r=[...arguments],a={};t.emit(i+"before-start",[r],a),a[n.A]&&a[n.A].dt&&(e=a[n.A].dt);var s=o.apply(this,r);return t.emit(i+"start",[r,e],s),s.then((function(e){return t.emit(i+"end",[null,e],s),e}),(function(e){throw t.emit(i+"end",[e],s),e}))})}return S[t.debugId]=1,x.forEach((e=>{r(E[T],e,w),r(_[T],e,w)})),r(f._A,"fetch",A),t.on(A+"end",(function(e,r){var n=this;if(r){var i=r.headers.get("content-length");null!==i&&(n.rxSize=i),t.emit(A+"done",[null,r],n)}else t.emit(A+"done",[e],n)})),t}const j={},N=["pushState","replaceState"];function C(e){const t=function(e){return(e||n.ee).get("history")}(e);return!f.il||j[t.debugId]++||(j[t.debugId]=1,c(t).inPlace(window.history,N,"-")),t}var O=r(3239);const P={},R=["appendChild","insertBefore","replaceChild"];function I(e){const t=function(e){return(e||n.ee).get("jsonp")}(e);if(!f.il||P[t.debugId])return t;P[t.debugId]=!0;var r=c(t),i=/[?&](?:callback|cb)=([^&#]+)/,o=/(.*)\.([^.]+)/,a=/^(\w+)(\.|$)(.*)$/;function s(e,t){if(!e)return t;const r=e.match(a),n=r[1];return s(r[3],t[n])}return r.inPlace(Node.prototype,R,"dom-"),t.on("dom-start",(function(e){!function(e){if(!e||"string"!=typeof e.nodeName||"script"!==e.nodeName.toLowerCase())return;if("function"!=typeof e.addEventListener)return;var n=(a=e.src,c=a.match(i),c?c[1]:null);var a,c;if(!n)return;var u=function(e){var t=e.match(o);if(t&&t.length>=3)return{key:t[2],parent:s(t[1],window)};return{key:e,parent:window}}(n);if("function"!=typeof u.parent[u.key])return;var d={};function l(){t.emit("jsonp-end",[],d),e.removeEventListener("load",l,(0,O.m$)(!1)),e.removeEventListener("error",f,(0,O.m$)(!1))}function f(){t.emit("jsonp-error",[],d),t.emit("jsonp-end",[],d),e.removeEventListener("load",l,(0,O.m$)(!1)),e.removeEventListener("error",f,(0,O.m$)(!1))}r.inPlace(u.parent,[u.key],"cb-",d),e.addEventListener("load",l,(0,O.m$)(!1)),e.addEventListener("error",f,(0,O.m$)(!1)),t.emit("new-jsonp",[e.src],d)}(e[0])})),t}const k={};function H(e){const t=function(e){return(e||n.ee).get("mutation")}(e);if(!f.il||k[t.debugId])return t;k[t.debugId]=!0;var r=c(t),i=f._A.MutationObserver;return i&&(window.MutationObserver=function(e){return this instanceof i?new i(r(e,"fn-")):i.apply(this,arguments)},MutationObserver.prototype=i.prototype),t}const z={};function L(e){const t=function(e){return(e||n.ee).get("promise")}(e);if(z[t.debugId])return t;z[t.debugId]=!0;var r=t.context,i=c(t),a=f._A.Promise;return a&&function(){function e(r){var n=t.context(),o=i(r,"executor-",n,null,!1);const s=Reflect.construct(a,[o],e);return t.context(s).getCtx=function(){return n},s}f._A.Promise=e,Object.defineProperty(e,"name",{value:"Promise"}),e.toString=function(){return a.toString()},Object.setPrototypeOf(e,a),["all","race"].forEach((function(r){const n=a[r];e[r]=function(e){let i=!1;[...e||[]].forEach((e=>{this.resolve(e).then(a("all"===r),a(!1))}));const o=n.apply(this,arguments);return o;function a(e){return function(){t.emit("propagate",[null,!i],o,!1,!1),i=i||!e}}}})),["resolve","reject"].forEach((function(r){const n=a[r];e[r]=function(e){const r=n.apply(this,arguments);return e!==r&&t.emit("propagate",[e,!0],r,!1,!1),r}})),e.prototype=a.prototype;const n=a.prototype.then;a.prototype.then=function(){var e=this,o=r(e);o.promise=e;for(var a=arguments.length,s=new Array(a),c=0;c<a;c++)s[c]=arguments[c];s[0]=i(s[0],"cb-",o,null,!1),s[1]=i(s[1],"cb-",o,null,!1);const u=n.apply(this,s);return o.nextPromise=u,t.emit("propagate",[e,!0],u,!1,!1),u},a.prototype.then[o]=n,t.on("executor-start",(function(e){e[0]=i(e[0],"resolve-",this,null,!1),e[1]=i(e[1],"resolve-",this,null,!1)})),t.on("executor-err",(function(e,t,r){e[1](r)})),t.on("cb-end",(function(e,r,n){t.emit("propagate",[n,!0],this.nextPromise,!1,!1)})),t.on("propagate",(function(e,r,n){this.getCtx&&!r||(this.getCtx=function(){if(e instanceof Promise)var r=t.context(e);return r&&r.getCtx?r.getCtx():this})}))}(),t}const M={},F="setTimeout",B="setInterval",U="clearTimeout",Z="-start",V="-",q=[F,"setImmediate",B,U,"clearImmediate"];function G(e){const t=function(e){return(e||n.ee).get("timer")}(e);if(M[t.debugId]++)return t;M[t.debugId]=1;var r=c(t);return r.inPlace(f._A,q.slice(0,2),F+V),r.inPlace(f._A,q.slice(2,3),B+V),r.inPlace(f._A,q.slice(3),U+V),t.on(B+Z,(function(e,t,n){e[0]=r(e[0],"fn-",null,n)})),t.on(F+Z,(function(e,t,n){this.method=n,this.timerDuration=isNaN(e[1])?0:+e[1],e[0]=r(e[0],"fn-",this,n)})),t}var W=r(50);const X={},Q=["open","send"];function K(e){var t=e||n.ee;const r=function(e){return(e||n.ee).get("xhr")}(t);if(X[r.debugId]++)return r;X[r.debugId]=1,b(t);var i=c(r),o=f._A.XMLHttpRequest,a=f._A.MutationObserver,s=f._A.Promise,u=f._A.setInterval,d="readystatechange",l=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"],h=[],p=f._A.XMLHttpRequest=function(e){const t=new o(e),n=r.context(t);try{r.emit("new-xhr",[t],n),t.addEventListener(d,(a=n,function(){var e=this;e.readyState>3&&!a.resolved&&(a.resolved=!0,r.emit("xhr-resolved",[],e)),i.inPlace(e,l,"fn-",w)}),(0,O.m$)(!1))}catch(e){(0,W.Z)("An error occurred while intercepting XHR",e);try{r.emit("internal-error",[e])}catch(e){}}var a;return t};function g(e,t){i.inPlace(t,["onreadystatechange"],"fn-",w)}if(function(e,t){for(var r in e)t[r]=e[r]}(o,p),p.prototype=o.prototype,i.inPlace(p.prototype,Q,"-xhr-",w),r.on("send-xhr-start",(function(e,t){g(e,t),function(e){h.push(e),a&&(m?m.then(A):u?u(A):(v=-v,y.data=v))}(t)})),r.on("open-xhr-start",g),a){var m=s&&s.resolve();if(!u&&!s){var v=1,y=document.createTextNode(v);new a(A).observe(y,{characterData:!0})}}else t.on("fn-end",(function(e){e[0]&&e[0].type===d||A()}));function A(){for(var e=0;e<h.length;e++)g(0,h[e]);h.length&&(h=[])}function w(e,t){return t}return r}},7825:(e,t,r)=>{r.d(t,{t:()=>n});const n=r(3325).D.ajax},6660:(e,t,r)=>{r.d(t,{t:()=>n});const n=r(3325).D.jserrors},3081:(e,t,r)=>{r.d(t,{gF:()=>o,mY:()=>i,t9:()=>n,vz:()=>s,xS:()=>a});const n=r(3325).D.metrics,i="sm",o="cm",a="storeSupportabilityMetrics",s="storeEventMetrics"},4649:(e,t,r)=>{r.d(t,{t:()=>n});const n=r(3325).D.pageAction},7633:(e,t,r)=>{r.d(t,{t:()=>n});const n=r(3325).D.pageViewEvent},9251:(e,t,r)=>{r.d(t,{t:()=>n});const n=r(3325).D.pageViewTiming},7144:(e,t,r)=>{r.d(t,{t:()=>n});const n=r(3325).D.sessionReplay},3614:(e,t,r)=>{r.d(t,{BST_RESOURCE:()=>i,END:()=>s,FEATURE_NAME:()=>n,FN_END:()=>u,FN_START:()=>c,PUSH_STATE:()=>d,RESOURCE:()=>o,START:()=>a});const n=r(3325).D.sessionTrace,i="bstResource",o="resource",a="-start",s="-end",c="fn"+a,u="fn"+s,d="pushState"},7836:(e,t,r)=>{r.d(t,{BODY:()=>x,CB_END:()=>E,CB_START:()=>u,END:()=>w,FEATURE_NAME:()=>i,FETCH:()=>T,FETCH_BODY:()=>v,FETCH_DONE:()=>m,FETCH_START:()=>g,FN_END:()=>c,FN_START:()=>s,INTERACTION:()=>f,INTERACTION_API:()=>d,INTERACTION_EVENTS:()=>o,JSONP_END:()=>b,JSONP_NODE:()=>p,JS_TIME:()=>_,MAX_TIMER_BUDGET:()=>a,REMAINING:()=>l,SPA_NODE:()=>h,START:()=>A,originalSetTimeout:()=>y});var n=r(234);const i=r(3325).D.spa,o=["click","submit","keypress","keydown","keyup","change"],a=999,s="fn-start",c="fn-end",u="cb-start",d="api-ixn-",l="remaining",f="interaction",h="spaNode",p="jsonpNode",g="fetch-start",m="fetch-done",v="fetch-body-",b="jsonp-end",y=n.Yu.ST,A="-start",w="-end",x="-body",E="cb"+w,_="jsTime",T="fetch"},5938:(e,t,r)=>{r.d(t,{W:()=>i});var n=r(8325);class i{constructor(e,t,r){this.agentIdentifier=e,this.aggregator=t,this.ee=n.ee.get(e),this.featureName=r,this.blocked=!1}}},7530:(e,t,r)=>{r.d(t,{j:()=>b});var n=r(3325),i=r(234),o=r(5546),a=r(8325),s=r(7894),c=r(8e3),u=r(3960),d=r(385),l=r(50),f=r(3081),h=r(8632);function p(){const e=(0,h.gG)();["setErrorHandler","finished","addToTrace","addRelease","addPageAction","setCurrentRouteName","setPageViewName","setCustomAttribute","interaction","noticeError","setUserId","setApplicationVersion","start"].forEach((t=>{e[t]=function(){for(var r=arguments.length,n=new Array(r),i=0;i<r;i++)n[i]=arguments[i];return function(t){for(var r=arguments.length,n=new Array(r>1?r-1:0),i=1;i<r;i++)n[i-1]=arguments[i];let o=[];return Object.values(e.initializedAgents).forEach((e=>{e.exposed&&e.api[t]&&o.push(e.api[t](...n))})),o.length>1?o:o[0]}(t,...n)}}))}var g=r(2587);const m=e=>{const t=e.startsWith("http");e+="/",r.p=t?e:"https://"+e};let v=!1;function b(e){let t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},b=arguments.length>2?arguments[2]:void 0,y=arguments.length>3?arguments[3]:void 0,{init:A,info:w,loader_config:x,runtime:E={loaderType:b},exposed:_=!0}=t;const T=(0,h.gG)();w||(A=T.init,w=T.info,x=T.loader_config),(0,i.Dg)(e,A||{}),(0,i.GE)(e,x||{}),w.jsAttributes??={},d.v6&&(w.jsAttributes.isWorker=!0),(0,i.CX)(e,w);const S=(0,i.P_)(e),D=[w.beacon,w.errorBeacon];v||(v=!0,S.proxy.assets&&(m(S.proxy.assets),D.push(S.proxy.assets)),S.proxy.beacon&&D.push(S.proxy.beacon)),E.denyList=[...S.ajax.deny_list||[],...S.ajax.block_internal?D:[]],(0,i.sU)(e,E),p();const j=function(e,t){t||(0,c.R)(e,"api");const h={};var p=a.ee.get(e),g=p.get("tracer"),m="api-",v=m+"ixn-";function b(t,r,n,o){const a=(0,i.C5)(e);return null===r?delete a.jsAttributes[t]:(0,i.CX)(e,{...a,jsAttributes:{...a.jsAttributes,[t]:r}}),w(m,n,!0,o||null===r?"session":void 0)(t,r)}function y(){}["setErrorHandler","finished","addToTrace","addRelease"].forEach((e=>{h[e]=w(m,e,!0,"api")})),h.addPageAction=w(m,"addPageAction",!0,n.D.pageAction),h.setCurrentRouteName=w(m,"routeName",!0,n.D.spa),h.setPageViewName=function(t,r){if("string"==typeof t)return"/"!==t.charAt(0)&&(t="/"+t),(0,i.OP)(e).customTransaction=(r||"http://custom.transaction")+t,w(m,"setPageViewName",!0)()},h.setCustomAttribute=function(e,t){let r=arguments.length>2&&void 0!==arguments[2]&&arguments[2];if("string"==typeof e){if(["string","number","boolean"].includes(typeof t)||null===t)return b(e,t,"setCustomAttribute",r);(0,l.Z)("Failed to execute setCustomAttribute.\nNon-null value must be a string, number or boolean type, but a type of <".concat(typeof t,"> was provided."))}else(0,l.Z)("Failed to execute setCustomAttribute.\nName must be a string type, but a type of <".concat(typeof e,"> was provided."))},h.setUserId=function(e){if("string"==typeof e||null===e)return b("enduser.id",e,"setUserId",!0);(0,l.Z)("Failed to execute setUserId.\nNon-null value must be a string type, but a type of <".concat(typeof e,"> was provided."))},h.setApplicationVersion=function(e){if("string"==typeof e||null===e)return b("application.version",e,"setApplicationVersion",!1);(0,l.Z)("Failed to execute setApplicationVersion. Expected <String | null>, but got <".concat(typeof e,">."))},h.start=e=>{try{const t=e?"defined":"undefined";(0,o.p)(f.xS,["API/start/".concat(t,"/called")],void 0,n.D.metrics,p);const r=Object.values(n.D);if(void 0===e)e=r;else{if((e=Array.isArray(e)&&e.length?e:[e]).some((e=>!r.includes(e))))return(0,l.Z)("Invalid feature name supplied. Acceptable feature names are: ".concat(r));e.includes(n.D.pageViewEvent)||e.push(n.D.pageViewEvent)}e.forEach((e=>{p.emit("".concat(e,"-opt-in"))}))}catch(e){(0,l.Z)("An unexpected issue occurred",e)}},h.interaction=function(){return(new y).get()};var A=y.prototype={createTracer:function(e,t){var r={},i=this,a="function"==typeof t;return(0,o.p)(v+"tracer",[(0,s.z)(),e,r],i,n.D.spa,p),function(){if(g.emit((a?"":"no-")+"fn-start",[(0,s.z)(),i,a],r),a)try{return t.apply(this,arguments)}catch(e){throw g.emit("fn-err",[arguments,this,e],r),e}finally{g.emit("fn-end",[(0,s.z)()],r)}}}};function w(e,t,r,i){return function(){return(0,o.p)(f.xS,["API/"+t+"/called"],void 0,n.D.metrics,p),i&&(0,o.p)(e+t,[(0,s.z)(),...arguments],r?null:this,i,p),r?void 0:this}}function x(){r.e(111).then(r.bind(r,7438)).then((t=>{let{setAPI:r}=t;r(e),(0,c.L)(e,"api")})).catch((()=>(0,l.Z)("Downloading runtime APIs failed...")))}return["actionText","setName","setAttribute","save","ignore","onEnd","getContext","end","get"].forEach((e=>{A[e]=w(v,e,void 0,n.D.spa)})),h.noticeError=function(e,t){"string"==typeof e&&(e=new Error(e)),(0,o.p)(f.xS,["API/noticeError/called"],void 0,n.D.metrics,p),(0,o.p)("err",[e,(0,s.z)(),!1,t],void 0,n.D.jserrors,p)},d.il?(0,u.b)((()=>x()),!0):x(),h}(e,y);return(0,h.Qy)(e,j,"api"),(0,h.Qy)(e,_,"exposed"),(0,h.EZ)("activatedFeatures",g.T),j}},3325:(e,t,r)=>{r.d(t,{D:()=>n,p:()=>i});const n={ajax:"ajax",jserrors:"jserrors",metrics:"metrics",pageAction:"page_action",pageViewEvent:"page_view_event",pageViewTiming:"page_view_timing",sessionReplay:"session_replay",sessionTrace:"session_trace",spa:"spa"},i={[n.pageViewEvent]:1,[n.pageViewTiming]:2,[n.metrics]:3,[n.jserrors]:4,[n.ajax]:5,[n.sessionTrace]:6,[n.pageAction]:7,[n.spa]:8,[n.sessionReplay]:9}}},n={};function i(e){var t=n[e];if(void 0!==t)return t.exports;var o=n[e]={exports:{}};return r[e](o,o.exports,i),o.exports}i.m=r,i.d=(e,t)=>{for(var r in t)i.o(t,r)&&!i.o(e,r)&&Object.defineProperty(e,r,{enumerable:!0,get:t[r]})},i.f={},i.e=e=>Promise.all(Object.keys(i.f).reduce(((t,r)=>(i.f[r](e,t),t)),[])),i.u=e=>({111:"nr-spa",164:"nr-spa-compressor",433:"nr-spa-recorder"}[e]+"-1.246.1.min.js"),i.o=(e,t)=>Object.prototype.hasOwnProperty.call(e,t),e={},t="NRBA-1.246.1.PROD:",i.l=(r,n,o,a)=>{if(e[r])e[r].push(n);else{var s,c;if(void 0!==o)for(var u=document.getElementsByTagName("script"),d=0;d<u.length;d++){var l=u[d];if(l.getAttribute("src")==r||l.getAttribute("data-webpack")==t+o){s=l;break}}s||(c=!0,(s=document.createElement("script")).charset="utf-8",s.timeout=120,i.nc&&s.setAttribute("nonce",i.nc),s.setAttribute("data-webpack",t+o),s.src=r),e[r]=[n];var f=(t,n)=>{s.onerror=s.onload=null,clearTimeout(h);var i=e[r];if(delete e[r],s.parentNode&&s.parentNode.removeChild(s),i&&i.forEach((e=>e(n))),t)return t(n)},h=setTimeout(f.bind(null,void 0,{type:"timeout",target:s}),12e4);s.onerror=f.bind(null,s.onerror),s.onload=f.bind(null,s.onload),c&&document.head.appendChild(s)}},i.r=e=>{"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},i.p="https://js-agent.newrelic.com/",(()=>{var e={801:0,92:0};i.f.j=(t,r)=>{var n=i.o(e,t)?e[t]:void 0;if(0!==n)if(n)r.push(n[2]);else{var o=new Promise(((r,i)=>n=e[t]=[r,i]));r.push(n[2]=o);var a=i.p+i.u(t),s=new Error;i.l(a,(r=>{if(i.o(e,t)&&(0!==(n=e[t])&&(e[t]=void 0),n)){var o=r&&("load"===r.type?"missing":r.type),a=r&&r.target&&r.target.src;s.message="Loading chunk "+t+" failed.\n("+o+": "+a+")",s.name="ChunkLoadError",s.type=o,s.request=a,n[1](s)}}),"chunk-"+t,t)}};var t=(t,r)=>{var n,o,[a,s,c]=r,u=0;if(a.some((t=>0!==e[t]))){for(n in s)i.o(s,n)&&(i.m[n]=s[n]);if(c)c(i)}for(t&&t(r);u<a.length;u++)o=a[u],i.o(e,o)&&e[o]&&e[o][0](),e[o]=0},r=self["webpackChunk:NRBA-1.246.1.PROD"]=self["webpackChunk:NRBA-1.246.1.PROD"]||[];r.forEach(t.bind(null,0)),r.push=t.bind(null,r.push.bind(r))})(),(()=>{var e=i(50);class t{addPageAction(t,r){(0,e.Z)("Call to agent api addPageAction failed. The page action feature is not currently initialized.")}setPageViewName(t,r){(0,e.Z)("Call to agent api setPageViewName failed. The page view feature is not currently initialized.")}setCustomAttribute(t,r,n){(0,e.Z)("Call to agent api setCustomAttribute failed. The js errors feature is not currently initialized.")}noticeError(t,r){(0,e.Z)("Call to agent api noticeError failed. The js errors feature is not currently initialized.")}setUserId(t){(0,e.Z)("Call to agent api setUserId failed. The js errors feature is not currently initialized.")}setApplicationVersion(t){(0,e.Z)("Call to agent api setApplicationVersion failed. The agent is not currently initialized.")}setErrorHandler(t){(0,e.Z)("Call to agent api setErrorHandler failed. The js errors feature is not currently initialized.")}finished(t){(0,e.Z)("Call to agent api finished failed. The page action feature is not currently initialized.")}addRelease(t,r){(0,e.Z)("Call to agent api addRelease failed. The js errors feature is not currently initialized.")}start(t){(0,e.Z)("Call to agent api addRelease failed. The agent is not currently initialized.")}}var r=i(3325),n=i(234);const o=Object.values(r.D);function a(e){const t={};return o.forEach((r=>{t[r]=function(e,t){return!1!==(0,n.Mt)(t,"".concat(e,".enabled"))}(r,e)})),t}var s=i(7530);var c=i(8e3),u=i(5938),d=i(3960),l=i(385);class f extends u.W{constructor(e,t,r){let i=!(arguments.length>3&&void 0!==arguments[3])||arguments[3];super(e,t,r),this.auto=i,this.abortHandler=void 0,this.featAggregate=void 0,this.onAggregateImported=void 0,!1===(0,n.Mt)(this.agentIdentifier,"".concat(this.featureName,".autoStart"))&&(this.auto=!1),this.auto&&(0,c.R)(e,r)}importAggregator(){let t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{};if(this.featAggregate)return;if(!this.auto)return void this.ee.on("".concat(this.featureName,"-opt-in"),(()=>{(0,c.R)(this.agentIdentifier,this.featureName),this.auto=!0,this.importAggregator()}));const r=l.il&&!0===(0,n.Mt)(this.agentIdentifier,"privacy.cookies_enabled");let o;this.onAggregateImported=new Promise((e=>{o=e}));const a=async()=>{let n;try{if(r){const{setupAgentSession:e}=await i.e(111).then(i.bind(i,3228));n=e(this.agentIdentifier)}}catch(t){(0,e.Z)("A problem occurred when starting up session manager. This page will not start or extend any session.",t)}try{if(!this.shouldImportAgg(this.featureName,n))return(0,c.L)(this.agentIdentifier,this.featureName),void o(!1);const{lazyFeatureLoader:e}=await i.e(111).then(i.bind(i,8582)),{Aggregate:r}=await e(this.featureName,"aggregate");this.featAggregate=new r(this.agentIdentifier,this.aggregator,t),o(!0)}catch(t){(0,e.Z)("Downloading and initializing ".concat(this.featureName," failed..."),t),this.abortHandler?.(),(0,c.L)(this.agentIdentifier,this.featureName),o(!1)}};l.il?(0,d.b)((()=>a()),!0):a()}shouldImportAgg(e,t){return e!==r.D.sessionReplay||!!n.Yu.MO&&(!1!==(0,n.Mt)(this.agentIdentifier,"session_trace.enabled")&&(!!t?.isNew||!!t?.state.sessionReplayMode))}}var h=i(7633);class p extends f{static featureName=h.t;constructor(e,t){let r=!(arguments.length>2&&void 0!==arguments[2])||arguments[2];super(e,t,h.t,r),this.importAggregator()}}var g=i(1117),m=i(1284);class v extends g.w{constructor(e){super(e),this.aggregatedData={}}store(e,t,r,n,i){var o=this.getBucket(e,t,r,i);return o.metrics=function(e,t){t||(t={count:0});return t.count+=1,(0,m.D)(e,(function(e,r){t[e]=b(r,t[e])})),t}(n,o.metrics),o}merge(e,t,r,n,i){var o=this.getBucket(e,t,n,i);if(o.metrics){var a=o.metrics;a.count+=r.count,(0,m.D)(r,(function(e,t){if("count"!==e){var n=a[e],i=r[e];i&&!i.c?a[e]=b(i.t,n):a[e]=function(e,t){if(!t)return e;t.c||(t=y(t.t));return t.min=Math.min(e.min,t.min),t.max=Math.max(e.max,t.max),t.t+=e.t,t.sos+=e.sos,t.c+=e.c,t}(i,a[e])}}))}else o.metrics=r}storeMetric(e,t,r,n){var i=this.getBucket(e,t,r);return i.stats=b(n,i.stats),i}getBucket(e,t,r,n){this.aggregatedData[e]||(this.aggregatedData[e]={});var i=this.aggregatedData[e][t];return i||(i=this.aggregatedData[e][t]={params:r||{}},n&&(i.custom=n)),i}get(e,t){return t?this.aggregatedData[e]&&this.aggregatedData[e][t]:this.aggregatedData[e]}take(e){for(var t={},r="",n=!1,i=0;i<e.length;i++)t[r=e[i]]=A(this.aggregatedData[r]),t[r].length&&(n=!0),delete this.aggregatedData[r];return n?t:null}}function b(e,t){return null==e?function(e){e?e.c++:e={c:1};return e}(t):t?(t.c||(t=y(t.t)),t.c+=1,t.t+=e,t.sos+=e*e,e>t.max&&(t.max=e),e<t.min&&(t.min=e),t):{t:e}}function y(e){return{t:e,min:e,max:e,sos:e*e,c:1}}function A(e){return"object"!=typeof e?[]:(0,m.D)(e,w)}function w(e,t){return t}var x=i(8632),E=i(4402),_=i(4351);var T=i(5546),S=i(7956),D=i(3239),j=i(7894),N=i(9251);class C extends f{static featureName=N.t;constructor(e,t){let r=!(arguments.length>2&&void 0!==arguments[2])||arguments[2];super(e,t,N.t,r),l.il&&((0,S.N)((()=>(0,T.p)("docHidden",[(0,j.z)()],void 0,N.t,this.ee)),!0),(0,D.bP)("pagehide",(()=>(0,T.p)("winPagehide",[(0,j.z)()],void 0,N.t,this.ee))),this.importAggregator())}}var O=i(3081);class P extends f{static featureName=O.t9;constructor(e,t){let r=!(arguments.length>2&&void 0!==arguments[2])||arguments[2];super(e,t,O.t9,r),this.importAggregator()}}var R=i(6660);class I{constructor(e,t,r,n){this.name="UncaughtError",this.message=e,this.sourceURL=t,this.line=r,this.column=n}}class k extends f{static featureName=R.t;#e=new Set;constructor(e,t){let n=!(arguments.length>2&&void 0!==arguments[2])||arguments[2];super(e,t,R.t,n);try{this.removeOnAbort=new AbortController}catch(e){}this.ee.on("fn-err",((e,t,n)=>{this.abortHandler&&!this.#e.has(n)&&(this.#e.add(n),(0,T.p)("err",[this.#t(n),(0,j.z)()],void 0,r.D.jserrors,this.ee))})),this.ee.on("internal-error",(e=>{this.abortHandler&&(0,T.p)("ierr",[this.#t(e),(0,j.z)(),!0],void 0,r.D.jserrors,this.ee)})),l._A.addEventListener("unhandledrejection",(e=>{this.abortHandler&&(0,T.p)("err",[this.#r(e),(0,j.z)(),!1,{unhandledPromiseRejection:1}],void 0,r.D.jserrors,this.ee)}),(0,D.m$)(!1,this.removeOnAbort?.signal)),l._A.addEventListener("error",(e=>{this.abortHandler&&(this.#e.has(e.error)?this.#e.delete(e.error):(0,T.p)("err",[this.#n(e),(0,j.z)()],void 0,r.D.jserrors,this.ee))}),(0,D.m$)(!1,this.removeOnAbort?.signal)),this.abortHandler=this.#i,this.importAggregator()}#i(){this.removeOnAbort?.abort(),this.#e.clear(),this.abortHandler=void 0}#t(e){return e instanceof Error?e:void 0!==e?.message?new I(e.message,e.filename||e.sourceURL,e.lineno||e.line,e.colno||e.col):new I("string"==typeof e?e:(0,_.P)(e))}#r(e){let t="Unhandled Promise Rejection: ";if(e?.reason instanceof Error)try{return e.reason.message=t+e.reason.message,e.reason}catch(t){return e.reason}if(void 0===e.reason)return new I(t);const r=this.#t(e.reason);return r.message=t+r.message,r}#n(e){return e.error instanceof Error?e.error:new I(e.message,e.filename,e.lineno,e.colno)}}var H=i(2210);let z=1;const L="nr@id";function M(e){const t=typeof e;return!e||"object"!==t&&"function"!==t?-1:e===l._A?0:(0,H.X)(e,L,(function(){return z++}))}function F(e){if("string"==typeof e&&e.length)return e.length;if("object"==typeof e){if("undefined"!=typeof ArrayBuffer&&e instanceof ArrayBuffer&&e.byteLength)return e.byteLength;if("undefined"!=typeof Blob&&e instanceof Blob&&e.size)return e.size;if(!("undefined"!=typeof FormData&&e instanceof FormData))try{return(0,_.P)(e).length}catch(e){return}}}var B=i(1214),U=i(7243);class Z{constructor(e){this.agentIdentifier=e}generateTracePayload(e){if(!this.shouldGenerateTrace(e))return null;var t=(0,n.DL)(this.agentIdentifier);if(!t)return null;var r=(t.accountID||"").toString()||null,i=(t.agentID||"").toString()||null,o=(t.trustKey||"").toString()||null;if(!r||!i)return null;var a=(0,E.M)(),s=(0,E.Ht)(),c=Date.now(),u={spanId:a,traceId:s,timestamp:c};return(e.sameOrigin||this.isAllowedOrigin(e)&&this.useTraceContextHeadersForCors())&&(u.traceContextParentHeader=this.generateTraceContextParentHeader(a,s),u.traceContextStateHeader=this.generateTraceContextStateHeader(a,c,r,i,o)),(e.sameOrigin&&!this.excludeNewrelicHeader()||!e.sameOrigin&&this.isAllowedOrigin(e)&&this.useNewrelicHeaderForCors())&&(u.newrelicHeader=this.generateTraceHeader(a,s,c,r,i,o)),u}generateTraceContextParentHeader(e,t){return"00-"+t+"-"+e+"-01"}generateTraceContextStateHeader(e,t,r,n,i){return i+"@nr=0-1-"+r+"-"+n+"-"+e+"----"+t}generateTraceHeader(e,t,r,n,i,o){if(!("function"==typeof l._A?.btoa))return null;var a={v:[0,1],d:{ty:"Browser",ac:n,ap:i,id:e,tr:t,ti:r}};return o&&n!==o&&(a.d.tk=o),btoa((0,_.P)(a))}shouldGenerateTrace(e){return this.isDtEnabled()&&this.isAllowedOrigin(e)}isAllowedOrigin(e){var t=!1,r={};if((0,n.Mt)(this.agentIdentifier,"distributed_tracing")&&(r=(0,n.P_)(this.agentIdentifier).distributed_tracing),e.sameOrigin)t=!0;else if(r.allowed_origins instanceof Array)for(var i=0;i<r.allowed_origins.length;i++){var o=(0,U.e)(r.allowed_origins[i]);if(e.hostname===o.hostname&&e.protocol===o.protocol&&e.port===o.port){t=!0;break}}return t}isDtEnabled(){var e=(0,n.Mt)(this.agentIdentifier,"distributed_tracing");return!!e&&!!e.enabled}excludeNewrelicHeader(){var e=(0,n.Mt)(this.agentIdentifier,"distributed_tracing");return!!e&&!!e.exclude_newrelic_header}useNewrelicHeaderForCors(){var e=(0,n.Mt)(this.agentIdentifier,"distributed_tracing");return!!e&&!1!==e.cors_use_newrelic_header}useTraceContextHeadersForCors(){var e=(0,n.Mt)(this.agentIdentifier,"distributed_tracing");return!!e&&!!e.cors_use_tracecontext_headers}}var V=i(7825),q=["load","error","abort","timeout"],G=q.length,W=n.Yu.REQ,X=n.Yu.XHR;class Q extends f{static featureName=V.t;constructor(e,t){let i=!(arguments.length>2&&void 0!==arguments[2])||arguments[2];if(super(e,t,V.t,i),(0,n.OP)(e).xhrWrappable){this.dt=new Z(e),this.handler=(e,t,r,n)=>(0,T.p)(e,t,r,n,this.ee);try{const e={xmlhttprequest:"xhr",fetch:"fetch",beacon:"beacon"};l._A?.performance?.getEntriesByType("resource").forEach((t=>{if(t.initiatorType in e&&0!==t.responseStatus){const n={status:t.responseStatus},i={rxSize:t.transferSize,duration:Math.floor(t.duration),cbTime:0};K(n,t.name),this.handler("xhr",[n,i,t.startTime,t.responseEnd,e[t.initiatorType]],void 0,r.D.ajax)}}))}catch(e){}(0,B.u5)(this.ee),(0,B.Kf)(this.ee),function(e,t,i,o){function a(e){var t=this;t.totalCbs=0,t.called=0,t.cbTime=0,t.end=x,t.ended=!1,t.xhrGuids={},t.lastSize=null,t.loadCaptureCalled=!1,t.params=this.params||{},t.metrics=this.metrics||{},e.addEventListener("load",(function(r){E(t,e)}),(0,D.m$)(!1)),l.IF||e.addEventListener("progress",(function(e){t.lastSize=e.loaded}),(0,D.m$)(!1))}function s(e){this.params={method:e[0]},K(this,e[1]),this.metrics={}}function c(t,r){var i=(0,n.DL)(e);i.xpid&&this.sameOrigin&&r.setRequestHeader("X-NewRelic-ID",i.xpid);var a=o.generateTracePayload(this.parsedOrigin);if(a){var s=!1;a.newrelicHeader&&(r.setRequestHeader("newrelic",a.newrelicHeader),s=!0),a.traceContextParentHeader&&(r.setRequestHeader("traceparent",a.traceContextParentHeader),a.traceContextStateHeader&&r.setRequestHeader("tracestate",a.traceContextStateHeader),s=!0),s&&(this.dt=a)}}function u(e,r){var n=this.metrics,i=e[0],o=this;if(n&&i){var a=F(i);a&&(n.txSize=a)}this.startTime=(0,j.z)(),this.body=i,this.listener=function(e){try{"abort"!==e.type||o.loadCaptureCalled||(o.params.aborted=!0),("load"!==e.type||o.called===o.totalCbs&&(o.onloadCalled||"function"!=typeof r.onload)&&"function"==typeof o.end)&&o.end(r)}catch(e){try{t.emit("internal-error",[e])}catch(e){}}};for(var s=0;s<G;s++)r.addEventListener(q[s],this.listener,(0,D.m$)(!1))}function d(e,t,r){this.cbTime+=e,t?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof r.onload||"function"!=typeof this.end||this.end(r)}function f(e,t){var r=""+M(e)+!!t;this.xhrGuids&&!this.xhrGuids[r]&&(this.xhrGuids[r]=!0,this.totalCbs+=1)}function h(e,t){var r=""+M(e)+!!t;this.xhrGuids&&this.xhrGuids[r]&&(delete this.xhrGuids[r],this.totalCbs-=1)}function p(){this.endTime=(0,j.z)()}function g(e,r){r instanceof X&&"load"===e[0]&&t.emit("xhr-load-added",[e[1],e[2]],r)}function m(e,r){r instanceof X&&"load"===e[0]&&t.emit("xhr-load-removed",[e[1],e[2]],r)}function v(e,t,r){t instanceof X&&("onload"===r&&(this.onload=!0),("load"===(e[0]&&e[0].type)||this.onload)&&(this.xhrCbStart=(0,j.z)()))}function b(e,r){this.xhrCbStart&&t.emit("xhr-cb-time",[(0,j.z)()-this.xhrCbStart,this.onload,r],r)}function y(e){var t,r=e[1]||{};if("string"==typeof e[0]?0===(t=e[0]).length&&l.il&&(t=""+l._A.location.href):e[0]&&e[0].url?t=e[0].url:l._A?.URL&&e[0]&&e[0]instanceof URL?t=e[0].href:"function"==typeof e[0].toString&&(t=e[0].toString()),"string"==typeof t&&0!==t.length){t&&(this.parsedOrigin=(0,U.e)(t),this.sameOrigin=this.parsedOrigin.sameOrigin);var n=o.generateTracePayload(this.parsedOrigin);if(n&&(n.newrelicHeader||n.traceContextParentHeader))if(e[0]&&e[0].headers)s(e[0].headers,n)&&(this.dt=n);else{var i={};for(var a in r)i[a]=r[a];i.headers=new Headers(r.headers||{}),s(i.headers,n)&&(this.dt=n),e.length>1?e[1]=i:e.push(i)}}function s(e,t){var r=!1;return t.newrelicHeader&&(e.set("newrelic",t.newrelicHeader),r=!0),t.traceContextParentHeader&&(e.set("traceparent",t.traceContextParentHeader),t.traceContextStateHeader&&e.set("tracestate",t.traceContextStateHeader),r=!0),r}}function A(e,t){this.params={},this.metrics={},this.startTime=(0,j.z)(),this.dt=t,e.length>=1&&(this.target=e[0]),e.length>=2&&(this.opts=e[1]);var r,n=this.opts||{},i=this.target;"string"==typeof i?r=i:"object"==typeof i&&i instanceof W?r=i.url:l._A?.URL&&"object"==typeof i&&i instanceof URL&&(r=i.href),K(this,r);var o=(""+(i&&i instanceof W&&i.method||n.method||"GET")).toUpperCase();this.params.method=o,this.body=n.body,this.txSize=F(n.body)||0}function w(e,t){var n;this.endTime=(0,j.z)(),this.params||(this.params={}),this.params.status=t?t.status:0,"string"==typeof this.rxSize&&this.rxSize.length>0&&(n=+this.rxSize);var o={txSize:this.txSize,rxSize:n,duration:(0,j.z)()-this.startTime};i("xhr",[this.params,o,this.startTime,this.endTime,"fetch"],this,r.D.ajax)}function x(e){var t=this.params,n=this.metrics;if(!this.ended){this.ended=!0;for(var o=0;o<G;o++)e.removeEventListener(q[o],this.listener,!1);t.aborted||(n.duration=(0,j.z)()-this.startTime,this.loadCaptureCalled||4!==e.readyState?null==t.status&&(t.status=0):E(this,e),n.cbTime=this.cbTime,i("xhr",[t,n,this.startTime,this.endTime,"xhr"],this,r.D.ajax))}}function E(e,t){e.params.status=t.status;var r=function(e,t){var r=e.responseType;return"json"===r&&null!==t?t:"arraybuffer"===r||"blob"===r||"json"===r?F(e.response):"text"===r||""===r||void 0===r?F(e.responseText):void 0}(t,e.lastSize);if(r&&(e.metrics.rxSize=r),e.sameOrigin){var n=t.getResponseHeader("X-NewRelic-App-Data");n&&(e.params.cat=n.split(", ").pop())}e.loadCaptureCalled=!0}t.on("new-xhr",a),t.on("open-xhr-start",s),t.on("open-xhr-end",c),t.on("send-xhr-start",u),t.on("xhr-cb-time",d),t.on("xhr-load-added",f),t.on("xhr-load-removed",h),t.on("xhr-resolved",p),t.on("addEventListener-end",g),t.on("removeEventListener-end",m),t.on("fn-end",b),t.on("fetch-before-start",y),t.on("fetch-start",A),t.on("fn-start",v),t.on("fetch-done",w)}(e,this.ee,this.handler,this.dt),this.importAggregator()}}}function K(e,t){var r=(0,U.e)(t),n=e.params||e;n.hostname=r.hostname,n.port=r.port,n.protocol=r.protocol,n.host=r.hostname+":"+r.port,n.pathname=r.pathname,e.parsedOrigin=r,e.sameOrigin=r.sameOrigin}var Y=i(3614);const{BST_RESOURCE:J,RESOURCE:ee,START:te,END:re,FEATURE_NAME:ne,FN_END:ie,FN_START:oe,PUSH_STATE:ae}=Y;var se=i(7144);class ce extends f{static featureName=se.t;constructor(e,t){let r=!(arguments.length>2&&void 0!==arguments[2])||arguments[2];super(e,t,se.t,r),this.importAggregator()}}var ue=i(7836);const{FEATURE_NAME:de,START:le,END:fe,BODY:he,CB_END:pe,JS_TIME:ge,FETCH:me,FN_START:ve,CB_START:be,FN_END:ye}=ue;var Ae=i(4649);class we extends f{static featureName=Ae.t;constructor(e,t){let r=!(arguments.length>2&&void 0!==arguments[2])||arguments[2];super(e,t,Ae.t,r),this.importAggregator()}}new class extends t{constructor(t){let r=arguments.length>1&&void 0!==arguments[1]?arguments[1]:(0,E.ky)(16);super(),l._A?(this.agentIdentifier=r,this.sharedAggregator=new v({agentIdentifier:this.agentIdentifier}),this.features={},this.desiredFeatures=new Set(t.features||[]),this.desiredFeatures.add(p),Object.assign(this,(0,s.j)(this.agentIdentifier,t,t.loaderType||"agent")),this.run()):(0,e.Z)("Failed to initial the agent. Could not determine the runtime environment.")}get config(){return{info:(0,n.C5)(this.agentIdentifier),init:(0,n.P_)(this.agentIdentifier),loader_config:(0,n.DL)(this.agentIdentifier),runtime:(0,n.OP)(this.agentIdentifier)}}run(){const t="features";try{const n=a(this.agentIdentifier),i=[...this.desiredFeatures];i.sort(((e,t)=>r.p[e.featureName]-r.p[t.featureName])),i.forEach((t=>{if(n[t.featureName]||t.featureName===r.D.pageViewEvent){const i=function(e){switch(e){case r.D.ajax:return[r.D.jserrors];case r.D.sessionTrace:return[r.D.ajax,r.D.pageViewEvent];case r.D.sessionReplay:return[r.D.sessionTrace];case r.D.pageViewTiming:return[r.D.pageViewEvent];default:return[]}}(t.featureName);i.every((e=>n[e]))||(0,e.Z)("".concat(t.featureName," is enabled but one or more dependent features has been disabled (").concat((0,_.P)(i),"). This may cause unintended consequences or missing data...")),this.features[t.featureName]=new t(this.agentIdentifier,this.sharedAggregator)}})),(0,x.Qy)(this.agentIdentifier,this.features,t)}catch(r){(0,e.Z)("Failed to initialize all enabled instrument classes (agent aborted) -",r);for(const e in this.features)this.features[e].abortHandler?.();const n=(0,x.fP)();return delete n.initializedAgents[this.agentIdentifier]?.api,delete n.initializedAgents[this.agentIdentifier]?.[t],delete this.sharedAggregator,n.ee?.abort(),delete n.ee?.get(this.agentIdentifier),!1}}addToTrace(t){(0,e.Z)("Call to agent api addToTrace failed. The session trace feature is not currently initialized.")}setCurrentRouteName(t){(0,e.Z)("Call to agent api setCurrentRouteName failed. The spa feature is not currently initialized.")}interaction(){(0,e.Z)("Call to agent api interaction failed. The spa feature is not currently initialized.")}}({features:[Q,p,C,class extends f{static featureName=ne;constructor(e,t){if(super(e,t,ne,!(arguments.length>2&&void 0!==arguments[2])||arguments[2]),!l.il)return;const n=this.ee;let i;(0,B.QU)(n),this.eventsEE=(0,B.em)(n),this.eventsEE.on(oe,(function(e,t){this.bstStart=(0,j.z)()})),this.eventsEE.on(ie,(function(e,t){(0,T.p)("bst",[e[0],t,this.bstStart,(0,j.z)()],void 0,r.D.sessionTrace,n)})),n.on(ae+te,(function(e){this.time=(0,j.z)(),this.startPath=location.pathname+location.hash})),n.on(ae+re,(function(e){(0,T.p)("bstHist",[location.pathname+location.hash,this.startPath,this.time],void 0,r.D.sessionTrace,n)}));try{i=new PerformanceObserver((e=>{const t=e.getEntries();(0,T.p)(J,[t],void 0,r.D.sessionTrace,n)})),i.observe({type:ee,buffered:!0})}catch(e){}this.importAggregator({resourceObserver:i})}},ce,P,we,k,class extends f{static featureName=de;constructor(e,t){if(super(e,t,de,!(arguments.length>2&&void 0!==arguments[2])||arguments[2]),!l.il)return;if(!(0,n.OP)(e).xhrWrappable)return;try{this.removeOnAbort=new AbortController}catch(e){}let r,i=0;const o=this.ee.get("tracer"),a=(0,B._L)(this.ee),s=(0,B.Lg)(this.ee),c=(0,B.BV)(this.ee),u=(0,B.Kf)(this.ee),d=this.ee.get("events"),f=(0,B.u5)(this.ee),h=(0,B.QU)(this.ee),p=(0,B.Gm)(this.ee);function g(e,t){h.emit("newURL",[""+window.location,t])}function m(){i++,r=window.location.hash,this[ve]=(0,j.z)()}function v(){i--,window.location.hash!==r&&g(0,!0);var e=(0,j.z)();this[ge]=~~this[ge]+e-this[ve],this[ye]=e}function b(e,t){e.on(t,(function(){this[t]=(0,j.z)()}))}this.ee.on(ve,m),s.on(be,m),a.on(be,m),this.ee.on(ye,v),s.on(pe,v),a.on(pe,v),this.ee.buffer([ve,ye,"xhr-resolved"],this.featureName),d.buffer([ve],this.featureName),c.buffer(["setTimeout"+fe,"clearTimeout"+le,ve],this.featureName),u.buffer([ve,"new-xhr","send-xhr"+le],this.featureName),f.buffer([me+le,me+"-done",me+he+le,me+he+fe],this.featureName),h.buffer(["newURL"],this.featureName),p.buffer([ve],this.featureName),s.buffer(["propagate",be,pe,"executor-err","resolve"+le],this.featureName),o.buffer([ve,"no-"+ve],this.featureName),a.buffer(["new-jsonp","cb-start","jsonp-error","jsonp-end"],this.featureName),b(f,me+le),b(f,me+"-done"),b(a,"new-jsonp"),b(a,"jsonp-end"),b(a,"cb-start"),h.on("pushState-end",g),h.on("replaceState-end",g),window.addEventListener("hashchange",g,(0,D.m$)(!0,this.removeOnAbort?.signal)),window.addEventListener("load",g,(0,D.m$)(!0,this.removeOnAbort?.signal)),window.addEventListener("popstate",(function(){g(0,i>1)}),(0,D.m$)(!0,this.removeOnAbort?.signal)),this.abortHandler=this.#i,this.importAggregator()}#i(){this.removeOnAbort?.abort(),this.abortHandler=void 0}}],loaderType:"spa"})})()})();</script>
+  
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="white">
+
+
+
+
+
+
+
+      <title>Google Analytics Individual Qualification : Google</title>
+
+
+
+    <meta content="https://storage.googleapis.com/exceedlms-external-uploads-production/uploads/organizations/branding_logos/9/full/logo-google-fullcolor-3x-464x153px.png" property="og:image" />
+
+
+  <link rel="stylesheet" media="all" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i%7CLora:regular,italic,700,700i&subset=latin-ext" />
+
+  <link rel="stylesheet" media="all" href="/assets/google/all-e6e12330bf36e883dc3c0445b7354431ec499cda45f4bd8152fc9e11d309adca.css" />
+  <link rel="stylesheet" media="all" href="/theme/9-skillshop/1699700018/styles.css" />
+  
+
+  <meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="NdqLEnWfqEXIl6hVD+2pmm7rHsvQelVr+A5UNVpsJelkgcEg3hcvEH/GnNUlPnYj+XtKlXpqoWRD4rApggsRnw==" />
+
+    <meta name="twitter:card" content="summary" />
+<meta property="og:title" content="Google Analytics Individual Qualification" />
+<meta property="og:url" content="https://skillshop.exceedlms.com/student/path/2938-google-analytics-individual-qualification" />
+  <meta property="og:image" content="https://storage.googleapis.com/exceedlms-external-uploads-production/uploads/resource_course_pictures/targets/230103/w550/analytics-cover-art.png" />
+<meta property="og:site_name" content="Google" />
+
+
+<meta name="description" property="og:description" content="This exam covers Universal Analytics. See this exam that covers GA4, the latest version of Google Analytics
+
+The Google Analytics Individual Qualification covers basic and advanced Universal Analytics concepts. This includes: planning and principles; implementation and data collection; configuration and administration; conversion and attribution; and reports, metrics, and dimensions.
+" />
+<meta name="keywords" property="og:keywords" content="" />
+  <meta property="og:author" content="Skillshop" />
+  <meta property="exceed:course_type" content="CourseCurriculum" />
+  <meta property="exceed:embeddable" content="false" />
+    <meta property="og:article:tag" content="Universal Analytics" />
+    <meta property="og:article:tag" content="Google Analytics" />
+<meta property="og:locale" content="en" />
+
+    <link rel="alternate" hreflang="pl" href="https://skillshop.exceedlms.com/student/path/2957-kwalifikacja-indywidualna-google-analytics" />
+    <link rel="alternate" hreflang="cs" href="https://skillshop.exceedlms.com/student/path/10229-individualni-kvalifikace-google-analytics" />
+    <link rel="alternate" hreflang="zh-CN" href="https://skillshop.exceedlms.com/student/path/2965-google-analytics" />
+    <link rel="alternate" hreflang="pt-PT" href="https://skillshop.exceedlms.com/student/path/2926-google-analytics-individual-qualification" />
+    <link rel="alternate" hreflang="ja" href="https://skillshop.exceedlms.com/student/path/2949-google-gaiq" />
+    <link rel="alternate" hreflang="sk" href="https://skillshop.exceedlms.com/student/path/10263-google-analytics-individual-qualification" />
+    <link rel="alternate" hreflang="th" href="https://skillshop.exceedlms.com/student/path/2959-google-analytics-individual-qualification" />
+    <link rel="alternate" hreflang="vi" href="https://skillshop.exceedlms.com/student/path/2961-google-analytics-individual-qualification" />
+    <link rel="alternate" hreflang="nl" href="https://skillshop.exceedlms.com/student/path/2951-google-analytics-individual-qualification" />
+    <link rel="alternate" hreflang="zh-TW" href="https://skillshop.exceedlms.com/student/path/2930-google-analytics" />
+    <link rel="alternate" hreflang="tr" href="https://skillshop.exceedlms.com/student/path/2953-google-analytics-individual-qualification" />
+    <link rel="alternate" hreflang="it" href="https://skillshop.exceedlms.com/student/path/2955-google-analytics-individual-qualification" />
+    <link rel="alternate" hreflang="ru" href="https://skillshop.exceedlms.com/student/path/2943-google-analytics-individual-qualification" />
+    <link rel="alternate" hreflang="pt-BR" href="https://skillshop.exceedlms.com/student/path/2928-google-analytics-individual-qualification" />
+    <link rel="alternate" hreflang="ko" href="https://skillshop.exceedlms.com/student/path/2963-google-individual-qualification" />
+    <link rel="alternate" hreflang="de" href="https://skillshop.exceedlms.com/student/path/2945-google-analytics-individuelle-qualifikation" />
+    <link rel="alternate" hreflang="fr" href="https://skillshop.exceedlms.com/student/path/2947-certification-google-analytics-individual-qualification" />
+    <link rel="alternate" hreflang="es-419" href="https://skillshop.exceedlms.com/student/path/2932-google-analytics-individual-qualification" />
+    <link rel="alternate" hreflang="en-GB" href="https://skillshop.exceedlms.com/student/path/2940-google-analytics-individual-qualification" />
+    <link rel="alternate" hreflang="es" href="https://skillshop.exceedlms.com/student/path/2934-google-analytics-individual-qualification" />
+    <link rel="alternate" hreflang="en" href="https://skillshop.exceedlms.com/student/path/2938-google-analytics-individual-qualification" />
+
+    <link rel="canonical" href="https://skillshop.exceedlms.com/student/path/2938-google-analytics-individual-qualification" />
+
+  <script type="application/ld+json">
+    {"@context":"http://schema.org","@type":"Course","inLanguage":"en","isAccessibleForFree":true,"courseCode":"GP-GA-LP01-EN","coursePrerequisites":"none","name":"Google Analytics Individual Qualification","description":"This exam covers Universal Analytics. See this exam that covers GA4, the latest version of Google Analytics\r\n\r\nThe Google Analytics Individual Qualification covers basic and advanced Universal Analytics concepts. This includes: planning and principles; implementation and data collection; configuration and administration; conversion and attribution; and reports, metrics, and dimensions.\r\n","keywords":["Universal Analytics","Google Analytics"],"image":"https://storage.googleapis.com/exceedlms-external-uploads-production/uploads/resource_course_pictures/targets/230103/w550/analytics-cover-art.png","url":"https://skillshop.exceedlms.com/student/path/2938-google-analytics-individual-qualification","datePublished":"14.09.2017","provider":{"@type":"Organization","name":"Skillshop"},"aggregateRating":{"@type":"AggregateRating","ratingValue":4.791754201680672,"reviewCount":3808}}
+  </script>
+
+
+
+  
+
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push(
+      {'user_id': null}
+    );
+    window.dataLayer.push({'cluster': "google_external"});
+      window.dataLayer.push(
+        { 'course_id': 2938 },
+        { 'enrollment_id': },
+        { 'course_type': 'CourseCurriculum' },
+        { 'course_subtype': null },
+        { 'is_enrolled': true }
+      );
+    window.dataLayer.push({'environment': "production"})
+</script>
+
+  <script>
+    window.IntellumDataLayer = window.IntellumDataLayer || {"account":{"id":1001,"name":"Google"},"organization":{"id":9,"code":"skillshop-org","name":"Skillshop"},"user":null,"course":{"id":2938,"code":"GP-GA-LP01-EN","name":"Google Analytics Individual Qualification","author":"Skillshop","locale":"en","type":"CourseCurriculum","subtype":null,"price":null,"due_within":null,"completion_type":null,"duration":12600,"published_on":"2017-09-14","require_purchase":false,"version_number":6,"is_versioned":true,"custom_a":"Analytics","custom_b":"","custom_c":"GP-GA-LP01-EN","custom_d":"Google Partners","custom_e":"Chris Jennings","custom_f":null,"custom_g":null,"custom_h":"Mastery","custom_i":null,"custom_j":"gp-ga1","taxonomy_tags":null,"categories":[{"id":540,"code":"st-analytics-ga-en","name":"Universal Analytics"},{"id":1173,"code":"t-analytics-ga-en","name":"Google Analytics"}],"difficulty":"Intermediate","review_average":4.8,"reviews_count":3808},"course_session":null,"enrollment":{"id":null,"code":null,"started_on":null,"enrolled_on":null,"due_on":null,"expires_on":null,"completed_on":null,"last_opened_on":null,"status":"in-progress","relationship_type":"recommended"},"page_type":"course","search":null};
+</script>
+
+  
+
+
+
+  <!-- Intellum GA4 script -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9QZZZPK0JH"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-9QZZZPK0JH');
+  </script>
+
+  <script>
+    window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+
+        ga('create', 'UA-45326746-3', 'auto', {'name': 'intellumTracker'});
+    ga('intellumTracker.set', 'anonymizeIp', true);
+    ga('intellumTracker.send', 'pageview');
+  </script>
+  <script type="text/javascript" async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+  
+
+  
+  
+
+
+
+
+</head>
+
+<body class="body--logged-out" data-controller="tree_activity" data-action="show" data-custom-ui="google">
+
+  
+
+    <!-- Google Tag Manager --> 
+  <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-MC449H"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+  <script type="text/javascript" >(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MC449H');</script>
+  <!-- End Google Tag Manager -->
+
+
+
+  <a href="#main" class="skip2content">
+    Skip to main content
+  </a>
+      
+  <div id="gdpr-consent" class="consent u-orgcolor--bg">
+  <div class="consent__content">
+    <span class="consent__text">This site uses cookies to provide you with a greater user experience. By using Exceed LMS, you accept our <a href='https://www.intellum.com/privacy-policy' target='_BLANK' class='whatsnew__link'>use of cookies</a>.</span>
+  </div>
+  <div class="consent__actions">
+    <button type="button" id="gdpr-consent__button" class="consent__close" aria-label="Close">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35 35" aria-hidden="true" class="consent__icon btnicon" focusable="false">
+  <g aria-hidden="true" fill="currentColor">
+    <path d="M11.84,24.57 L24.57,11.84 L23.16,10.43 L10.43,23.16 z"></path>
+    <path d="M10.43,11.84 L23.16,24.57 L24.57,23.16 L11.84,10.43 z"></path>
+  </g>
+</svg>
+
+    </button>
+  </div>
+</div>
+
+
+
+
+<div class="appheader appheader--exceed u-org--header">
+
+  <div class="appheader__navigation">
+
+    <div class="appheader__section appheader__section--title u-org--header">
+
+        <exceed-nav-menu trigger-el-selector=".appheader__button--appnavmobile" menu-el-selector=".appnav--mobile" menu-visible-class="appnav--mobilevisible" option-el-selector=".navmenu__option">
+          <button type="button" class="appheader__button appheader__button--appnavmobile u-org--header" aria-label="Toggle Navigation">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35 35" aria-hidden="true" class="appheader__icon" focusable="false">
+  <path aria-hidden="true" d="M8.5 23.5h18v-2h-18v2zm0-5h18v-2h-18v2zm0-7v2h18v-2h-18z" fill="currentColor"></path>
+  <path aria-hidden="true" fill="none" d="M0 0h35v35H0z"></path>
+</svg>
+
+          </button>
+
+          <nav class="appnav appnav--mobile">
+              <div class="appheader__categories appheader__categories--mobile">
+                <div class="appheader__categoriesbuttoncontainer--mobile navmenu__option">
+                  <button name="button" type="button" class="button button--toggle appheader__categoriesbutton appheader__categoriesbutton--mobile" data-trigger="modal.open" data-trigger-target="mobile-categories-menu-modal">
+                    Topics
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" class="button__icon button__icon--toggle" focusable="false">
+  <g aria-hidden="true" fill="currentColor">
+    <path d="M18.6,16.4L12,9.8l-6.6,6.6L4,15l8-8l8,8L18.6,16.4z"></path>
+  </g>
+</svg>
+
+</button>                </div>
+              </div>
+
+            <ul class="appnav__list--mobile">
+                <li class="navmenu__listitem--mobile navmenu__option">
+      <a class="appnav__link appnav__link--mobile" href="/student/catalog">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" class="appnav__icon appnav__icon--left" focusable="false">
+  <g aria-hidden="true" fill="currentColor">
+    <path d="M12,3L4,9v12h16V9L12,3z M18,19h-3v-6H9v6H6v-9l6-4.5l6,4.5V19z"></path>
+  </g>
+</svg>
+
+          <span class="appnav__label">
+            Home
+          </span>
+</a></li>  <li class="navmenu__listitem--mobile navmenu__option">
+      <a class="appnav__link appnav__link--mobile" target="_blank" href="https://support.google.com/skillshop">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" class="appnav__icon appnav__icon--left" focusable="false">
+  <g aria-hidden="true" fill="currentColor">
+    <path d="M11,18h2v-2h-2V18z M12,2C6.48,2,2,6.48,2,12s4.48,10,10,10s10-4.48,10-10S17.52,2,12,2z M12,20c-4.41,0-8-3.59-8-8   s3.59-8,8-8s8,3.59,8,8S16.41,20,12,20z M12,6c-2.21,0-4,1.79-4,4h2c0-1.1,0.9-2,2-2s2,0.9,2,2c0,2-3,1.75-3,5h2c0-2.25,3-2.5,3-5   C16,7.79,14.21,6,12,6z"></path>
+  </g>
+</svg>
+
+          <span class="appnav__label">
+            Help Center
+          </span>
+</a></li>  <li class="navmenu__listitem--mobile navmenu__option">
+      <a class="appnav__link appnav__link--mobile" href="/student/catalog/browse">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" class="appnav__icon appnav__icon--left" focusable="false">
+  <g aria-hidden="true" fill="currentColor">
+    <path d="M19,5v4H5V5H19 M20,3H4C3.448,3,3,3.448,3,4v6c0,0.552,0.448,1,1,1h16c0.552,0,1-0.448,1-1V4C21,3.448,20.552,3,20,3L20,3z"></path>
+  <path d="M19,15v4H5v-4H19 M20,13H4c-0.552,0-1,0.448-1,1v6c0,0.552,0.448,1,1,1h16c0.552,0,1-0.448,1-1v-6   C21,13.448,20.552,13,20,13L20,13z"></path>
+  </g>
+</svg>
+
+          <span class="appnav__label">
+            Browse
+          </span>
+</a></li>  <li class="navmenu__listitem--mobile navmenu__option">
+      <button name="button" type="submit" class="appnav__link appnav__link--mobile" role="button" data-behavior="show.dialog" data-dialog-url="/student/authentication/public_modal" aria-label="Log In to Continue">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" class="appnav__icon appnav__icon--left" focusable="false">
+  <g aria-hidden="true" fill="currentColor">
+    <path d="M20.5,3l-0.16,0.03L15,5.1L9,3L3.36,4.9C3.15,4.97,3,5.15,3,5.38V20.5C3,20.78,3.22,21,3.5,21l0.16-0.03L9,18.9l6,2.1   l5.64-1.9c0.21-0.07,0.36-0.25,0.36-0.48V3.5C21,3.22,20.78,3,20.5,3z M10,5.47l4,1.4v11.66l-4-1.4V5.47z M5,6.46l3-1.01v11.7   l-3,1.16V6.46z M19,17.54l-3,1.01V6.86l3-1.16V17.54z"></path>
+  </g>
+</svg>
+
+        <span class="appnav__label">Plan</span>
+</button></li>  <li class="navmenu__listitem--mobile navmenu__option">
+      <a class="appnav__link appnav__link--mobile" href="/student/page/995423-certifications?navlink=true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" class="appnav__icon appnav__icon--left" focusable="false">
+  <g aria-hidden="true" fill="currentColor">
+		<path d="M19,5h-2V4c0-0.552-0.448-1-1-1H8C7.448,3,7,3.448,7,4v1H5C3.9,5,3,5.9,3,7v1c0,2.55,1.92,4.63,4.39,4.94    c0.63,1.5,1.98,2.63,3.61,2.96V19H8c-0.552,0-1,0.448-1,1v0c0,0.552,0.448,1,1,1h8c0.552,0,1-0.448,1-1v0c0-0.552-0.448-1-1-1h-3    v-3.1c1.63-0.33,2.98-1.46,3.61-2.96C19.08,12.63,21,10.55,21,8V7C21,5.9,20.1,5,19,5z M5,8V7h2v3.82C5.84,10.4,5,9.3,5,8z M12,14    c-1.65,0-3-1.35-3-3V5h6v6C15,12.65,13.65,14,12,14z M19,8c0,1.3-0.84,2.4-2,2.82V7h2V8z"></path>
+	</g>
+</svg>
+
+          <span class="appnav__label">
+            Certifications
+          </span>
+</a></li>
+
+            </ul>
+
+          </nav>
+        </exceed-nav-menu>
+
+        <a class="appheader__titlelink u-org--header" href="/"><img class="appheader__titleimage" alt="Google" src="https://storage.googleapis.com/exceedlms-external-uploads-production/uploads/organizations/branding_logos/9/full/logo-google-fullcolor-3x-464x153px.png?GoogleAccessId=GOOG1EIO7LXRUFV35UXSWKJ3AWMYHZUVNMYIAMGSBIFYEF2AMYYAY4Y4Y5PKA&amp;Signature=l7jE4z%2FRvgJVeCfvVW3ysWLEPjY%3D&amp;Expires=1699829899" /></a>
+
+        <nav class="appnav appnav--text">
+          <exceed-nav-text>
+            <ul class="appnav__list">
+                  <li class="appnav__listitem appnav__listitem--text">
+      <a class="appnav__link appnav__link--text u-org--header u-orgcolor--borderhover" href="/student/catalog">
+          Home
+</a></li>  <li class="appnav__listitem appnav__listitem--text">
+      <a class="appnav__link appnav__link--text u-org--header u-orgcolor--borderhover" target="_blank" href="https://support.google.com/skillshop">
+          Help Center
+</a></li>  <li class="appnav__listitem appnav__listitem--text">
+      <a class="appnav__link appnav__link--text u-org--header u-orgcolor--borderhover" href="/student/catalog/browse">
+          Browse
+</a></li>  <li class="appnav__listitem appnav__listitem--text">
+        <button name="button" type="submit" class="appnav__link appnav__link--text u-org--header u-orgcolor--borderhover" role="button" data-behavior="show.dialog" data-dialog-id="public-login-dialog" data-dialog-url="/student/authentication/public_modal">
+            Plan
+</button></li>  <li class="appnav__listitem appnav__listitem--text">
+      <a class="appnav__link appnav__link--text u-org--header u-orgcolor--borderhover" href="/student/page/995423-certifications?navlink=true">
+          Certifications
+</a></li>
+                <li class="appnav__listitem" hidden>
+                  <exceed-nav-menu class="navmenu">
+                    <button name="button" type="button" role="button" class="appnav__link appnav__link--more navmenu__trigger u-org--header" aria-haspopup="true" aria-expanded="false" aria-label="More">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" aria-hidden="true" class="appnav__icon" focusable="false">
+  <g aria-hidden="true" fill="currentColor">
+    <path d="M9,6c0.825,0,1.5-0.675,1.5-1.5S9.825,3,9,3S7.5,3.675,7.5,4.5S8.175,6,9,6z M9,7.5C8.175,7.5,7.5,8.175,7.5,9s0.675,1.5,1.5,1.5s1.5-0.675,1.5-1.5S9.825,7.5,9,7.5z M9,12c-0.825,0-1.5,0.675-1.5,1.5S8.175,15,9,15s1.5-0.675,1.5-1.5     S9.825,12,9,12z"></path>
+  </g>
+</svg>
+
+</button>                    <ul class="appnav__sublist navmenu__menu"></ul>
+                  </exceed-nav-menu>
+                </li>
+            </ul>
+</exceed-nav-text>        </nav>
+    </div>
+
+    <div class="appheader__section u-org--header">
+          <exceed-nav-menu class="appheader__search"
+            trigger-el-selector=".appheader__searchbutton"
+            blur-trigger-el-selector=".appsearch__backdrop"
+            menu-el-selector=".appheader__searchmenu"
+            menu-visible-class="appheader__searchmenu--visible"
+            trigger-active-class="appheader__searchbutton--active"
+            dynamic-content-container-selector=".appsearch__recommendations"
+            dynamic-content-endpoint="/student/catalog/recommend_for_user"
+            is-dynamic-content-delayed="true"
+          >
+            <button
+              class="button button--toggle appheader__searchbutton u-org--header"
+              aria-haspopup="true"
+              aria-expanded="false"
+              data-object-name="header_search"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true" class="appheader__icon appheader__icon--searchbuttonicon appheader__searchbuttonicon--inactive" focusable="false">
+  <g aria-hidden="true" fill="currentColor">
+    <path d="M13.935,9.25 C16.243,9.252 18.229,10.885 18.677,13.149 C19.126,15.413 17.914,17.679 15.781,18.562 C13.648,19.445 11.189,18.699 9.906,16.78 C8.623,14.861 8.874,12.303 10.505,10.67 C11.412,9.757 12.648,9.245 13.935,9.25 M13.935,8.25 C11.149,8.25 8.751,10.219 8.208,12.952 C7.665,15.684 9.128,18.42 11.702,19.486 C14.276,20.552 17.245,19.651 18.792,17.334 C20.34,15.017 20.035,11.93 18.065,9.96 C16.97,8.864 15.484,8.249 13.935,8.25 L13.935,8.25 z"></path>
+    <path d="M23.425,23.75 C23.293,23.748 23.167,23.694 23.075,23.6 L17.885,18.41 C17.689,18.214 17.689,17.896 17.885,17.7 C18.081,17.504 18.399,17.504 18.595,17.7 L23.785,22.89 C23.934,23.033 23.979,23.253 23.899,23.443 C23.82,23.634 23.631,23.755 23.425,23.75 z"></path>
+  </g>
+</svg>
+
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" aria-hidden="true" class="appheader__icon appheader__icon--searchbuttonicon appheader__searchbuttonicon--active" focusable="false">
+  <g fill="currentColor" aria-hidden="true">
+    <path d="M8 0.5C3.8525 0.5 0.5 3.8525 0.5 8C0.5 12.1475 3.8525 15.5 8 15.5C12.1475 15.5 15.5 12.1475 15.5 8C15.5 3.8525 12.1475 0.5 8 0.5ZM11.75 10.6925L10.6925 11.75L8 9.0575L5.3075 11.75L4.25 10.6925L6.9425 8L4.25 5.3075L5.3075 4.25L8 6.9425L10.6925 4.25L11.75 5.3075L9.0575 8L11.75 10.6925Z"></path>
+  </g>
+</svg>
+
+              <span class="appheader__searchbuttontext">Search</span>
+            </button>
+              <div class="appheader__searchmenu">
+                <div class="appsearch appsearch--menu">
+                  <form class="appsearch__form  appsearch__form--menu" action="/student/catalog/list">
+                    <input type="search" name="search" id="app-search"
+                      class="appsearch__input"
+                      placeholder="Search..."
+                      value=""
+                      aria-label="Search"
+                      data-search-path="/student/catalog/list"
+                      data-is-menu-focus="true"
+                    />
+                  </form>
+                  <div class="appsearch__recommendations"></div>
+                </div>
+                <div class="appsearch__backdrop"></div>
+              </div>
+         </exceed-nav-menu>
+
+        <exceed-nav-menu class="appheader__categories" trigger-el-selector=".button--toggle" menu-el-selector=".categoriesmenu" menu-visible-class="categoriesmenu--visible">
+          <button name="button" type="button" class="button button--toggle appheader__categoriesbutton u-org--header" aria-haspopup="true" aria-expanded="false" data-object-name="topics_filter">
+            Topics
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" class="button__icon button__icon--toggle" focusable="false">
+  <g aria-hidden="true" fill="currentColor">
+    <path d="M18.6,16.4L12,9.8l-6.6,6.6L4,15l8-8l8,8L18.6,16.4z"></path>
+  </g>
+</svg>
+
+</button>          <div class="categoriesmenu">
+  <section class="categoriesmenu__wrap">
+          <div id="categoriesmenu-aside-53" class="categoriesmenu__aside">
+              <exceed-toggle-button
+                trigger-selector="#categoriesmenu-53-back"
+                target-selector="#categoriesmenu-aside-53"
+                target-focus="#categoriesmenu-53-select"
+                trigger-toggle-class="current"
+                toggle-class="categoriesmenu__aside--current">
+                <button
+                  type="button"
+                  id="categoriesmenu-aside-53-back"
+                  class="button button--link categoriesmenu__back"
+                  aria-controls="categoriesmenu-aside-53">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35 35" aria-hidden="true" class="categoriesmenu__icon categoriesmenu__icon--offset" focusable="false">
+  <g aria-hidden="true" fill="currentColor">
+    <path d="M20.185,23.86 L21.245,22.8 L15.885,17.45 L21.155,12.2 L20.095,11.14 L13.755,17.46 L20.185,23.86 z"></path>
+  </g>
+</svg>
+
+                  All Topics
+                </button>
+              </exceed-toggle-button>
+            <div class="categoriesmenu__heading">
+              <a href="/student/catalog/list?category_ids=53-google-ads">Google Ads</a>
+            </div>
+            <ul class="categoriesmenu__list">
+                <li class="categoriesmenu__listitem">
+                  <a class="categoriesmenu__name" href="/student/catalog/list?category_ids=2844-google-ads-certifications">Google Ads Certifications</a>
+                </li>
+                <li class="categoriesmenu__listitem">
+                  <a class="categoriesmenu__name" href="/student/catalog/list?category_ids=6482-ai-powered-ads">AI-Powered Ads</a>
+                </li>
+                <li class="categoriesmenu__listitem">
+                  <a class="categoriesmenu__name" href="/student/catalog/list?category_ids=4597-apply-your-google-ads-knowledge">Apply your Google Ads knowledge</a>
+                </li>
+                <li class="categoriesmenu__listitem">
+                  <a class="categoriesmenu__name" href="/student/catalog/list?category_ids=4304-build-upon-your-google-ads-expertise">Build Upon Your Google Ads Expertise</a>
+                </li>
+                <li class="categoriesmenu__listitem">
+                  <a class="categoriesmenu__name" href="/student/catalog/list?category_ids=313-google-ads-search">Google Ads Search</a>
+                </li>
+                <li class="categoriesmenu__listitem">
+                  <a class="categoriesmenu__name" href="/student/catalog/list?category_ids=4997-google-ads-discovery">Google Ads Discovery</a>
+                </li>
+                <li class="categoriesmenu__listitem">
+                  <a class="categoriesmenu__name" href="/student/catalog/list?category_ids=311-google-ads-display">Google Ads Display</a>
+                </li>
+                <li class="categoriesmenu__listitem">
+                  <a class="categoriesmenu__name" href="/student/catalog/list?category_ids=315-google-ads-video">Google Ads Video</a>
+                </li>
+                <li class="categoriesmenu__listitem">
+                  <a class="categoriesmenu__name" href="/student/catalog/list?category_ids=314-shopping-ads">Shopping Ads</a>
+                </li>
+                <li class="categoriesmenu__listitem">
+                  <a class="categoriesmenu__name" href="/student/catalog/list?category_ids=2823-google-ads-measurement">Google Ads - Measurement</a>
+                </li>
+                <li class="categoriesmenu__listitem">
+                  <a class="categoriesmenu__name" href="/student/catalog/list?category_ids=3926-google-ads-apps">Google Ads Apps</a>
+                </li>
+                <li class="categoriesmenu__listitem">
+                  <a class="categoriesmenu__name" href="/student/catalog/list?category_ids=4693-mobile">Mobile</a>
+                </li>
+                <li class="categoriesmenu__listitem">
+                  <a class="categoriesmenu__name" href="/student/catalog/list?category_ids=5373-smart-campaigns">Smart Campaigns</a>
+                </li>
+                <li class="categoriesmenu__listitem">
+                  <a class="categoriesmenu__name" href="/student/catalog/list?category_ids=5445-google-academy-on-air">Google Academy on Air</a>
+                </li>
+                <li class="categoriesmenu__listitem">
+                  <a class="categoriesmenu__name" href="/student/catalog/list?category_ids=5776-google-ads-tutorial-series">Google Ads Tutorial Series</a>
+                </li>
+                <li class="categoriesmenu__listitem">
+                  <a class="categoriesmenu__name" href="/student/catalog/list?category_ids=6512-privacy">Privacy</a>
+                </li>
+                <li class="categoriesmenu__listitem">
+                  <a class="categoriesmenu__name" href="/student/catalog/list?category_ids=6718-get-to-know-google-solutions">Get to Know Google Solutions</a>
+                </li>
+                <li class="categoriesmenu__listitem">
+                  <a class="categoriesmenu__name" href="/student/catalog/list?category_ids=7364-grow-offline-sales">Grow Offline Sales</a>
+                </li>
+                <li class="categoriesmenu__listitem">
+                  <a class="categoriesmenu__name" href="/student/catalog/list?category_ids=7401-google-insights">Google Insights</a>
+                </li>
+            </ul>
+          </div>
+          <div id="categoriesmenu-aside-2559" class="categoriesmenu__aside">
+              <exceed-toggle-button
+                trigger-selector="#categoriesmenu-2559-back"
+                target-selector="#categoriesmenu-aside-2559"
+                target-focus="#categoriesmenu-2559-select"
+                trigger-toggle-class="current"
+                toggle-class="categoriesmenu__aside--current">
+                <button
+                  type="button"
+                  id="categoriesmenu-aside-2559-back"
+                  class="button button--link categoriesmenu__back"
+                  aria-controls="categoriesmenu-aside-2559">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35 35" aria-hidden="true" class="categoriesmenu__icon categoriesmenu__icon--offset" focusable="false">
+  <g aria-hidden="true" fill="currentColor">
+    <path d="M20.185,23.86 L21.245,22.8 L15.885,17.45 L21.155,12.2 L20.095,11.14 L13.755,17.46 L20.185,23.86 z"></path>
+  </g>
+</svg>
+
+                  All Topics
+                </button>
+              </exceed-toggle-button>
+            <div class="categoriesmenu__heading">
+              <a href="/student/catalog/list?category_ids=2559-google-for-education">Google for Education</a>
+            </div>
+            <ul class="categoriesmenu__list">
+                <li class="categoriesmenu__listitem">
+                  <a class="categoriesmenu__name" href="/student/catalog/list?category_ids=9070-for-educators">For Educators</a>
+                </li>
+                <li class="categoriesmenu__listitem">
+                  <a class="categoriesmenu__name" href="/student/catalog/list?category_ids=9071-for-it-admins">For IT Admins</a>
+                </li>
+            </ul>
+          </div>
+          <div id="categoriesmenu-aside-86" class="categoriesmenu__aside">
+              <exceed-toggle-button
+                trigger-selector="#categoriesmenu-86-back"
+                target-selector="#categoriesmenu-aside-86"
+                target-focus="#categoriesmenu-86-select"
+                trigger-toggle-class="current"
+                toggle-class="categoriesmenu__aside--current">
+                <button
+                  type="button"
+                  id="categoriesmenu-aside-86-back"
+                  class="button button--link categoriesmenu__back"
+                  aria-controls="categoriesmenu-aside-86">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35 35" aria-hidden="true" class="categoriesmenu__icon categoriesmenu__icon--offset" focusable="false">
+  <g aria-hidden="true" fill="currentColor">
+    <path d="M20.185,23.86 L21.245,22.8 L15.885,17.45 L21.155,12.2 L20.095,11.14 L13.755,17.46 L20.185,23.86 z"></path>
+  </g>
+</svg>
+
+                  All Topics
+                </button>
+              </exceed-toggle-button>
+            <div class="categoriesmenu__heading">
+              <a href="/student/catalog/list?category_ids=86-google-marketing-platform">Google Marketing Platform</a>
+            </div>
+            <ul class="categoriesmenu__list">
+                <li class="categoriesmenu__listitem">
+                  <a class="categoriesmenu__name" href="/student/catalog/list?category_ids=707-google-marketing-platform-certification-exams">Google Marketing Platform Certification Exams</a>
+                </li>
+                <li class="categoriesmenu__listitem">
+                  <a class="categoriesmenu__name" href="/student/catalog/list?category_ids=316-display-video-360">Display &amp; Video 360</a>
+                </li>
+                <li class="categoriesmenu__listitem">
+                  <a class="categoriesmenu__name" href="/student/catalog/list?category_ids=319-search-ads-360">Search Ads 360</a>
+                </li>
+                <li class="categoriesmenu__listitem">
+                  <a class="categoriesmenu__name" href="/student/catalog/list?category_ids=317-campaign-manager-360">Campaign Manager 360</a>
+                </li>
+                <li class="categoriesmenu__listitem">
+                  <a class="categoriesmenu__name" href="/student/catalog/list?category_ids=684-creative">Creative</a>
+                </li>
+                <li class="categoriesmenu__listitem">
+                  <a class="categoriesmenu__name" href="/student/catalog/list?category_ids=169-google-web-designer">Google Web Designer</a>
+                </li>
+                <li class="categoriesmenu__listitem">
+                  <a class="categoriesmenu__name" href="/student/catalog/list?category_ids=682-programmatic-concepts">Programmatic concepts</a>
+                </li>
+                <li class="categoriesmenu__listitem">
+                  <a class="categoriesmenu__name" href="/student/catalog/list?category_ids=683-mobile">Mobile</a>
+                </li>
+                <li class="categoriesmenu__listitem">
+                  <a class="categoriesmenu__name" href="/student/catalog/list?category_ids=5794-about-google-marketing-platform">About Google Marketing Platform</a>
+                </li>
+                <li class="categoriesmenu__listitem">
+                  <a class="categoriesmenu__name" href="/student/catalog/list?category_ids=6513-privacy">Privacy</a>
+                </li>
+                <li class="categoriesmenu__listitem">
+                  <a class="categoriesmenu__name" href="/student/catalog/list?category_ids=6719-get-to-know-google-solutions">Get to Know Google Solutions</a>
+                </li>
+                <li class="categoriesmenu__listitem">
+                  <a class="categoriesmenu__name" href="/student/catalog/list?category_ids=7546-studio">Studio</a>
+                </li>
+            </ul>
+          </div>
+          <div id="categoriesmenu-aside-1173" class="categoriesmenu__aside">
+              <exceed-toggle-button
+                trigger-selector="#categoriesmenu-1173-back"
+                target-selector="#categoriesmenu-aside-1173"
+                target-focus="#categoriesmenu-1173-select"
+                trigger-toggle-class="current"
+                toggle-class="categoriesmenu__aside--current">
+                <button
+                  type="button"
+                  id="categoriesmenu-aside-1173-back"
+                  class="button button--link categoriesmenu__back"
+                  aria-controls="categoriesmenu-aside-1173">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35 35" aria-hidden="true" class="categoriesmenu__icon categoriesmenu__icon--offset" focusable="false">
+  <g aria-hidden="true" fill="currentColor">
+    <path d="M20.185,23.86 L21.245,22.8 L15.885,17.45 L21.155,12.2 L20.095,11.14 L13.755,17.46 L20.185,23.86 z"></path>
+  </g>
+</svg>
+
+                  All Topics
+                </button>
+              </exceed-toggle-button>
+            <div class="categoriesmenu__heading">
+              <a href="/student/catalog/list?category_ids=1173-google-analytics">Google Analytics</a>
+            </div>
+            <ul class="categoriesmenu__list">
+                <li class="categoriesmenu__listitem">
+                  <a class="categoriesmenu__name" href="/student/catalog/list?category_ids=6431-google-analytics-4">Google Analytics 4</a>
+                </li>
+                <li class="categoriesmenu__listitem">
+                  <a class="categoriesmenu__name" href="/student/catalog/list?category_ids=540-universal-analytics">Universal Analytics</a>
+                </li>
+            </ul>
+          </div>
+          <div id="categoriesmenu-aside-6754" class="categoriesmenu__aside">
+              <exceed-toggle-button
+                trigger-selector="#categoriesmenu-6754-back"
+                target-selector="#categoriesmenu-aside-6754"
+                target-focus="#categoriesmenu-6754-select"
+                trigger-toggle-class="current"
+                toggle-class="categoriesmenu__aside--current">
+                <button
+                  type="button"
+                  id="categoriesmenu-aside-6754-back"
+                  class="button button--link categoriesmenu__back"
+                  aria-controls="categoriesmenu-aside-6754">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35 35" aria-hidden="true" class="categoriesmenu__icon categoriesmenu__icon--offset" focusable="false">
+  <g aria-hidden="true" fill="currentColor">
+    <path d="M20.185,23.86 L21.245,22.8 L15.885,17.45 L21.155,12.2 L20.095,11.14 L13.755,17.46 L20.185,23.86 z"></path>
+  </g>
+</svg>
+
+                  All Topics
+                </button>
+              </exceed-toggle-button>
+            <div class="categoriesmenu__heading">
+              <a href="/student/catalog/list?category_ids=6754-grow-with-google-career-readiness-program">Grow with Google Career Readiness Program </a>
+            </div>
+            <ul class="categoriesmenu__list">
+                <li class="categoriesmenu__listitem">
+                  <a class="categoriesmenu__name" href="/student/catalog/list?category_ids=6755-grow-with-google-hbcu-career-readiness-program">Grow with Google HBCU Career Readiness Program</a>
+                </li>
+                <li class="categoriesmenu__listitem">
+                  <a class="categoriesmenu__name" href="/student/catalog/list?category_ids=6756-grow-with-google-indigenous-career-readiness-program">Grow with Google Indigenous Career Readiness Program </a>
+                </li>
+                <li class="categoriesmenu__listitem">
+                  <a class="categoriesmenu__name" href="/student/catalog/list?category_ids=6757-grow-with-google-hsi-career-readiness-program">Grow with Google HSI Career Readiness Program</a>
+                </li>
+            </ul>
+          </div>
+    <div class="categoriesmenu__content">
+        <div class="categoriesmenu__heading">
+          <a href="/student/catalog/browse">All Topics</a>
+        </div>
+      <ul class="categoriesmenu__list">
+          <li class="categoriesmenu__listitem">
+                <exceed-toggle-button
+                  trigger-selector="#categoriesmenu-53-select"
+                  target-selector="#categoriesmenu-aside-53"
+                  target-focus="#categoriesmenu-aside-53-back"
+                  trigger-toggle-class="current"
+                  toggle-class="categoriesmenu__aside--current">
+                  <button
+                    type="button"
+                    id="categoriesmenu-53-select"
+                    class="button button--link categoriesmenu__name"
+                    aria-controls="categoriesmenu-aside-53">
+                    Google Ads
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35 35" aria-hidden="true" class="categoriesmenu__icon" focusable="false">
+  <g aria-hidden="true" fill="currentColor">
+    <path d="M14.82,11.14 L13.75,12.2 L19.12,17.55 L13.85,22.8 L14.91,23.86 L21.25,17.54 L14.82,11.14 z"></path>
+  </g>
+</svg>
+
+                  </button>
+                </exceed-toggle-button>
+          </li>
+          <li class="categoriesmenu__listitem">
+                <a class="categoriesmenu__name" data-object-name="topic_list_item" href="/student/catalog/list?category_ids=7836-grow-with-google">Grow with Google</a>
+          </li>
+          <li class="categoriesmenu__listitem">
+                <exceed-toggle-button
+                  trigger-selector="#categoriesmenu-2559-select"
+                  target-selector="#categoriesmenu-aside-2559"
+                  target-focus="#categoriesmenu-aside-2559-back"
+                  trigger-toggle-class="current"
+                  toggle-class="categoriesmenu__aside--current">
+                  <button
+                    type="button"
+                    id="categoriesmenu-2559-select"
+                    class="button button--link categoriesmenu__name"
+                    aria-controls="categoriesmenu-aside-2559">
+                    Google for Education
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35 35" aria-hidden="true" class="categoriesmenu__icon" focusable="false">
+  <g aria-hidden="true" fill="currentColor">
+    <path d="M14.82,11.14 L13.75,12.2 L19.12,17.55 L13.85,22.8 L14.91,23.86 L21.25,17.54 L14.82,11.14 z"></path>
+  </g>
+</svg>
+
+                  </button>
+                </exceed-toggle-button>
+          </li>
+          <li class="categoriesmenu__listitem">
+                <exceed-toggle-button
+                  trigger-selector="#categoriesmenu-86-select"
+                  target-selector="#categoriesmenu-aside-86"
+                  target-focus="#categoriesmenu-aside-86-back"
+                  trigger-toggle-class="current"
+                  toggle-class="categoriesmenu__aside--current">
+                  <button
+                    type="button"
+                    id="categoriesmenu-86-select"
+                    class="button button--link categoriesmenu__name"
+                    aria-controls="categoriesmenu-aside-86">
+                    Google Marketing Platform
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35 35" aria-hidden="true" class="categoriesmenu__icon" focusable="false">
+  <g aria-hidden="true" fill="currentColor">
+    <path d="M14.82,11.14 L13.75,12.2 L19.12,17.55 L13.85,22.8 L14.91,23.86 L21.25,17.54 L14.82,11.14 z"></path>
+  </g>
+</svg>
+
+                  </button>
+                </exceed-toggle-button>
+          </li>
+          <li class="categoriesmenu__listitem">
+                <exceed-toggle-button
+                  trigger-selector="#categoriesmenu-1173-select"
+                  target-selector="#categoriesmenu-aside-1173"
+                  target-focus="#categoriesmenu-aside-1173-back"
+                  trigger-toggle-class="current"
+                  toggle-class="categoriesmenu__aside--current">
+                  <button
+                    type="button"
+                    id="categoriesmenu-1173-select"
+                    class="button button--link categoriesmenu__name"
+                    aria-controls="categoriesmenu-aside-1173">
+                    Google Analytics
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35 35" aria-hidden="true" class="categoriesmenu__icon" focusable="false">
+  <g aria-hidden="true" fill="currentColor">
+    <path d="M14.82,11.14 L13.75,12.2 L19.12,17.55 L13.85,22.8 L14.91,23.86 L21.25,17.54 L14.82,11.14 z"></path>
+  </g>
+</svg>
+
+                  </button>
+                </exceed-toggle-button>
+          </li>
+          <li class="categoriesmenu__listitem">
+                <a class="categoriesmenu__name" data-object-name="topic_list_item" href="/student/catalog/list?category_ids=678-google-my-business">Google My Business</a>
+          </li>
+          <li class="categoriesmenu__listitem">
+                <a class="categoriesmenu__name" data-object-name="topic_list_item" href="/student/catalog/list?category_ids=2842-google-ad-manager">Google Ad Manager</a>
+          </li>
+          <li class="categoriesmenu__listitem">
+                <a class="categoriesmenu__name" data-object-name="topic_list_item" href="/student/catalog/list?category_ids=690-waze-fundamentals-e-learning">Waze Fundamentals E-Learning</a>
+          </li>
+          <li class="categoriesmenu__listitem">
+                <a class="categoriesmenu__name" data-object-name="topic_list_item" href="/student/catalog/list?category_ids=2843-google-admob">Google AdMob</a>
+          </li>
+          <li class="categoriesmenu__listitem">
+                <a class="categoriesmenu__name" data-object-name="topic_list_item" href="/student/catalog/list?category_ids=320-authorized-buyers">Authorized Buyers</a>
+          </li>
+          <li class="categoriesmenu__listitem">
+                <a class="categoriesmenu__name" data-object-name="topic_list_item" href="/student/catalog/list?category_ids=677-android-enterprise-academy">Android Enterprise Academy</a>
+          </li>
+          <li class="categoriesmenu__listitem">
+                <a class="categoriesmenu__name" data-object-name="topic_list_item" href="/student/catalog/list?category_ids=6272-applied-digital-skills">Applied Digital Skills</a>
+          </li>
+          <li class="categoriesmenu__listitem">
+                <a class="categoriesmenu__name" data-object-name="topic_list_item" href="/student/catalog/list?category_ids=6505-partner-operations">Partner Operations </a>
+          </li>
+          <li class="categoriesmenu__listitem">
+                <exceed-toggle-button
+                  trigger-selector="#categoriesmenu-6754-select"
+                  target-selector="#categoriesmenu-aside-6754"
+                  target-focus="#categoriesmenu-aside-6754-back"
+                  trigger-toggle-class="current"
+                  toggle-class="categoriesmenu__aside--current">
+                  <button
+                    type="button"
+                    id="categoriesmenu-6754-select"
+                    class="button button--link categoriesmenu__name"
+                    aria-controls="categoriesmenu-aside-6754">
+                    Grow with Google Career Readiness Program 
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35 35" aria-hidden="true" class="categoriesmenu__icon" focusable="false">
+  <g aria-hidden="true" fill="currentColor">
+    <path d="M14.82,11.14 L13.75,12.2 L19.12,17.55 L13.85,22.8 L14.91,23.86 L21.25,17.54 L14.82,11.14 z"></path>
+  </g>
+</svg>
+
+                  </button>
+                </exceed-toggle-button>
+          </li>
+      </ul>
+      <ul class="categoriesmenu__list">
+        <li class="categoriesmenu__listitem categoriesmenu__listitem--nosubitems">
+          <a class="categoriesmenu__name" data-object-name="topic_list_item" href="/student/catalog/list">All Activities</a>
+        </li>
+      </ul>
+    </div>
+  </section>
+</div>
+
+        </exceed-nav-menu>
+
+          
+    <div class="direct-login">
+    <a href="/authentication/google_authentication" class="button button--primary button--appheader">
+      Log In
+    </a>
+</div>
+
+
+
+    </div>
+
+  </div>
+
+</div>
+
+
+
+  
+
+  <main class="main main--student" id="main" data-save-state="scroll.y" >
+
+
+      
+
+
+<div class="coursepage" data-scroll-y-state>
+
+  <div class="coursepage__content">
+
+
+  <article class="coursepage__contentmain course" >
+
+      <div class="course__fullwidthcontainer">
+  <div class="hero hero--course" style="--hero-ratio: 27.087291270872914%; --hero-ratio-mobile: 27.087291270872914%;"><img alt="" class="hero__image" srcset="https://storage.googleapis.com/exceedlms-external-uploads-production/uploads/resource_hero_pictures/targets/230105/w550/analytics-hero-image.png?GoogleAccessId=GOOG1EIO7LXRUFV35UXSWKJ3AWMYHZUVNMYIAMGSBIFYEF2AMYYAY4Y4Y5PKA&amp;Signature=n9JxoGWChi5hj6%2FTj%2F0gig2T0uY%3D&amp;Expires=1699753472 550w, https://storage.googleapis.com/exceedlms-external-uploads-production/uploads/resource_hero_pictures/targets/230105/w800/analytics-hero-image.png?GoogleAccessId=GOOG1EIO7LXRUFV35UXSWKJ3AWMYHZUVNMYIAMGSBIFYEF2AMYYAY4Y4Y5PKA&amp;Signature=bBjHusy1cDlr46i0T%2FvA8eOWV%2FM%3D&amp;Expires=1699753472 800w, https://storage.googleapis.com/exceedlms-external-uploads-production/uploads/resource_hero_pictures/targets/230105/w1100/analytics-hero-image.png?GoogleAccessId=GOOG1EIO7LXRUFV35UXSWKJ3AWMYHZUVNMYIAMGSBIFYEF2AMYYAY4Y4Y5PKA&amp;Signature=2tqAaSKNTeZ3aXXFNXSoL%2BnRASg%3D&amp;Expires=1699753472 1100w, https://storage.googleapis.com/exceedlms-external-uploads-production/uploads/resource_hero_pictures/targets/230105/w1600/analytics-hero-image.png?GoogleAccessId=GOOG1EIO7LXRUFV35UXSWKJ3AWMYHZUVNMYIAMGSBIFYEF2AMYYAY4Y4Y5PKA&amp;Signature=Iv7AgwizNYk%2BvWlZymZDXoXtJrM%3D&amp;Expires=1699753472 1600w, https://storage.googleapis.com/exceedlms-external-uploads-production/uploads/resource_hero_pictures/targets/230105/w2400/analytics-hero-image.png?GoogleAccessId=GOOG1EIO7LXRUFV35UXSWKJ3AWMYHZUVNMYIAMGSBIFYEF2AMYYAY4Y4Y5PKA&amp;Signature=S4gSgATc0ghOWS2cKq2%2Bq9e3MiM%3D&amp;Expires=1699753472 2400w, https://storage.googleapis.com/exceedlms-external-uploads-production/uploads/resource_hero_pictures/targets/230105/w3200/analytics-hero-image.png?GoogleAccessId=GOOG1EIO7LXRUFV35UXSWKJ3AWMYHZUVNMYIAMGSBIFYEF2AMYYAY4Y4Y5PKA&amp;Signature=F7yXc7o5Y%2FWfE2mn%2Bg5Tt5YattQ%3D&amp;Expires=1699753472 3200w" src="https://storage.googleapis.com/exceedlms-external-uploads-production/uploads/resource_hero_pictures/targets/230105/w550/analytics-hero-image.png?GoogleAccessId=GOOG1EIO7LXRUFV35UXSWKJ3AWMYHZUVNMYIAMGSBIFYEF2AMYYAY4Y4Y5PKA&amp;Signature=n9JxoGWChi5hj6%2FTj%2F0gig2T0uY%3D&amp;Expires=1699753472" /></div>
+</div>
+
+
+
+        
+
+        <header class="course__headercontainer" data-save-state-restore-el>
+          
+<div class="course__header">
+    <div class="activityheading">
+      <h1 class="u-headingpage--activity activityheading__name">
+        Google Analytics Individual Qualification
+      </h1>
+      <ul class="activityheading__meta activitymeta activitymeta--heading">
+          <li class="activitymeta__item">By Skillshop</li>
+          <li class="activitymeta__item">Published: Sep 14, 2017</li>
+          <li class="activitymeta__item">
+            <span class="a11y-atonly">Duration </span>3.5h
+          </li>
+          <li class="activitymeta__item"><span class="a11y-atonly">Difficulty </span>Intermediate</li>
+
+          <li class="activitymeta__item">
+            <ul class="activitymeta__rewards">
+                <li class="activitymeta__rewardsitem">
+                  <span class="hint--top" data-hint="Award For Completion" data-disable-hint-a11y>
+                    <span class="a11y-atonly">Award For Completion</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15 15" aria-hidden="true" class="activitymeta__rewardsicon" focusable="false">
+  <g aria-hidden="true">
+    <rect width="15" height="15" fill="none"></rect>
+    <polygon points="4.94 15 4.94 9.87 10.06 9.87 4.94 15" fill="#00838f"></polygon>
+    <polygon points="10.06 15 10.06 9.87 4.94 9.87 10.06 15" fill="006064"></polygon>
+    <path d="M6.87.31A.78.78,0,0,1,8.1.31l.17.2A1.69,1.69,0,0,0,9.81,1l.25-.06a.78.78,0,0,1,1,.73v.26a1.7,1.7,0,0,0,1,1.31l.24.1a.78.78,0,0,1,.38,1.17l-.14.22a1.69,1.69,0,0,0,0,1.62l.14.22a.78.78,0,0,1-.21,1.08l-.17.09-.24.1a1.7,1.7,0,0,0-1,1.31v.26a.78.78,0,0,1-.8.76l-.2,0-.25-.06a1.69,1.69,0,0,0-1.54.5l-.17.2a.78.78,0,0,1-1.23,0l-.17-.2a1.69,1.69,0,0,0-1.52-.51l-.25.06a.78.78,0,0,1-1-.73V9.15a1.69,1.69,0,0,0-1-1.31l-.24-.1a.78.78,0,0,1-.38-1.16l.14-.22a1.69,1.69,0,0,0,0-1.62l-.14-.23a.78.78,0,0,1,.21-1.08l.17-.09.24-.1a1.7,1.7,0,0,0,1-1.31V1.67a.78.78,0,0,1,.8-.76l.2,0L5.19,1A1.69,1.69,0,0,0,6.71.51Z" fill="#00acc1"></path>
+    <circle cx="7.48" cy="5.54" r="3.97" fill="#4dd0e1"></circle>
+    <circle cx="7.48" cy="5.54" r="3.15" fill="#b2ebf2"></circle>
+    <path d="M4.6,5.8A3.14,3.14,0,0,1,9.83,3.45,3.14,3.14,0,1,0,5.32,7.81l.07.07A3.13,3.13,0,0,1,4.6,5.8Z" fill="#80deea"></path>
+  </g>
+</svg>
+
+                  </span>
+                </li>
+
+
+            </ul>
+          </li>
+
+          <li class="activitymeta__item course__metaratings" id="course-rating">
+            <div class="rating__container" id="activity-rating-container" data-rating-url="/student/reviews/rating/2938-google-analytics-individual-qualification">
+  <form id="activity-rating" class="rating rating--disabled hint--top hint--mobile" data-rating-enabled="false" data-review-enabled="false" data-rating="false" data-rating-value="4.8" data-student-rated="false" data-dialog-id="activity_reviews_dialog" data-dialog-url="/student/reviews/list/2938" data-hint-when-complete="Review this activity" data-disable-hint-a11y="true" action="/student/reviews?course_id=2938" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" /><input type="hidden" name="authenticity_token" value="chSXFG3X4eBulVGk0WmXb8KjplUhRlMJd3amYvrMy6ojT90mxl9mtdnEZST7ukjWVTPyC4tWpwbMmkJ+Iqv/3A==" autocomplete="off" />
+    <fieldset class="rating__fieldset">
+      <legend class="a11y-atonly">Rating</legend>
+        <input type="radio" name="review[stars]" id="stars_1" value="1" disabled="disabled" required="required" aria-hidden="true" />
+        <label data-behavior="submit.rating" for="stars_1">
+          <span class="a11y-atonly">1 star</span>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" aria-hidden="true" class="rating__star" focusable="false">
+  <path aria-hidden="true" d="M13.875,38.875 L16.625,27.562 L7.688,19.688 L19.312,18.625 L24,7.75 L28.75,18.625 L40.375,19.688 L31.562,27.5 L34.062,38.812 L24,32.875 z" stroke-width="3"></path>
+  <path aria-hidden="true" d="M11.64,42 L14.92,27.94 L4,18.48 L18.38,17.26 L24,4 L29.62,17.24 L44,18.48 L33.1,27.94 L36.36,42 L24,34.54 z" stroke="transparent" stroke-width="0"></path>
+  <path aria-hidden="true" d="M11.64,42 L14.92,27.94 L4,18.48 L18.38,17.26 L24,4 L24,34.54 z" fill="currentColor" stroke="transparent" stroke-width="0"></path>
+</svg>
+
+</label>        <input type="radio" name="review[stars]" id="stars_2" value="2" disabled="disabled" required="required" aria-hidden="true" />
+        <label data-behavior="submit.rating" for="stars_2">
+          <span class="a11y-atonly">2 stars</span>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" aria-hidden="true" class="rating__star" focusable="false">
+  <path aria-hidden="true" d="M13.875,38.875 L16.625,27.562 L7.688,19.688 L19.312,18.625 L24,7.75 L28.75,18.625 L40.375,19.688 L31.562,27.5 L34.062,38.812 L24,32.875 z" stroke-width="3"></path>
+  <path aria-hidden="true" d="M11.64,42 L14.92,27.94 L4,18.48 L18.38,17.26 L24,4 L29.62,17.24 L44,18.48 L33.1,27.94 L36.36,42 L24,34.54 z" stroke="transparent" stroke-width="0"></path>
+  <path aria-hidden="true" d="M11.64,42 L14.92,27.94 L4,18.48 L18.38,17.26 L24,4 L24,34.54 z" fill="currentColor" stroke="transparent" stroke-width="0"></path>
+</svg>
+
+</label>        <input type="radio" name="review[stars]" id="stars_3" value="3" disabled="disabled" required="required" aria-hidden="true" />
+        <label data-behavior="submit.rating" for="stars_3">
+          <span class="a11y-atonly">3 stars</span>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" aria-hidden="true" class="rating__star" focusable="false">
+  <path aria-hidden="true" d="M13.875,38.875 L16.625,27.562 L7.688,19.688 L19.312,18.625 L24,7.75 L28.75,18.625 L40.375,19.688 L31.562,27.5 L34.062,38.812 L24,32.875 z" stroke-width="3"></path>
+  <path aria-hidden="true" d="M11.64,42 L14.92,27.94 L4,18.48 L18.38,17.26 L24,4 L29.62,17.24 L44,18.48 L33.1,27.94 L36.36,42 L24,34.54 z" stroke="transparent" stroke-width="0"></path>
+  <path aria-hidden="true" d="M11.64,42 L14.92,27.94 L4,18.48 L18.38,17.26 L24,4 L24,34.54 z" fill="currentColor" stroke="transparent" stroke-width="0"></path>
+</svg>
+
+</label>        <input type="radio" name="review[stars]" id="stars_4" value="4" disabled="disabled" required="required" aria-hidden="true" />
+        <label data-behavior="submit.rating" for="stars_4">
+          <span class="a11y-atonly">4 stars</span>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" aria-hidden="true" class="rating__star" focusable="false">
+  <path aria-hidden="true" d="M13.875,38.875 L16.625,27.562 L7.688,19.688 L19.312,18.625 L24,7.75 L28.75,18.625 L40.375,19.688 L31.562,27.5 L34.062,38.812 L24,32.875 z" stroke-width="3"></path>
+  <path aria-hidden="true" d="M11.64,42 L14.92,27.94 L4,18.48 L18.38,17.26 L24,4 L29.62,17.24 L44,18.48 L33.1,27.94 L36.36,42 L24,34.54 z" stroke="transparent" stroke-width="0"></path>
+  <path aria-hidden="true" d="M11.64,42 L14.92,27.94 L4,18.48 L18.38,17.26 L24,4 L24,34.54 z" fill="currentColor" stroke="transparent" stroke-width="0"></path>
+</svg>
+
+</label>        <input type="radio" name="review[stars]" id="stars_5" value="5" disabled="disabled" required="required" aria-hidden="true" />
+        <label data-behavior="submit.rating" for="stars_5">
+          <span class="a11y-atonly">5 stars</span>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" aria-hidden="true" class="rating__star" focusable="false">
+  <path aria-hidden="true" d="M13.875,38.875 L16.625,27.562 L7.688,19.688 L19.312,18.625 L24,7.75 L28.75,18.625 L40.375,19.688 L31.562,27.5 L34.062,38.812 L24,32.875 z" stroke-width="3"></path>
+  <path aria-hidden="true" d="M11.64,42 L14.92,27.94 L4,18.48 L18.38,17.26 L24,4 L29.62,17.24 L44,18.48 L33.1,27.94 L36.36,42 L24,34.54 z" stroke="transparent" stroke-width="0"></path>
+  <path aria-hidden="true" d="M11.64,42 L14.92,27.94 L4,18.48 L18.38,17.26 L24,4 L24,34.54 z" fill="currentColor" stroke="transparent" stroke-width="0"></path>
+</svg>
+
+</label>    </fieldset>
+    <input type="submit" name="commit" value="Submit" class="rating__submit" data-disable-with="Submit" />
+</form>    <span class="a11y-atonly">Average rating: 4.8</span>
+    <span id="review_count" class="rating__count" aria-hidden="true">3808</span>
+    <span class="a11y-atonly">3808 reviews </span>
+
+</div>
+
+
+
+          </li>
+
+
+      </ul>
+      <ul class="activityheading__actions">
+          <li class="activityheading__actionsitem">
+            
+
+      <button class="activityheading__actionsbtn hint--top"
+              data-behavior="show.dialog"
+              data-dialog-id="public-login-dialog"
+              data-dialog-url="/student/authentication/public_modal"
+              data-hint="Add Path to Favorites"
+              data-object-name="add_to_favorites">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35 35" aria-hidden="true" class="activityheading__icon" focusable="false">
+  <path aria-hidden="true" d="M24.664 9.984a5.78 5.78 0 0 0-7.66 1.09 5.78 5.78 0 0 0-7.66-1.09 5.47 5.47 0 0 0-2.34 4.28c-.13 3.88 3.3 7 8.55 11.76l.1.09a2 2 0 0 0 2.69 0l.11-.1c5.25-4.76 8.68-7.87 8.55-11.75a5.47 5.47 0 0 0-2.34-4.28zm-7.56 14.55l-.1.1-.1-.1c-4.9-4.47-8.13-7.37-7.9-10.37a3.43 3.43 0 0 1 .78-1.87 3.72 3.72 0 0 1 6 .43 1.36 1.36 0 0 0 1.13.62h.25a1.41 1.41 0 0 0 1.15-.65 3.7 3.7 0 0 1 6-.37 3.4 3.4 0 0 1 .69 1.87c.21 2.99-3 5.88-7.9 10.34z" fill="currentColor"></path>
+</svg>
+
+        <span>Favorites</span>
+      </button>
+
+          </li>
+          <li class="activityheading__actionsitem dropdown">
+            <button class="activityheading__actionsbtn dropdown__trigger hint--top" id="share-toggle"
+              data-hint="Share Path"
+              data-hide-hint-on-click="true"
+              data-neeman-class="share-button"
+              data-object-name="share_course"
+              aria-controls="share-menu-content" aria-expanded="false"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35 35" aria-hidden="true" class="activityheading__icon" focusable="false">
+  <path aria-hidden="true" d="M23 21.1c-.7 0-1.5.3-2 .8l-7.1-4.1c.1-.3.1-.6.1-.8 0-.2 0-.5-.1-.7l7.1-4.1c1.2 1.1 3.1 1 4.2-.2s1-3.1-.2-4.2-3.1-1-4.2.2c-.5.5-.8 1.2-.8 2 0 .2 0 .5.1.7L13 14.8c-1.2-1.1-3.1-1.1-4.2.1s-1.1 3.1.1 4.2c1.2 1.1 2.9 1.1 4.1 0l7.1 4.2c0 .3-.1.5-.1.7 0 1.6 1.3 2.9 2.9 2.9 1.6 0 2.9-1.3 2.9-2.9.1-1.6-1.2-2.9-2.8-2.9z" fill="currentColor"></path>
+</svg>
+
+              <span>Share</span>
+            </button>
+              <div class="dropdown__content" id="share-menu-content" aria-labelledby="share-toggle" role="group">
+                
+  <ul class="sharelinks sharelinks--activityheading">
+
+      <li class="sharelinks__item">
+        <a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fskillshop.exceedlms.com%2Fstudent%2Fpath%2F2938-google-analytics-individual-qualification&amp;text=Google+Analytics+Individual+Qualification" class="sharelinks__link" data-object-name="share-twitter" data-object-title="Share on Twitter" onclick="trackLinkClick(this);window.open(this.href, 'share-twitter_window','left=20,top=20,width=600,height=300,toolbar=0,resizable=1'); return false;" aria-label="Share on Twitter (the form for sharing will open in a new window)" title="Share on Twitter">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 35" aria-hidden="true" class="sharelinks__icon" focusable="false">
+  <g aria-hidden="true" fill="currentColor">
+    <path d="M33.8 34.9c1.1 0 1.9-.9 1.9-1.9V1.9c0-1.1-.9-1.9-1.9-1.9H2.7C1.6 0 .8.9.8 1.9V33c0 1.1.9 1.9 1.9 1.9h31.1z"></path>
+    <path d="M13.9 27.1c8.9 0 13.8-7.4 13.8-13.8v-.6c.9-.7 1.8-1.5 2.4-2.5-.9.4-1.8.6-2.8.8 1-.6 1.8-1.6 2.1-2.7-.9.6-2 1-3.1 1.2-.9-.9-2.1-1.5-3.5-1.5-2.7 0-4.9 2.2-4.9 4.9 0 .4 0 .8.1 1.1-4-.2-7.6-2.1-10-5.1-.4.7-.7 1.6-.7 2.4 0 1.7.9 3.2 2.2 4-.8 0-1.5-.2-2.2-.6v.1c0 2.4 1.7 4.3 3.9 4.8-.4.1-.8.2-1.3.2-.3 0-.6 0-.9-.1.6 1.9 2.4 3.3 4.5 3.4-1.7 1.3-3.8 2.1-6 2.1-.4 0-.8 0-1.2-.1 2.3 1.2 4.8 2 7.6 2" fill="#FFF"></path>
+  </g>
+</svg>
+
+        </a>
+      </li>
+      <li class="sharelinks__item">
+        <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fskillshop.exceedlms.com%2Fstudent%2Fpath%2F2938-google-analytics-individual-qualification" class="sharelinks__link" data-object-name="share-facebook" data-object-title="Share on Facebook" onclick="trackLinkClick(this);window.open(this.href, 'share-facebook_window','left=20,top=20,width=600,height=500,toolbar=0,resizable=1'); return false;" aria-label="Share on Facebook (the form for sharing will open in a new window)" title="Share on Facebook">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 35" aria-hidden="true" class="sharelinks__icon" focusable="false">
+  <g aria-hidden="true" fill="currentColor">
+    <path d="M33.3 34.9c1.1 0 1.9-.9 1.9-1.9V1.9c0-1.1-.9-1.9-1.9-1.9H2.2C1.1 0 .3.9.3 1.9V33c0 1.1.9 1.9 1.9 1.9h31.1z"></path>
+    <path d="M24.4 34.9V21.3h4.5l.7-5.3h-5.2v-3.4c0-1.5.4-2.6 2.6-2.6h2.8V5.3c-.5-.1-2.1-.2-4.1-.2-4 0-6.8 2.5-6.8 7V16h-4.6v5.3h4.6v13.6h5.5z" fill="#FFF"></path>
+  </g>
+</svg>
+
+        </a>
+      </li>
+      <li class="sharelinks__item">
+        <a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=https%3A%2F%2Fskillshop.exceedlms.com%2Fstudent%2Fpath%2F2938-google-analytics-individual-qualification&amp;title=Google+Analytics+Individual+Qualification" class="sharelinks__link" data-object-name="share-linkedin" data-object-title="Share on LinkedIn" onclick="trackLinkClick(this);window.open(this.href, 'share-linkedin_window','left=20,top=20,width=600,height=500,toolbar=0,resizable=1'); return false;" aria-label="Share on LinkedIn (the form for sharing will open in a new window)" title="Share on LinkedIn">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 35" aria-hidden="true" class="sharelinks__icon" focusable="false">
+  <g aria-hidden="true" fill="currentColor">
+    <path d="M33.8 34.9c1.1 0 1.9-.9 1.9-1.9V1.9c0-1.1-.9-1.9-1.9-1.9H2.7C1.6 0 .8.9.8 1.9V33c0 1.1.9 1.9 1.9 1.9h31.1z"></path>
+    <path d="M5.9 13.1h5.2v16.7H5.9V13.1zm2.6-8.3c1.7 0 3 1.3 3 3s-1.3 3-3 3-3-1.3-3-3 1.4-3 3-3zM14.4 13.1h5v2.3h.1c.7-1.3 2.4-2.7 4.9-2.7 5.3 0 6.2 3.5 6.2 8v9.2h-5.2v-8.1c0-1.9 0-4.4-2.7-4.4s-3.1 2.1-3.1 4.3V30h-5.2V13.1z" fill="#FFF"></path>
+  </g>
+</svg>
+
+        </a>
+      </li>
+
+
+  </ul>
+
+
+              </div>
+          </li>
+      </ul>
+    </div>
+
+    
+
+</div>
+
+          
+            
+
+
+<script>
+  if (window.Intellum && window.Intellum.util && window.Intellum.util.reinitialize) {
+    // Re-init dialog
+    window.Intellum.util.reinitialize.trigger();
+  };
+</script>
+
+        </header>
+
+
+      <div class="course__contentcontainer" data-save-state-restore-el="true">
+
+
+
+
+          <div class="course__content">
+
+
+              <div class="course__description postcontent"><p>This exam covers Universal Analytics. <a href="https://skillshop.exceedlms.com/student/enrollments/create_enrollment_from_token/8Q2axU5uENane5XqF853b9tz" style="color: Blue" target="_ blank">See this exam that covers GA4</a>, the latest version of Google Analytics</p>
+
+<p><span style="font-weight: 400;">The Google Analytics Individual Qualification covers basic and advanced Universal Analytics concepts. This includes: planning and principles; implementation and data collection; configuration and administration; conversion and attribution; and reports, metrics, and dimensions.</span></p>
+</div>
+
+
+
+
+                  <div id="course_content">
+        <section class="activitysection" data-section-id="2676">
+
+    <header>
+  <button type="button" id="path-section-toggle-2676"
+        class="activitysection__header activitysection__header--pathsection activitysection__header--toggle"
+        data-behavior="toggle.collapsible"
+        
+        data-collapse-save-key="p_a_2676"
+        data-collapse-target="path-section-content-2676"
+        aria-owns="path-section-content-2676"
+        aria-controls="path-section-content-2676"
+        aria-expanded="true">
+  <h2 class="u-headingsection--activity activitysection__name">
+    Certification requirements
+  </h2>
+    <span class="activitysection__toggle" aria-hidden="true">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <g aria-hidden="true" fill="currentColor">
+    <path d="M18.6,16.4L12,9.8l-6.6,6.6L4,15l8-8l8,8L18.6,16.4z"></path>
+  </g>
+</svg>
+
+    </span>
+  </button>
+</header>
+
+
+    <div class="activitysection__content collapsible "
+         id="path-section-content-2676"
+         aria-labelledby="path-section-toggle-2676"
+         >
+
+        <div class="course__description">
+          <p>Ready to test your knowledge of digital analytics best practices and the Google Analytics platform? Click to get started.</p>
+        </div>
+
+        <ul class="activitysection__list courselist">
+              <li class="activitysection__item courselist__item" 
+                
+              >
+                  <a class="double_click_protection" data-activity-type="CourseAssessment" href="/student/path/2938/activity/4625?skip_interstitial_post_login=true">
+                    
+<div class="courselist__marker">
+  
+</div>
+<div class="courselist__itemcontent">
+  <h3 class="u-headingitem activitysection__itemname">Google Analytics Individual Qualification Exam</h3>
+    <ul class="activitymeta activitymeta--inline">
+      <li class="activitymeta__item">1 h</li>
+    </ul>
+</div>
+
+</a>              </li>
+        </ul>
+
+
+    </div>
+  </section>
+
+
+        <section class="activitysection" data-section-id="3803">
+
+    <header>
+  <button type="button" id="path-section-toggle-3803"
+        class="activitysection__header activitysection__header--pathsection activitysection__header--toggle"
+        data-behavior="toggle.collapsible"
+        
+        data-collapse-save-key="p_a_3803"
+        data-collapse-target="path-section-content-3803"
+        aria-owns="path-section-content-3803"
+        aria-controls="path-section-content-3803"
+        aria-expanded="true">
+  <h2 class="u-headingsection--activity activitysection__name">
+    STUDY GOOGLE ANALYTICS 
+    <div class="activitysection__note">
+      Optional
+    </div>
+  </h2>
+    <span class="activitysection__toggle" aria-hidden="true">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <g aria-hidden="true" fill="currentColor">
+    <path d="M18.6,16.4L12,9.8l-6.6,6.6L4,15l8-8l8,8L18.6,16.4z"></path>
+  </g>
+</svg>
+
+    </span>
+  </button>
+</header>
+
+
+    <div class="activitysection__content collapsible "
+         id="path-section-content-3803"
+         aria-labelledby="path-section-toggle-3803"
+         >
+
+
+        <ul class="activitysection__list courselist">
+              <li class="activitysection__item courselist__item" 
+                
+              >
+                  <a target="_blank" rel="noopener noreferrer" class="double_click_protection" data-activity-type="CourseUrl" href="/student/path/2938/activity/3814?skip_interstitial_post_login=true">
+                    
+<div class="courselist__marker">
+  
+</div>
+<div class="courselist__itemcontent">
+  <h3 class="u-headingitem activitysection__itemname">Google Analytics for Beginners</h3>
+    <ul class="activitymeta activitymeta--inline">
+      <li class="activitymeta__item">1 h</li>
+    </ul>
+</div>
+
+</a>              </li>
+              <li class="activitysection__item courselist__item" 
+                
+              >
+                  <a target="_blank" rel="noopener noreferrer" class="double_click_protection" data-activity-type="CourseUrl" href="/student/path/2938/activity/3815?skip_interstitial_post_login=true">
+                    
+<div class="courselist__marker">
+  
+</div>
+<div class="courselist__itemcontent">
+  <h3 class="u-headingitem activitysection__itemname">Advanced Google Analytics</h3>
+    <ul class="activitymeta activitymeta--inline">
+      <li class="activitymeta__item">1 h</li>
+    </ul>
+</div>
+
+</a>              </li>
+        </ul>
+
+
+    </div>
+  </section>
+
+
+</div>
+
+  
+
+
+
+
+
+            <div class="course__actions">
+                
+
+                
+
+                
+            </div>
+
+
+
+</div>
+
+
+</div>
+    </article>
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+    <div class="dialog dialog--award" id="award-dialog"
+         role="dialog"
+         aria-hidden="true">
+      <div class="dialog__content award dialog__content--removedefaults" role="document"></div>
+    </div>
+
+      <div class="dialog dialog--publiclogin" id="public-login-dialog"
+           role="dialog"
+           aria-hidden="true">
+        <div class="dialog__content publiclogin " role="document"></div>
+      </div>
+
+
+
+
+
+
+      
+<exceed-modal id="mobile-categories-menu-modal"
+              class="modal "
+              role="dialog"
+              preserve-on-close="true"
+              aria-hidden="true"
+  >
+  <section class="modal__content">
+
+    
+        <div class="categoriesmenu categoriesmenu--mobile">
+  <section class="categoriesmenu__wrap">
+          <div id="categoriesmenu-aside-mobile-53" class="categoriesmenu__aside">
+              <exceed-toggle-button
+                trigger-selector="#categoriesmenu-53-back"
+                target-selector="#categoriesmenu-aside-mobile-53"
+                target-focus="#categoriesmenu-mobile-53-select"
+                trigger-toggle-class="current"
+                toggle-class="categoriesmenu__aside--current">
+                <button
+                  type="button"
+                  id="categoriesmenu-aside-mobile-53-back"
+                  class="button button--link categoriesmenu__back"
+                  aria-controls="categoriesmenu-aside-mobile-53">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35 35" aria-hidden="true" class="categoriesmenu__icon categoriesmenu__icon--offset" focusable="false">
+  <g aria-hidden="true" fill="currentColor">
+    <path d="M20.185,23.86 L21.245,22.8 L15.885,17.45 L21.155,12.2 L20.095,11.14 L13.755,17.46 L20.185,23.86 z"></path>
+  </g>
+</svg>
+
+                  All Topics
+                </button>
+              </exceed-toggle-button>
+            <div class="categoriesmenu__heading">
+              <a href="/student/catalog/list?category_ids=53-google-ads">Google Ads</a>
+            </div>
+            <ul class="categoriesmenu__list">
+                <li class="categoriesmenu__listitem">
+                  <a class="categoriesmenu__name" href="/student/catalog/list?category_ids=2844-google-ads-certifications">Google Ads Certifications</a>
+                </li>
+                <li class="categoriesmenu__listitem">
+                  <a class="categoriesmenu__name" href="/student/catalog/list?category_ids=6482-ai-powered-ads">AI-Powered Ads</a>
+                </li>
+                <li class="categoriesmenu__listitem">
+                  <a class="categoriesmenu__name" href="/student/catalog/list?category_ids=4597-apply-your-google-ads-knowledge">Apply your Google Ads knowledge</a>
+                </li>
+                <li class="categoriesmenu__listitem">
+                  <a class="categoriesmenu__name" href="/student/catalog/list?category_ids=4304-build-upon-your-google-ads-expertise">Build Upon Your Google Ads Expertise</a>
+                </li>
+                <li class="categoriesmenu__listitem">
+                  <a class="categoriesmenu__name" href="/student/catalog/list?category_ids=313-google-ads-search">Google Ads Search</a>
+                </li>
+                <li class="categoriesmenu__listitem">
+                  <a class="categoriesmenu__name" href="/student/catalog/list?category_ids=4997-google-ads-discovery">Google Ads Discovery</a>
+                </li>
+                <li class="categoriesmenu__listitem">
+                  <a class="categoriesmenu__name" href="/student/catalog/list?category_ids=311-google-ads-display">Google Ads Display</a>
+                </li>
+                <li class="categoriesmenu__listitem">
+                  <a class="categoriesmenu__name" href="/student/catalog/list?category_ids=315-google-ads-video">Google Ads Video</a>
+                </li>
+                <li class="categoriesmenu__listitem">
+                  <a class="categoriesmenu__name" href="/student/catalog/list?category_ids=314-shopping-ads">Shopping Ads</a>
+                </li>
+                <li class="categoriesmenu__listitem">
+                  <a class="categoriesmenu__name" href="/student/catalog/list?category_ids=2823-google-ads-measurement">Google Ads - Measurement</a>
+                </li>
+                <li class="categoriesmenu__listitem">
+                  <a class="categoriesmenu__name" href="/student/catalog/list?category_ids=3926-google-ads-apps">Google Ads Apps</a>
+                </li>
+                <li class="categoriesmenu__listitem">
+                  <a class="categoriesmenu__name" href="/student/catalog/list?category_ids=4693-mobile">Mobile</a>
+                </li>
+                <li class="categoriesmenu__listitem">
+                  <a class="categoriesmenu__name" href="/student/catalog/list?category_ids=5373-smart-campaigns">Smart Campaigns</a>
+                </li>
+                <li class="categoriesmenu__listitem">
+                  <a class="categoriesmenu__name" href="/student/catalog/list?category_ids=5445-google-academy-on-air">Google Academy on Air</a>
+                </li>
+                <li class="categoriesmenu__listitem">
+                  <a class="categoriesmenu__name" href="/student/catalog/list?category_ids=5776-google-ads-tutorial-series">Google Ads Tutorial Series</a>
+                </li>
+                <li class="categoriesmenu__listitem">
+                  <a class="categoriesmenu__name" href="/student/catalog/list?category_ids=6512-privacy">Privacy</a>
+                </li>
+                <li class="categoriesmenu__listitem">
+                  <a class="categoriesmenu__name" href="/student/catalog/list?category_ids=6718-get-to-know-google-solutions">Get to Know Google Solutions</a>
+                </li>
+                <li class="categoriesmenu__listitem">
+                  <a class="categoriesmenu__name" href="/student/catalog/list?category_ids=7364-grow-offline-sales">Grow Offline Sales</a>
+                </li>
+                <li class="categoriesmenu__listitem">
+                  <a class="categoriesmenu__name" href="/student/catalog/list?category_ids=7401-google-insights">Google Insights</a>
+                </li>
+            </ul>
+          </div>
+          <div id="categoriesmenu-aside-mobile-2559" class="categoriesmenu__aside">
+              <exceed-toggle-button
+                trigger-selector="#categoriesmenu-2559-back"
+                target-selector="#categoriesmenu-aside-mobile-2559"
+                target-focus="#categoriesmenu-mobile-2559-select"
+                trigger-toggle-class="current"
+                toggle-class="categoriesmenu__aside--current">
+                <button
+                  type="button"
+                  id="categoriesmenu-aside-mobile-2559-back"
+                  class="button button--link categoriesmenu__back"
+                  aria-controls="categoriesmenu-aside-mobile-2559">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35 35" aria-hidden="true" class="categoriesmenu__icon categoriesmenu__icon--offset" focusable="false">
+  <g aria-hidden="true" fill="currentColor">
+    <path d="M20.185,23.86 L21.245,22.8 L15.885,17.45 L21.155,12.2 L20.095,11.14 L13.755,17.46 L20.185,23.86 z"></path>
+  </g>
+</svg>
+
+                  All Topics
+                </button>
+              </exceed-toggle-button>
+            <div class="categoriesmenu__heading">
+              <a href="/student/catalog/list?category_ids=2559-google-for-education">Google for Education</a>
+            </div>
+            <ul class="categoriesmenu__list">
+                <li class="categoriesmenu__listitem">
+                  <a class="categoriesmenu__name" href="/student/catalog/list?category_ids=9070-for-educators">For Educators</a>
+                </li>
+                <li class="categoriesmenu__listitem">
+                  <a class="categoriesmenu__name" href="/student/catalog/list?category_ids=9071-for-it-admins">For IT Admins</a>
+                </li>
+            </ul>
+          </div>
+          <div id="categoriesmenu-aside-mobile-86" class="categoriesmenu__aside">
+              <exceed-toggle-button
+                trigger-selector="#categoriesmenu-86-back"
+                target-selector="#categoriesmenu-aside-mobile-86"
+                target-focus="#categoriesmenu-mobile-86-select"
+                trigger-toggle-class="current"
+                toggle-class="categoriesmenu__aside--current">
+                <button
+                  type="button"
+                  id="categoriesmenu-aside-mobile-86-back"
+                  class="button button--link categoriesmenu__back"
+                  aria-controls="categoriesmenu-aside-mobile-86">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35 35" aria-hidden="true" class="categoriesmenu__icon categoriesmenu__icon--offset" focusable="false">
+  <g aria-hidden="true" fill="currentColor">
+    <path d="M20.185,23.86 L21.245,22.8 L15.885,17.45 L21.155,12.2 L20.095,11.14 L13.755,17.46 L20.185,23.86 z"></path>
+  </g>
+</svg>
+
+                  All Topics
+                </button>
+              </exceed-toggle-button>
+            <div class="categoriesmenu__heading">
+              <a href="/student/catalog/list?category_ids=86-google-marketing-platform">Google Marketing Platform</a>
+            </div>
+            <ul class="categoriesmenu__list">
+                <li class="categoriesmenu__listitem">
+                  <a class="categoriesmenu__name" href="/student/catalog/list?category_ids=707-google-marketing-platform-certification-exams">Google Marketing Platform Certification Exams</a>
+                </li>
+                <li class="categoriesmenu__listitem">
+                  <a class="categoriesmenu__name" href="/student/catalog/list?category_ids=316-display-video-360">Display &amp; Video 360</a>
+                </li>
+                <li class="categoriesmenu__listitem">
+                  <a class="categoriesmenu__name" href="/student/catalog/list?category_ids=319-search-ads-360">Search Ads 360</a>
+                </li>
+                <li class="categoriesmenu__listitem">
+                  <a class="categoriesmenu__name" href="/student/catalog/list?category_ids=317-campaign-manager-360">Campaign Manager 360</a>
+                </li>
+                <li class="categoriesmenu__listitem">
+                  <a class="categoriesmenu__name" href="/student/catalog/list?category_ids=684-creative">Creative</a>
+                </li>
+                <li class="categoriesmenu__listitem">
+                  <a class="categoriesmenu__name" href="/student/catalog/list?category_ids=169-google-web-designer">Google Web Designer</a>
+                </li>
+                <li class="categoriesmenu__listitem">
+                  <a class="categoriesmenu__name" href="/student/catalog/list?category_ids=682-programmatic-concepts">Programmatic concepts</a>
+                </li>
+                <li class="categoriesmenu__listitem">
+                  <a class="categoriesmenu__name" href="/student/catalog/list?category_ids=683-mobile">Mobile</a>
+                </li>
+                <li class="categoriesmenu__listitem">
+                  <a class="categoriesmenu__name" href="/student/catalog/list?category_ids=5794-about-google-marketing-platform">About Google Marketing Platform</a>
+                </li>
+                <li class="categoriesmenu__listitem">
+                  <a class="categoriesmenu__name" href="/student/catalog/list?category_ids=6513-privacy">Privacy</a>
+                </li>
+                <li class="categoriesmenu__listitem">
+                  <a class="categoriesmenu__name" href="/student/catalog/list?category_ids=6719-get-to-know-google-solutions">Get to Know Google Solutions</a>
+                </li>
+                <li class="categoriesmenu__listitem">
+                  <a class="categoriesmenu__name" href="/student/catalog/list?category_ids=7546-studio">Studio</a>
+                </li>
+            </ul>
+          </div>
+          <div id="categoriesmenu-aside-mobile-1173" class="categoriesmenu__aside">
+              <exceed-toggle-button
+                trigger-selector="#categoriesmenu-1173-back"
+                target-selector="#categoriesmenu-aside-mobile-1173"
+                target-focus="#categoriesmenu-mobile-1173-select"
+                trigger-toggle-class="current"
+                toggle-class="categoriesmenu__aside--current">
+                <button
+                  type="button"
+                  id="categoriesmenu-aside-mobile-1173-back"
+                  class="button button--link categoriesmenu__back"
+                  aria-controls="categoriesmenu-aside-mobile-1173">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35 35" aria-hidden="true" class="categoriesmenu__icon categoriesmenu__icon--offset" focusable="false">
+  <g aria-hidden="true" fill="currentColor">
+    <path d="M20.185,23.86 L21.245,22.8 L15.885,17.45 L21.155,12.2 L20.095,11.14 L13.755,17.46 L20.185,23.86 z"></path>
+  </g>
+</svg>
+
+                  All Topics
+                </button>
+              </exceed-toggle-button>
+            <div class="categoriesmenu__heading">
+              <a href="/student/catalog/list?category_ids=1173-google-analytics">Google Analytics</a>
+            </div>
+            <ul class="categoriesmenu__list">
+                <li class="categoriesmenu__listitem">
+                  <a class="categoriesmenu__name" href="/student/catalog/list?category_ids=6431-google-analytics-4">Google Analytics 4</a>
+                </li>
+                <li class="categoriesmenu__listitem">
+                  <a class="categoriesmenu__name" href="/student/catalog/list?category_ids=540-universal-analytics">Universal Analytics</a>
+                </li>
+            </ul>
+          </div>
+          <div id="categoriesmenu-aside-mobile-6754" class="categoriesmenu__aside">
+              <exceed-toggle-button
+                trigger-selector="#categoriesmenu-6754-back"
+                target-selector="#categoriesmenu-aside-mobile-6754"
+                target-focus="#categoriesmenu-mobile-6754-select"
+                trigger-toggle-class="current"
+                toggle-class="categoriesmenu__aside--current">
+                <button
+                  type="button"
+                  id="categoriesmenu-aside-mobile-6754-back"
+                  class="button button--link categoriesmenu__back"
+                  aria-controls="categoriesmenu-aside-mobile-6754">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35 35" aria-hidden="true" class="categoriesmenu__icon categoriesmenu__icon--offset" focusable="false">
+  <g aria-hidden="true" fill="currentColor">
+    <path d="M20.185,23.86 L21.245,22.8 L15.885,17.45 L21.155,12.2 L20.095,11.14 L13.755,17.46 L20.185,23.86 z"></path>
+  </g>
+</svg>
+
+                  All Topics
+                </button>
+              </exceed-toggle-button>
+            <div class="categoriesmenu__heading">
+              <a href="/student/catalog/list?category_ids=6754-grow-with-google-career-readiness-program">Grow with Google Career Readiness Program </a>
+            </div>
+            <ul class="categoriesmenu__list">
+                <li class="categoriesmenu__listitem">
+                  <a class="categoriesmenu__name" href="/student/catalog/list?category_ids=6755-grow-with-google-hbcu-career-readiness-program">Grow with Google HBCU Career Readiness Program</a>
+                </li>
+                <li class="categoriesmenu__listitem">
+                  <a class="categoriesmenu__name" href="/student/catalog/list?category_ids=6756-grow-with-google-indigenous-career-readiness-program">Grow with Google Indigenous Career Readiness Program </a>
+                </li>
+                <li class="categoriesmenu__listitem">
+                  <a class="categoriesmenu__name" href="/student/catalog/list?category_ids=6757-grow-with-google-hsi-career-readiness-program">Grow with Google HSI Career Readiness Program</a>
+                </li>
+            </ul>
+          </div>
+    <div class="categoriesmenu__content">
+        <div class="categoriesmenu__heading">
+          <a href="/student/catalog/browse">All Topics</a>
+        </div>
+      <ul class="categoriesmenu__list">
+          <li class="categoriesmenu__listitem">
+                <exceed-toggle-button
+                  trigger-selector="#categoriesmenu-mobile-53-select"
+                  target-selector="#categoriesmenu-aside-mobile-53"
+                  target-focus="#categoriesmenu-aside-mobile-53-back"
+                  trigger-toggle-class="current"
+                  toggle-class="categoriesmenu__aside--current">
+                  <button
+                    type="button"
+                    id="categoriesmenu-mobile-53-select"
+                    class="button button--link categoriesmenu__name"
+                    aria-controls="categoriesmenu-aside-mobile-53">
+                    Google Ads
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35 35" aria-hidden="true" class="categoriesmenu__icon" focusable="false">
+  <g aria-hidden="true" fill="currentColor">
+    <path d="M14.82,11.14 L13.75,12.2 L19.12,17.55 L13.85,22.8 L14.91,23.86 L21.25,17.54 L14.82,11.14 z"></path>
+  </g>
+</svg>
+
+                  </button>
+                </exceed-toggle-button>
+          </li>
+          <li class="categoriesmenu__listitem">
+                <a class="categoriesmenu__name" data-object-name="topic_list_item" href="/student/catalog/list?category_ids=7836-grow-with-google">Grow with Google</a>
+          </li>
+          <li class="categoriesmenu__listitem">
+                <exceed-toggle-button
+                  trigger-selector="#categoriesmenu-mobile-2559-select"
+                  target-selector="#categoriesmenu-aside-mobile-2559"
+                  target-focus="#categoriesmenu-aside-mobile-2559-back"
+                  trigger-toggle-class="current"
+                  toggle-class="categoriesmenu__aside--current">
+                  <button
+                    type="button"
+                    id="categoriesmenu-mobile-2559-select"
+                    class="button button--link categoriesmenu__name"
+                    aria-controls="categoriesmenu-aside-mobile-2559">
+                    Google for Education
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35 35" aria-hidden="true" class="categoriesmenu__icon" focusable="false">
+  <g aria-hidden="true" fill="currentColor">
+    <path d="M14.82,11.14 L13.75,12.2 L19.12,17.55 L13.85,22.8 L14.91,23.86 L21.25,17.54 L14.82,11.14 z"></path>
+  </g>
+</svg>
+
+                  </button>
+                </exceed-toggle-button>
+          </li>
+          <li class="categoriesmenu__listitem">
+                <exceed-toggle-button
+                  trigger-selector="#categoriesmenu-mobile-86-select"
+                  target-selector="#categoriesmenu-aside-mobile-86"
+                  target-focus="#categoriesmenu-aside-mobile-86-back"
+                  trigger-toggle-class="current"
+                  toggle-class="categoriesmenu__aside--current">
+                  <button
+                    type="button"
+                    id="categoriesmenu-mobile-86-select"
+                    class="button button--link categoriesmenu__name"
+                    aria-controls="categoriesmenu-aside-mobile-86">
+                    Google Marketing Platform
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35 35" aria-hidden="true" class="categoriesmenu__icon" focusable="false">
+  <g aria-hidden="true" fill="currentColor">
+    <path d="M14.82,11.14 L13.75,12.2 L19.12,17.55 L13.85,22.8 L14.91,23.86 L21.25,17.54 L14.82,11.14 z"></path>
+  </g>
+</svg>
+
+                  </button>
+                </exceed-toggle-button>
+          </li>
+          <li class="categoriesmenu__listitem">
+                <exceed-toggle-button
+                  trigger-selector="#categoriesmenu-mobile-1173-select"
+                  target-selector="#categoriesmenu-aside-mobile-1173"
+                  target-focus="#categoriesmenu-aside-mobile-1173-back"
+                  trigger-toggle-class="current"
+                  toggle-class="categoriesmenu__aside--current">
+                  <button
+                    type="button"
+                    id="categoriesmenu-mobile-1173-select"
+                    class="button button--link categoriesmenu__name"
+                    aria-controls="categoriesmenu-aside-mobile-1173">
+                    Google Analytics
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35 35" aria-hidden="true" class="categoriesmenu__icon" focusable="false">
+  <g aria-hidden="true" fill="currentColor">
+    <path d="M14.82,11.14 L13.75,12.2 L19.12,17.55 L13.85,22.8 L14.91,23.86 L21.25,17.54 L14.82,11.14 z"></path>
+  </g>
+</svg>
+
+                  </button>
+                </exceed-toggle-button>
+          </li>
+          <li class="categoriesmenu__listitem">
+                <a class="categoriesmenu__name" data-object-name="topic_list_item" href="/student/catalog/list?category_ids=678-google-my-business">Google My Business</a>
+          </li>
+          <li class="categoriesmenu__listitem">
+                <a class="categoriesmenu__name" data-object-name="topic_list_item" href="/student/catalog/list?category_ids=2842-google-ad-manager">Google Ad Manager</a>
+          </li>
+          <li class="categoriesmenu__listitem">
+                <a class="categoriesmenu__name" data-object-name="topic_list_item" href="/student/catalog/list?category_ids=690-waze-fundamentals-e-learning">Waze Fundamentals E-Learning</a>
+          </li>
+          <li class="categoriesmenu__listitem">
+                <a class="categoriesmenu__name" data-object-name="topic_list_item" href="/student/catalog/list?category_ids=2843-google-admob">Google AdMob</a>
+          </li>
+          <li class="categoriesmenu__listitem">
+                <a class="categoriesmenu__name" data-object-name="topic_list_item" href="/student/catalog/list?category_ids=320-authorized-buyers">Authorized Buyers</a>
+          </li>
+          <li class="categoriesmenu__listitem">
+                <a class="categoriesmenu__name" data-object-name="topic_list_item" href="/student/catalog/list?category_ids=677-android-enterprise-academy">Android Enterprise Academy</a>
+          </li>
+          <li class="categoriesmenu__listitem">
+                <a class="categoriesmenu__name" data-object-name="topic_list_item" href="/student/catalog/list?category_ids=6272-applied-digital-skills">Applied Digital Skills</a>
+          </li>
+          <li class="categoriesmenu__listitem">
+                <a class="categoriesmenu__name" data-object-name="topic_list_item" href="/student/catalog/list?category_ids=6505-partner-operations">Partner Operations </a>
+          </li>
+          <li class="categoriesmenu__listitem">
+                <exceed-toggle-button
+                  trigger-selector="#categoriesmenu-mobile-6754-select"
+                  target-selector="#categoriesmenu-aside-mobile-6754"
+                  target-focus="#categoriesmenu-aside-mobile-6754-back"
+                  trigger-toggle-class="current"
+                  toggle-class="categoriesmenu__aside--current">
+                  <button
+                    type="button"
+                    id="categoriesmenu-mobile-6754-select"
+                    class="button button--link categoriesmenu__name"
+                    aria-controls="categoriesmenu-aside-mobile-6754">
+                    Grow with Google Career Readiness Program 
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35 35" aria-hidden="true" class="categoriesmenu__icon" focusable="false">
+  <g aria-hidden="true" fill="currentColor">
+    <path d="M14.82,11.14 L13.75,12.2 L19.12,17.55 L13.85,22.8 L14.91,23.86 L21.25,17.54 L14.82,11.14 z"></path>
+  </g>
+</svg>
+
+                  </button>
+                </exceed-toggle-button>
+          </li>
+      </ul>
+      <ul class="categoriesmenu__list">
+        <li class="categoriesmenu__listitem categoriesmenu__listitem--nosubitems">
+          <a class="categoriesmenu__name" data-object-name="topic_list_item" href="/student/catalog/list">All Activities</a>
+        </li>
+      </ul>
+    </div>
+  </section>
+</div>
+
+
+
+
+      <footer>
+        <button class="button button--link button--close modal__close" type="button" data-trigger="modal.close" data-trigger-target="mobile-categories-menu-modal" aria-label="Close">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35 35" aria-hidden="true" class="btnicon" focusable="false">
+  <g aria-hidden="true" fill="currentColor">
+    <path d="M11.84,24.57 L24.57,11.84 L23.16,10.43 L10.43,23.16 z"></path>
+    <path d="M10.43,11.84 L23.16,24.57 L24.57,23.16 L11.84,10.43 z"></path>
+  </g>
+</svg>
+
+        </button>
+      </footer>
+  </section>
+</exceed-modal>
+
+
+    
+  <div class="dialog "
+    id="activity_reviews_dialog" role="dialog" aria-hidden="true"
+        aria-describedby="activity_reviews_dialog-heading"
+      data-reviews="true" data-summary-ratings-id="activity-rating-container" data-ignore-cache="true"
+      >
+    <div class="dialog__content ">
+      <div class="dialog__header">
+        <h2 id="activity_reviews_dialog-heading" class="u-headingdialog dialog__heading">
+          Review
+        </h2>
+      </div>
+      <div class="dialog__contentbody" data-dialog-content="true">
+        
+  <span class="loading" role="img" aria-label="Content loading">
+    <svg id="loading" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 66 66">
+      <circle class="path" fill="none" stroke="#393b3d" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
+    </svg>
+  </span>
+
+      </div>
+        <button class="button dialog__close u-orgcolor--hovercolor" type="button" data-behavior="hide.dialog" aria-label="Close">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35 35" aria-hidden="true" class="btnicon" focusable="false">
+  <g aria-hidden="true" fill="currentColor">
+    <path d="M11.84,24.57 L24.57,11.84 L23.16,10.43 L10.43,23.16 z"></path>
+    <path d="M10.43,11.84 L23.16,24.57 L24.57,23.16 L11.84,10.43 z"></path>
+  </g>
+</svg>
+
+        </button>
+    </div>
+  </div>
+
+  <div class="dialog "
+    id="scorm_window_warning" role="dialog" aria-hidden="true"
+        aria-describedby="scorm_window_warning-heading"
+      
+      >
+    <div class="dialog__content ">
+      <div class="dialog__header">
+        <h2 id="scorm_window_warning-heading" class="u-headingdialog dialog__heading">
+          Warning: Closing this page may affect activity tracking!
+        </h2>
+      </div>
+      <div class="dialog__contentbody" data-dialog-content="true">
+        
+  <p>This page is used by your activity to communicate with the learning platform. Please be sure to close all activity windows before closing or navigating away from this page.</p>
+  <p>
+    <a class="button button--primary" onClick="location &amp;&amp; location.reload &amp;&amp; location.reload()" href="#">Return to activity</a>
+  </p>
+  <p>Did you arrive on this page without seeing a new activity window launch? You may have a pop-up blocker. <a target="_blank" rel="noopener noreferrer" class="link--primary" href="https://experience.exceedlms.com/student/page/594044">Check out pop-up blocker tips here.</a></p>
+
+      </div>
+    </div>
+  </div>
+
+
+    <exceed-modal-helper aria-live="polite"></exceed-modal-helper>
+
+
+  </main>
+
+  <script src="/assets/student/application-e19c2ae14c5065f2198aca6590ffe2f7523be18828658356ca9f7135077bb78d.js"></script>
+
+
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var debugScorm = false;
+    var courseware_window;
+    function setCmi(temp_cmi) {
+      // Deep clone the object, so that it is not read only for the opener page.
+      cmi = jQuery.extend(true, {}, temp_cmi)
+    }
+  </script>
+  <script src="/assets/scorm_extensions-b1041a94343ef0c6814f810d13cf5ca2596391a48ad4e61eedbda2a861e0c60d.js"></script>
+  <script src="/assets/scorm12_api_interactions-05523669eae4d1337758e86e1df368e39e854d43dcd5cfc9bcf7e27a76b58760.js"></script>
+
+  <script type="text/javascript">
+    (function() {
+      var isRefresh;
+      var isParentClosing;
+      var isClicked = false;
+
+      function setPopupExitEvents(courseware_window) {
+        var timeout = 20000,
+            startTime = Date.now(),
+            popupInterval;
+
+        popupInterval = setInterval(function() {
+          if ((courseware_window && courseware_window.location.pathname.indexOf("/resource_courses/") > -1) || Date.now() - startTime > timeout) {
+
+            clearInterval(popupInterval);
+
+            courseware_window.document.addEventListener('visibilitychange', function() {
+              // fires when user switches tabs, apps, goes to homescreen, etc.
+              if (courseware_window.document.visibilityState === 'hidden') {
+                LMSCommit();
+              }
+            });
+
+
+            courseware_window.addEventListener('unload', function() {
+              finalLMSCommit();
+                refreshParentWindow();
+            });
+
+            $(courseware_window).on("keydown", disableF5);
+          }
+        }, 500);
+      }
+
+      function refreshParentWindow() {
+        if (!isRefresh) {
+          isRefresh = true;
+          location && location.reload && location.reload();
+        }
+      }
+
+      function setCloseCoursewareIfParentRefreshes(courseware_window) {
+        window.addEventListener('beforeunload', function() {
+          isParentClosing = true;
+          closeCoursewareWindow(courseware_window);
+        });
+      }
+
+      function closeCoursewareWindow(courseware_window) {
+        try {
+          courseware_window && courseware_window !== null && courseware_window.closed !== 1 && courseware_window.close();
+        } catch(e) {
+        }
+      }
+
+      function disableF5(e) { if ((e.which || e.keyCode) == 116) e.preventDefault(); };
+
+      // Ensures that after the end of each ajax call
+      // we schedule next request from the `SubmitQueue`
+      $(document).ready(function() {
+        $(document).ajaxStop(function() {
+          submitNextInQueue();
+        });
+      });
+
+      $('.setup_show_enrollment').on('click', function (event) {
+        isRefresh = false;
+
+        if (isClicked) {
+          return false;
+        }
+        isClicked = true;
+
+          var path_id = $(this).data('path-id');
+          var curriculum_activity_id = $(this).data('curriculum-activity-id');
+          var enrollment_activity_id = $(this).data('enrollment-activity-id') || "";
+          var url = '/student/path/' + path_id + '/activity/' + curriculum_activity_id + "?activity_id=" + enrollment_activity_id + "&skip_interstitial=true";
+
+          courseware_window = window.open(url, '_blank');
+
+
+        setPopupExitEvents(courseware_window);
+        event.stopPropagation();
+        event.preventDefault();
+      });
+    })();
+  </script>
+
+
+    <footer id="page-footer" class="appfooter footer">
+  <div class="appfooter__content footer__content">
+
+        <div class="appfooter__item appfooter__customcontent footer__item footer__customcontent">
+            <a href='https://www.google.com/intl/en/policies/privacy' target='_blank'> Google Privacy & Terms </a>, &nbsp; <a href='https://www.intellum.com/privacy-policy' target='_blank'>Intellum Privacy & Terms</a>
+
+        </div>
+
+      <div class="menulist menulist--footer appfooter__item appfooter__item--locale">
+  <div id="app-locale-label" class="menulist__title">
+    Locale:
+    <span class="a11y-atonly">English selected</span>
+  </div>
+  <div class="menulist__wrapper">
+    <exceed-simple-select is-menu-only="true" trigger-content-selector="#app-locale-trigger span">
+      <button
+      id="app-locale-trigger"
+      class="menulist__trigger"
+      type="button"
+      aria-haspopup="listbox"
+      aria-expanded="false"
+       aria-labelledby="app-locale-label"><span
+      class="menulist__optionname">English</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" aria-hidden="true" class="menulist__triggericon" focusable="false">
+  <g fill="currentColor" aria-hidden="true">
+    <path d="M6,8.9c-0.1,0-0.3,0-0.4-0.1L2.1,5.3c-0.2-0.2-0.2-0.5,0.2,-0.7l6.8,0       c0.2,0,0.5,0,0.7,0.1s0.2,0.5,0,0.7L6.4,8.8C6.3,8.9,6.1,8.9,6,8.9z"></path>
+  </g>
+</svg>
+</button>
+
+      <ul id="app-locale-menu" class="menulist__listbox menulist__listbox--footer menulist__listbox--top" role="listbox" aria-labelledby="app-locale-label">
+          <li id="app-locale-menu-option-id"
+            class="menulist__option"
+            role="option"
+            data-href="/student/path/2938-google-analytics-individual-qualification?locale=id"
+            aria-selected="false"
+            tabindex="-1"
+          >
+            <span class="menulist__optionname">Bahasa Indonesia</span>
+          </li>
+          <li id="app-locale-menu-option-da"
+            class="menulist__option"
+            role="option"
+            data-href="/student/path/2938-google-analytics-individual-qualification?locale=da"
+            aria-selected="false"
+            tabindex="-1"
+          >
+            <span class="menulist__optionname">Dansk</span>
+          </li>
+          <li id="app-locale-menu-option-de"
+            class="menulist__option"
+            role="option"
+            data-href="/student/path/2938-google-analytics-individual-qualification?locale=de"
+            aria-selected="false"
+            tabindex="-1"
+          >
+            <span class="menulist__optionname">deutsch (Deutschland)</span>
+          </li>
+          <li id="app-locale-menu-option-de-CH"
+            class="menulist__option"
+            role="option"
+            data-href="/student/path/2938-google-analytics-individual-qualification?locale=de-CH"
+            aria-selected="false"
+            tabindex="-1"
+          >
+            <span class="menulist__optionname">deutsch (Schweiz)</span>
+          </li>
+          <li id="app-locale-menu-option-de-AT"
+            class="menulist__option"
+            role="option"
+            data-href="/student/path/2938-google-analytics-individual-qualification?locale=de-AT"
+            aria-selected="false"
+            tabindex="-1"
+          >
+            <span class="menulist__optionname">deutsch (Österreich)</span>
+          </li>
+          <li id="app-locale-menu-option-et"
+            class="menulist__option"
+            role="option"
+            data-href="/student/path/2938-google-analytics-individual-qualification?locale=et"
+            aria-selected="false"
+            tabindex="-1"
+          >
+            <span class="menulist__optionname">Eesti keel</span>
+          </li>
+          <li id="app-locale-menu-option-en"
+            class="menulist__option"
+            role="option"
+            data-href="/student/path/2938-google-analytics-individual-qualification?locale=en"
+            aria-selected="true"
+            tabindex="-1"
+          >
+            <span class="menulist__optionname">English</span>
+          </li>
+          <li id="app-locale-menu-option-es"
+            class="menulist__option"
+            role="option"
+            data-href="/student/path/2938-google-analytics-individual-qualification?locale=es"
+            aria-selected="false"
+            tabindex="-1"
+          >
+            <span class="menulist__optionname">Español</span>
+          </li>
+          <li id="app-locale-menu-option-es-419"
+            class="menulist__option"
+            role="option"
+            data-href="/student/path/2938-google-analytics-individual-qualification?locale=es-419"
+            aria-selected="false"
+            tabindex="-1"
+          >
+            <span class="menulist__optionname">Español (Latinoamérica)</span>
+          </li>
+          <li id="app-locale-menu-option-fr-BE"
+            class="menulist__option"
+            role="option"
+            data-href="/student/path/2938-google-analytics-individual-qualification?locale=fr-BE"
+            aria-selected="false"
+            tabindex="-1"
+          >
+            <span class="menulist__optionname">français (Belgique)</span>
+          </li>
+          <li id="app-locale-menu-option-fr"
+            class="menulist__option"
+            role="option"
+            data-href="/student/path/2938-google-analytics-individual-qualification?locale=fr"
+            aria-selected="false"
+            tabindex="-1"
+          >
+            <span class="menulist__optionname">français (France)</span>
+          </li>
+          <li id="app-locale-menu-option-fr-CH"
+            class="menulist__option"
+            role="option"
+            data-href="/student/path/2938-google-analytics-individual-qualification?locale=fr-CH"
+            aria-selected="false"
+            tabindex="-1"
+          >
+            <span class="menulist__optionname">français (Suisse)</span>
+          </li>
+          <li id="app-locale-menu-option-hr"
+            class="menulist__option"
+            role="option"
+            data-href="/student/path/2938-google-analytics-individual-qualification?locale=hr"
+            aria-selected="false"
+            tabindex="-1"
+          >
+            <span class="menulist__optionname">hrvatski</span>
+          </li>
+          <li id="app-locale-menu-option-it"
+            class="menulist__option"
+            role="option"
+            data-href="/student/path/2938-google-analytics-individual-qualification?locale=it"
+            aria-selected="false"
+            tabindex="-1"
+          >
+            <span class="menulist__optionname">italiano (Italia)</span>
+          </li>
+          <li id="app-locale-menu-option-it-CH"
+            class="menulist__option"
+            role="option"
+            data-href="/student/path/2938-google-analytics-individual-qualification?locale=it-CH"
+            aria-selected="false"
+            tabindex="-1"
+          >
+            <span class="menulist__optionname">italiano (Svizzera)</span>
+          </li>
+          <li id="app-locale-menu-option-lv"
+            class="menulist__option"
+            role="option"
+            data-href="/student/path/2938-google-analytics-individual-qualification?locale=lv"
+            aria-selected="false"
+            tabindex="-1"
+          >
+            <span class="menulist__optionname">latviešu</span>
+          </li>
+          <li id="app-locale-menu-option-lt"
+            class="menulist__option"
+            role="option"
+            data-href="/student/path/2938-google-analytics-individual-qualification?locale=lt"
+            aria-selected="false"
+            tabindex="-1"
+          >
+            <span class="menulist__optionname">Lietuvių</span>
+          </li>
+          <li id="app-locale-menu-option-hu"
+            class="menulist__option"
+            role="option"
+            data-href="/student/path/2938-google-analytics-individual-qualification?locale=hu"
+            aria-selected="false"
+            tabindex="-1"
+          >
+            <span class="menulist__optionname">Magyar</span>
+          </li>
+          <li id="app-locale-menu-option-ms"
+            class="menulist__option"
+            role="option"
+            data-href="/student/path/2938-google-analytics-individual-qualification?locale=ms"
+            aria-selected="false"
+            tabindex="-1"
+          >
+            <span class="menulist__optionname">Malaysia</span>
+          </li>
+          <li id="app-locale-menu-option-nl-BE"
+            class="menulist__option"
+            role="option"
+            data-href="/student/path/2938-google-analytics-individual-qualification?locale=nl-BE"
+            aria-selected="false"
+            tabindex="-1"
+          >
+            <span class="menulist__optionname">nederlands (België)</span>
+          </li>
+          <li id="app-locale-menu-option-nl"
+            class="menulist__option"
+            role="option"
+            data-href="/student/path/2938-google-analytics-individual-qualification?locale=nl"
+            aria-selected="false"
+            tabindex="-1"
+          >
+            <span class="menulist__optionname">nederlands (Holland)</span>
+          </li>
+          <li id="app-locale-menu-option-nb"
+            class="menulist__option"
+            role="option"
+            data-href="/student/path/2938-google-analytics-individual-qualification?locale=nb"
+            aria-selected="false"
+            tabindex="-1"
+          >
+            <span class="menulist__optionname">Norsk</span>
+          </li>
+          <li id="app-locale-menu-option-pl"
+            class="menulist__option"
+            role="option"
+            data-href="/student/path/2938-google-analytics-individual-qualification?locale=pl"
+            aria-selected="false"
+            tabindex="-1"
+          >
+            <span class="menulist__optionname">polski</span>
+          </li>
+          <li id="app-locale-menu-option-pt-BR"
+            class="menulist__option"
+            role="option"
+            data-href="/student/path/2938-google-analytics-individual-qualification?locale=pt-BR"
+            aria-selected="false"
+            tabindex="-1"
+          >
+            <span class="menulist__optionname">Português</span>
+          </li>
+          <li id="app-locale-menu-option-pt-PT"
+            class="menulist__option"
+            role="option"
+            data-href="/student/path/2938-google-analytics-individual-qualification?locale=pt-PT"
+            aria-selected="false"
+            tabindex="-1"
+          >
+            <span class="menulist__optionname">Português (Portugal)</span>
+          </li>
+          <li id="app-locale-menu-option-ro"
+            class="menulist__option"
+            role="option"
+            data-href="/student/path/2938-google-analytics-individual-qualification?locale=ro"
+            aria-selected="false"
+            tabindex="-1"
+          >
+            <span class="menulist__optionname">Română</span>
+          </li>
+          <li id="app-locale-menu-option-sk"
+            class="menulist__option"
+            role="option"
+            data-href="/student/path/2938-google-analytics-individual-qualification?locale=sk"
+            aria-selected="false"
+            tabindex="-1"
+          >
+            <span class="menulist__optionname">Slovenčina</span>
+          </li>
+          <li id="app-locale-menu-option-sl"
+            class="menulist__option"
+            role="option"
+            data-href="/student/path/2938-google-analytics-individual-qualification?locale=sl"
+            aria-selected="false"
+            tabindex="-1"
+          >
+            <span class="menulist__optionname">slovenščina</span>
+          </li>
+          <li id="app-locale-menu-option-sr-Latn"
+            class="menulist__option"
+            role="option"
+            data-href="/student/path/2938-google-analytics-individual-qualification?locale=sr-Latn"
+            aria-selected="false"
+            tabindex="-1"
+          >
+            <span class="menulist__optionname">Srpski</span>
+          </li>
+          <li id="app-locale-menu-option-fi"
+            class="menulist__option"
+            role="option"
+            data-href="/student/path/2938-google-analytics-individual-qualification?locale=fi"
+            aria-selected="false"
+            tabindex="-1"
+          >
+            <span class="menulist__optionname">Suomi</span>
+          </li>
+          <li id="app-locale-menu-option-sv"
+            class="menulist__option"
+            role="option"
+            data-href="/student/path/2938-google-analytics-individual-qualification?locale=sv"
+            aria-selected="false"
+            tabindex="-1"
+          >
+            <span class="menulist__optionname">Svensk</span>
+          </li>
+          <li id="app-locale-menu-option-vi"
+            class="menulist__option"
+            role="option"
+            data-href="/student/path/2938-google-analytics-individual-qualification?locale=vi"
+            aria-selected="false"
+            tabindex="-1"
+          >
+            <span class="menulist__optionname">Tiếng Việt</span>
+          </li>
+          <li id="app-locale-menu-option-tr"
+            class="menulist__option"
+            role="option"
+            data-href="/student/path/2938-google-analytics-individual-qualification?locale=tr"
+            aria-selected="false"
+            tabindex="-1"
+          >
+            <span class="menulist__optionname">Türkçe</span>
+          </li>
+          <li id="app-locale-menu-option-en-GB"
+            class="menulist__option"
+            role="option"
+            data-href="/student/path/2938-google-analytics-individual-qualification?locale=en-GB"
+            aria-selected="false"
+            tabindex="-1"
+          >
+            <span class="menulist__optionname">UK English</span>
+          </li>
+          <li id="app-locale-menu-option-cs"
+            class="menulist__option"
+            role="option"
+            data-href="/student/path/2938-google-analytics-individual-qualification?locale=cs"
+            aria-selected="false"
+            tabindex="-1"
+          >
+            <span class="menulist__optionname">Čeština</span>
+          </li>
+          <li id="app-locale-menu-option-el"
+            class="menulist__option"
+            role="option"
+            data-href="/student/path/2938-google-analytics-individual-qualification?locale=el"
+            aria-selected="false"
+            tabindex="-1"
+          >
+            <span class="menulist__optionname">Ελληνικά</span>
+          </li>
+          <li id="app-locale-menu-option-bg"
+            class="menulist__option"
+            role="option"
+            data-href="/student/path/2938-google-analytics-individual-qualification?locale=bg"
+            aria-selected="false"
+            tabindex="-1"
+          >
+            <span class="menulist__optionname">Български</span>
+          </li>
+          <li id="app-locale-menu-option-ru"
+            class="menulist__option"
+            role="option"
+            data-href="/student/path/2938-google-analytics-individual-qualification?locale=ru"
+            aria-selected="false"
+            tabindex="-1"
+          >
+            <span class="menulist__optionname">русский</span>
+          </li>
+          <li id="app-locale-menu-option-uk"
+            class="menulist__option"
+            role="option"
+            data-href="/student/path/2938-google-analytics-individual-qualification?locale=uk"
+            aria-selected="false"
+            tabindex="-1"
+          >
+            <span class="menulist__optionname">Українська</span>
+          </li>
+          <li id="app-locale-menu-option-he"
+            class="menulist__option"
+            role="option"
+            data-href="/student/path/2938-google-analytics-individual-qualification?locale=he"
+            aria-selected="false"
+            tabindex="-1"
+          >
+            <span class="menulist__optionname">עברית</span>
+          </li>
+          <li id="app-locale-menu-option-ar"
+            class="menulist__option"
+            role="option"
+            data-href="/student/path/2938-google-analytics-individual-qualification?locale=ar"
+            aria-selected="false"
+            tabindex="-1"
+          >
+            <span class="menulist__optionname">العربية</span>
+          </li>
+          <li id="app-locale-menu-option-hi"
+            class="menulist__option"
+            role="option"
+            data-href="/student/path/2938-google-analytics-individual-qualification?locale=hi"
+            aria-selected="false"
+            tabindex="-1"
+          >
+            <span class="menulist__optionname">हिन्दी </span>
+          </li>
+          <li id="app-locale-menu-option-th"
+            class="menulist__option"
+            role="option"
+            data-href="/student/path/2938-google-analytics-individual-qualification?locale=th"
+            aria-selected="false"
+            tabindex="-1"
+          >
+            <span class="menulist__optionname">ไทย</span>
+          </li>
+          <li id="app-locale-menu-option-ja"
+            class="menulist__option"
+            role="option"
+            data-href="/student/path/2938-google-analytics-individual-qualification?locale=ja"
+            aria-selected="false"
+            tabindex="-1"
+          >
+            <span class="menulist__optionname">日本語</span>
+          </li>
+          <li id="app-locale-menu-option-zh-CN"
+            class="menulist__option"
+            role="option"
+            data-href="/student/path/2938-google-analytics-individual-qualification?locale=zh-CN"
+            aria-selected="false"
+            tabindex="-1"
+          >
+            <span class="menulist__optionname">简体中文</span>
+          </li>
+          <li id="app-locale-menu-option-zh-TW"
+            class="menulist__option"
+            role="option"
+            data-href="/student/path/2938-google-analytics-individual-qualification?locale=zh-TW"
+            aria-selected="false"
+            tabindex="-1"
+          >
+            <span class="menulist__optionname">繁體中文 (台灣)</span>
+          </li>
+          <li id="app-locale-menu-option-ko"
+            class="menulist__option"
+            role="option"
+            data-href="/student/path/2938-google-analytics-individual-qualification?locale=ko"
+            aria-selected="false"
+            tabindex="-1"
+          >
+            <span class="menulist__optionname">한국어</span>
+          </li>
+      </ul>
+    </exceed-simple-select>
+  </div>
+</div>
+
+
+      <p class="appfooter__item footer__item">
+        <a target="_blank" rel="noopener noreferrer" class="appfooter__link appfooter__link--poweredby" href="https://www.intellum.com/platform/powered-by-intellum/?utm_source=Google&amp;utm_medium=referral&amp;utm_campaign=powered-by">
+          Powered by:
+          <span class="appfooter__logo footer__logo">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 75 21" title="Intellum">
+  <g fill="currentColor">
+    <path class="st0" d="M8.8 13.9H7V7.1h1.8v6.8zM11.9 7.1h1.8l3.2 4.2V7.1h1.8v6.8H17l-3.2-4.2v4.2H12V7.1zM25 13.9h-1.8V8.6h-1.5V7.1h4.7v1.5H25v5.3zM31.6 8.6v1.1h2v1.5h-2v1.2h2.1v1.5h-3.9V7.1h3.9v1.5h-2.1zM39.3 12.4h2.1v1.5h-3.9V7.1h1.8v5.3zM46.5 12.4h2.1v1.5h-3.9V7.1h1.8v5.3zM57.1 7.1v3.8c0 .9 0 1.7-.7 2.4-.6.6-1.5.8-2.3.8-.8 0-1.7-.2-2.3-.8-.7-.7-.7-1.5-.7-2.4V7.1h1.8v3.6c0 .9.1 1.9 1.2 1.9 1.1 0 1.2-1 1.2-1.9V7.1h1.8zM60.6 7.1h1.7l1.4 3.6 1.5-3.6H67l1 6.8h-1.8l-.4-3.9-1.6 3.9h-.7L61.8 10l-.6 3.9h-1.8l1.2-6.8z"/>
+    <g>
+      <path d="M70.4 1.5h3.2v3.2L75 6.1v-6h-6zM73.6 8.6v10.9H1.4v-18h65.1L65.1.1H0v20.8h75V10z"/>
+    </g>
+  </g>
+</svg>
+          </span>
+</a>      </p>
+  </div>
+</footer>
+
+
+    
+
+
+    <script src="/assets/jstz.min-5654a2b46feb6c9a46a65f05797c3b47888c2d94084233429f57a034b2edde17.js"></script>
+<script type="text/javascript">
+  var tz = jstz.determine();
+  document.cookie = "jstztimezone=" + tz.name();
+</script>
+
+
+
+  
+
+
+<script src="/webcomponentsjs/2_1_1/webcomponents-loader.js" defer="defer"></script>
+
+<div id="ce-es5-shim">
+  <script>
+    if (!window.customElements) {
+      var ceShimContainer = document.querySelector('#ce-es5-shim');
+      ceShimContainer.parentElement.removeChild(ceShimContainer);
+    }
+  </script>
+  <script src="/webcomponentsjs/2_1_1/custom-elements-es5-adapter.js" defer="defer"></script>
+</div>
+
+<script>
+  (function () {
+    document.addEventListener('WebComponentsReady', function componentsReady() {
+      document.removeEventListener('WebComponentsReady', componentsReady, false);
+      var script = document.createElement('script');
+      script.src = '/packs/js/components-9acd08742aa1ba68fc40.js';
+      document.body.appendChild(script);
+    }, false);
+  })();
+</script>
+
+  
+  
+</body></html>

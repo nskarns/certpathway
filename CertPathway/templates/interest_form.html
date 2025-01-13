@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Interest Form</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    {% include 'header.html' %}
+    <div style="margin: auto; width: fit-content">
+    <div id="reactEntry">
+        Loading ...
+    </div>
+    <!-- Load JavaScript -->
+    <script type="text/javascript" src="{{ url_for('static', filename='js/bundle.js') }}"></script>
+    </div>
+</body>
+</html>
